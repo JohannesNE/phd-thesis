@@ -355,7 +355,40 @@ $endif$
 $if(alternative-title-page)$
 \input{$alternative-title-page$}
 $else$
-\maketitle
+% Custom title page
+\begin{titlepage}
+
+\includegraphics[width=0.4\textwidth]{$university-logo-alt$}
+   
+   \begin{center}
+       \vspace*{1cm}
+
+       {\huge \textbf{$title$}}
+
+       %\vspace{0.5cm}
+       %Thesis Subtitle
+            
+       \vspace{1.5cm}
+       
+       $submitted-text$
+
+       {\large \textbf{$author$}}
+       \vspace{0.8cm}
+       
+       \vfill
+       
+       \includegraphics[width=0.4\textwidth]{$university-logo$}
+            
+       \vspace{0.8cm}
+     
+            
+       $institute$ \\
+       $university$ \\
+       $department$ \\
+       $degreedate$
+            
+   \end{center}
+\end{titlepage}
 $endif$
 
 %%%%% DEDICATION
