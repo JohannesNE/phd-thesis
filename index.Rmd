@@ -18,14 +18,17 @@ knit: (function(input, ...) {
 #####################
 title: |
   Fluid responsiveness and heart-lung interactions
-author: Author Name
-college: Your College
-university: University of Oxford
-university-logo: templates/beltcrest.pdf
+author: Johannes Enevoldsen
+college: Health
+university: Aarhus University
+institute: Health
+department: Department of Clinical Medicine
+university-logo: templates/AU_SEGL/blue/ausegl_blaa.pdf
+university-logo-alt: templates/AU_LOGO/UK/BLUE/aulogo_uk_var2_blue.pdf
 university-logo-width: 5cm
-submitted-text: A thesis submitted for the degree of
-degree: Doctor of Philosophy
-degreedate: Michaelmas 2018
+submitted-text: PhD dissertation
+#degree: Doctor of Philosophy
+degreedate: 2022
 dedication: For Yihui Xie
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
@@ -33,8 +36,10 @@ show-acknowledgements-in-toc: false
 abstract-heading: "Abstract"
 abstract: |
   `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = "\n  ")`
+abstract-second-heading: "Dansk Resumé"
+abstract-second: |
+  `r paste(readLines("front-and-back-matter/_abstract-danish.Rmd"), collapse = "\n  ")`
 show-abstract-in-toc: false
-# add a second abstract with abstract-second-heading: "Abstract two", and abstract-second: "My abstract"
 abbreviations: |
   `r paste(readLines("front-and-back-matter/_abbreviations.Rmd"), collapse = '\n  ')`
 
@@ -168,7 +173,7 @@ output:
       - templates/corrections.css # remove to stop highlighting corrections
     theme:
       primary: "#6D1919"
-    repo: https://github.com/ulyngs/oxforddown
+    #repo: https://github.com/ulyngs/oxforddown
     pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
   bookdown::gitbook:
     css: templates/style.css
