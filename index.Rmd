@@ -17,7 +17,7 @@ knit: (function(input, ...) {
 ## thesis metadata ##
 #####################
 title: |
-  Fluid responsiveness and heart-lung interactions
+  Physiological and Methodological Limitations to Fluid Responsiveness Prediction.
 author: Johannes Enevoldsen
 college: Health
 university: Aarhus University
@@ -29,7 +29,7 @@ university-logo-width: 5cm
 submitted-text: PhD dissertation
 #degree: Doctor of Philosophy
 degreedate: 2022
-dedication: For Yihui Xie
+dedication: For freedom
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
 show-acknowledgements-in-toc: false
