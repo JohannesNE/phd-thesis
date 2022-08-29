@@ -1,0 +1,70 @@
+InfoBegin
+InfoKey: Creator
+InfoValue: Adobe InDesign 15.1 (Windows)
+InfoBegin
+InfoKey: ModDate
+InfoValue: D:20210819015425-07&apos;00&apos;
+InfoBegin
+InfoKey: CreationDate
+InfoValue: D:20210813074706+05&apos;30&apos;
+InfoBegin
+InfoKey: Producer
+InfoValue: Adobe PDF Library 15.0; modified using iText 4.2.0 by 1T3XT
+InfoBegin
+InfoKey: Subject
+InfoValue: Acta Anaesthesiologica Scandinavica 0.0:null-null
+InfoBegin
+InfoKey: WPS-PROCLEVEL
+InfoValue: 3
+InfoBegin
+InfoKey: WPS-JOURNALDOI
+InfoValue: 10.1111/(ISSN)1399-6576
+InfoBegin
+InfoKey: Title
+InfoValue: Existing fluid responsiveness studies using the mini&#8208;fluid challenge may be misleading: Methodological considerations and simulations
+InfoBegin
+InfoKey: WPS-ARTICLEDOI
+InfoValue: 10.1111/aas.13965
+PdfID0: a558a2303422f77ddb515131a3350088
+PdfID1: b5119cba17ca9b08406b29407936cb35
+NumberOfPages: 8
+PageMediaBegin
+PageMediaNumber: 1
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 782.362
+PageMediaDimensions: 595.276 782.362
+PageMediaBegin
+PageMediaNumber: 2
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 782.362
+PageMediaDimensions: 595.276 782.362
+PageMediaBegin
+PageMediaNumber: 3
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 782.362
+PageMediaDimensions: 595.276 782.362
+PageMediaBegin
+PageMediaNumber: 4
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 782.362
+PageMediaDimensions: 595.276 782.362
+PageMediaBegin
+PageMediaNumber: 5
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 782.362
+PageMediaDimensions: 595.276 782.362
+PageMediaBegin
+PageMediaNumber: 6
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 782.362
+PageMediaDimensions: 595.276 782.362
+PageMediaBegin
+PageMediaNumber: 7
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 782.362
+PageMediaDimensions: 595.276 782.362
+PageMediaBegin
+PageMediaNumber: 8
+PageMediaRotation: 0
+PageMediaRect: 0 0 595.276 782.362
+PageMediaDimensions: 595.276 782.362

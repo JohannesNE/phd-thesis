@@ -1,0 +1,29 @@
+---
+#########################################
+# options for knitting a single chapter #
+#########################################
+output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+    citation_package: biblatex
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+documentclass: book
+#bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
+---
+
+# Papers {.unnumbered}
+
+```{=tex}
+\adjustmtc
+\markboth{Papers}{}
+```
+<!-- For PDF output, include these two LaTeX commands after unnumbered chapter headings, otherwise the mini table of contents and the running header will show the previous chapter -->
+
+This PhD dissertation is based upon the following three papers:
+
+- **Paper 1** Existing fluid responsiveness studies using the mini-fluid challenge may be misleading: Methodological considerations and simulations. 
+*[Published in Acta Anaesthesiologica Scandinavica, 2021. DOI: 10.1111/aas.13965](https://doi.org/10.1111/aas.13965).*
+- **Paper 2** Using generalized additive models to decompose time series and waveforms, and dissect heart–lung interaction physiology.
+*[Published in Journal of Clinical Monitoring and Computing, 2022. DOI: 10.1007/s10877-022-00873-7](http://https://doi.org/10.1007/s10877-022-00873-7).*
+- **Paper 3**

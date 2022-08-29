@@ -32,3 +32,6 @@ _bookdown_files
 *-blx.aux
 *-blx.bib
 *.run.xml
+
+## My additions
+temp_docs/*
