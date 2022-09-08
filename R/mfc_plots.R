@@ -86,4 +86,4 @@ predict_400_plot <- ggplot(sim_data, aes(response_100, response_400)) +
 
 null_sim_plot <- sample_plot + (predict_500_plot / predict_400_plot) + plot_annotation(tag_levels = "a")
 
-save_plot("method-null-sim", null_sim_plot, width = 15, height = 12)
+save_plot("method-null-sim", null_sim_plot, width = 16, height = 12)
