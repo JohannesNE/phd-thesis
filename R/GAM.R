@@ -116,6 +116,7 @@ PP_plot <- ggplot(beats, aes(time, PP)) +
             data = filter(beats_pre, resp_n < 5), show.legend = FALSE) +
   #scale_color_manual(values = unname(plot_colors_alt)) +
   scale_x_continuous(limits = c(0,30), expand = c(0.02,0.02)) +
+  scale_y_continuous(breaks = seq(54, 60, by = 2)) +
   labs(x = 'Time [s]',
        y = ' PP [mmHg]',
        shape = NULL) +
@@ -123,77 +124,92 @@ PP_plot <- ggplot(beats, aes(time, PP)) +
   scale_shape_PP +
   theme(legend.position = 'bottom')
 
-gen_model_plot <- function(beats, color = TRUE) {
-  #GAM
-  PP_gam <- gam(PP ~ s(resp_rel_index, k = 15, bs = 'cc') + s(time, bs = 'cr'), 
-                knots = list(resp_rel_index = c(
-                  0, 
-                  1)),
-                method = 'REML', data = beats)
-  
-  beats_p <- mutate(beats, PP_predict = predict(PP_gam),
+PP_gam <- gam(PP ~ s(resp_rel_index, k = 15, bs = 'cc') + s(time, bs = 'cr'), 
+              knots = list(resp_rel_index = c(
+                0, 
+                1)),
+              method = 'REML', data = beats)
+
+beats_p <- mutate(beats, PP_predict = predict(PP_gam),
                     PP_res = residuals(PP_gam),
                     PP_trend = predict(PP_gam, type = 'terms', terms = 's(time)'),
                     PP_insp = predict(PP_gam, type = 'terms', terms = 's(resp_rel_index)'),
                     PP_detrend = PP_res + PP_insp)
   
-  # Model visualizations
+# Model visualizations
   
-  # Get representations of smooths
-  insp_smooth <- gratia::smooth_estimates(PP_gam, 's(resp_rel_index)', 
+# Get representations of smooths
+insp_smooth <- gratia::smooth_estimates(PP_gam, 's(resp_rel_index)', 
                                           data = tibble(resp_rel_index = seq(0, 1, length.out = 100), 
                                                         time = 999))
   
-  intercept <- coef(PP_gam)[1]
-  time_smooth <- gratia::smooth_estimates(PP_gam, 's(time)') %>% 
-    mutate(est = est + intercept)
+time_smooth <- gratia::smooth_estimates(PP_gam, 's(time)')
   
   
-  y_scale_smooths <- scale_y_continuous(limits = c(-3, 3))
+y_scale_smooths <- scale_y_continuous(limits = c(-3, 3))
   
-  geom_ci_ribbon <- geom_ribbon(aes(ymin = est - 1.96 * se, ymax = est + 1.96 * se), fill =alpha('black', 0), 
+geom_ci_ribbon <- geom_ribbon(aes(ymin = est - 1.96 * se, ymax = est + 1.96 * se), fill =alpha('black', 0), 
                                 colour = "#333333", linetype = 2, outline.type = 'both')
   
-  insp_smooth_plot <- ggplot(insp_smooth, aes(resp_rel_index, est)) +
+insp_smooth_plot <- ggplot(insp_smooth, aes(resp_rel_index, est)) +
     geom_ci_ribbon +
     geom_line(colour = "#333333") + 
     geom_point(aes(y = PP_detrend), data = beats_p, color = darkcolor, alpha = 1) +
+    geom_point(aes(y = PP_detrend, color = as.factor(resp_n)), 
+             data = filter(beats_p, resp_n < 5), size = 1.6, show.legend = FALSE) +
     #geom_point(aes(x = 1, y = -1.5, shape = 'Inspiration start'), show.legend = FALSE) +
     #geom_point(aes(x = 0, y = -1.5, shape = 'Inspiration start'), show.legend = FALSE) +
     labs(x = 'Time since inspiration start / cycle length',
-         y = 'Partial PP [mmHg]') +
+         y = 'Partial PP') +
     ggtitle('Position in respiratory cycle') +
     scale_x_continuous(labels = scales::percent, expand = expansion(0.05, c(0, 0.05))) +
     scale_shape_PP +
     y_scale_smooths
   
-  time_smooth_plot <- ggplot(time_smooth, aes(time, est)) +
+time_smooth_plot <- ggplot(time_smooth, aes(time, est)) +
     geom_ci_ribbon + 
     geom_line(colour = "#333333") +
     labs(x = 'Time [s]',
-         y = 'Partial PP [mmHg]') + 
+         y = 'Partial PP') + 
     ggtitle('Trend over time') +
-    scale_y_continuous(limits = c(intercept - 2, intercept + 2))
-  
-  if (color) {
-    insp_smooth_plot <- insp_smooth_plot + 
-      geom_point(aes(y = PP_detrend, color = as.factor(resp_n)), 
-                 data = filter(beats_p, resp_n < 5), size = 1.6, show.legend = FALSE) 
-      #geom_line(aes(y = PP_detrend, color = as.factor(resp_n), group = as.factor(resp_n)), 
-      #          data = filter(beats_p, resp_n < 5), size = 1, show.legend = FALSE)
-      
-    
-  }
-  
-  model_plot <- insp_smooth_plot + time_smooth_plot
-  model_plot
+    scale_y_continuous(limits = c(-2, 2))
   
   
-}
+model_plot <- insp_smooth_plot + time_smooth_plot
+  
+  
 
-model_plot <- gen_model_plot(beats)
 
-combined_gam_PP_plot <- PP_plot + model_plot + plot_layout(nrow = 2, heights = c(2, 4)) + 
+
+#predict
+
+PP_newdata <- tibble(
+  # create 200 points from 0 to 30 to make the prediction visually smooth
+  time = seq(0, 30, length.out = 200)) %>% 
+  # index each new time to our existing vector of inspiration times
+  waveformtools::add_time_since_event(c(-1.3, sample_pp$insp_start$time), prefix = "resp") %>% 
+  na.omit()
+
+PP_interpolate <- bind_cols(
+  PP_newdata,
+  predict(PP_gam, 
+          newdata = PP_newdata, 
+          # in addition to the predictions (fit) we can also return the standard error 
+          # (se.fit) for each prediction. This makes predict return a named list,
+          # that we can simply bind as columns to our data frame.
+          se.fit = TRUE) 
+)
+
+predict_plot <- ggplot(PP_interpolate, aes(x = time)) +
+  geom_line(aes(y = fit), color = darkred) +
+  geom_point(aes(y=PP), color = darkcolor, data = beats) +
+  scale_y_continuous(breaks = seq(54, 60, by = 2)) +
+  labs(title = "Predicted PP", x = 'Time [s]', y = "E(PP)")
+
+
+
+combined_gam_PP_plot <- PP_plot + model_plot + plot_layout(nrow = 3, heights = c(2, 4, 2)) + 
+  predict_plot +
   plot_annotation(tag_levels = c('a')) 
 
-save_plot('methods-gam-PP', combined_gam_PP_plot, width = 18, height = 11)
+save_plot('methods-gam-PP', combined_gam_PP_plot, width = 18, height = 13)
