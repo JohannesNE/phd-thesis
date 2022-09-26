@@ -61,6 +61,8 @@ make_panel <- function(n, y_max_mu = NA, y_max_sigma = NA, hide_y = FALSE) {
   densline <- ifelse(n == 0, 2, 1)
   
   plot_mu <- ggplot(post_mu, aes(mu, dens)) +
+    geom_vline(xintercept = mean_height, 
+               color = darkred, size = 0.7) +
     geom_line(linetype = densline) +
     geom_area(data = ~filter(.x, mu > ci_low, mu < ci_high),
               fill = darkred, alpha = 0.3) +
@@ -69,8 +71,6 @@ make_panel <- function(n, y_max_mu = NA, y_max_sigma = NA, hide_y = FALSE) {
     scale_y_continuous(expand = expansion(mult = c(0.2, 0.05)), 
                        breaks = c(0, y_max_mu)
                        ) +
-    geom_vline(xintercept = mean_height, 
-               color = darkblue) +
     coord_cartesian(clip="off", ylim = c(0, y_max_mu)) +
     labs(x = "μ [cm]", y = "Density",
          subtitle = ifelse(n==0, 
@@ -80,11 +80,11 @@ make_panel <- function(n, y_max_mu = NA, y_max_sigma = NA, hide_y = FALSE) {
     y_theme
   
   plot_sigma <- ggplot(post_sigma, aes(sigma, dens)) +
-    geom_line(linetype = densline) +
-    geom_area(data = ~filter(.x, sigma > ci_low, sigma < ci_high),
-              fill = darkred, alpha = 0.3) +
     geom_vline(xintercept = sd_height,
-               color = darkblue) +
+               color = darkblue, size = 0.7) +
+    geom_line(linetype = densline, color = darkblue) +
+    geom_area(data = ~filter(.x, sigma > ci_low, sigma < ci_high),
+              fill = darkblue, alpha = 0.3) +
     scale_y_continuous(breaks = c(0, y_max_sigma)) +
     coord_cartesian(clip="off", ylim = c(0, y_max_sigma)) +
     labs(x = "σ [cm]", y = "Density") +
@@ -101,9 +101,9 @@ bayes_update_plot <-
   make_panel(1, y_max_mu = 0.05, y_max_sigma = 0.05, hide_y = TRUE) |
   make_panel(2, y_max_mu = 0.05, y_max_sigma = 0.05, hide_y = TRUE)) /
   plot_spacer()/
-  (make_panel(8, y_max_mu = 0.3, y_max_sigma = 0.5) |
-  make_panel(20, y_max_mu = 0.3, y_max_sigma = 0.5, hide_y = TRUE)|
-  make_panel(100, y_max_mu = 0.3, y_max_sigma = 0.5, hide_y = TRUE)) +
+  (make_panel(8, y_max_mu = 0.25, y_max_sigma = 0.4) |
+  make_panel(20, y_max_mu = 0.25, y_max_sigma = 0.4, hide_y = TRUE)|
+  make_panel(100, y_max_mu = 0.25, y_max_sigma = 0.4, hide_y = TRUE)) +
   plot_layout(heights = c(1, 0.1,1)) 
 
 
