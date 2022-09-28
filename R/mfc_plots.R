@@ -119,3 +119,69 @@ predict_400b_plot <- ggplot(sim_data, aes(response_100, response_400b)) +
 null_sim_plot_b <- sample_plot_b + predict_400b_plot + plot_annotation(tag_levels = "a")
 
 save_plot("results-mfc-null-sim-better", null_sim_plot_b, width = 18, height = 8)
+
+## Muller reanalysis
+
+muller_data <- readRDS("sample_data/muller_data.RDS")            
+
+line_colors <- c(darkblue, darkred)
+
+scatterPlot500 = ggplot(muller_data, aes(x = DeltaVTI100, y = DeltaVTI500))+
+  geom_abline(intercept = 15, slope = 0, color = line_colors[2]) +
+  geom_abline(intercept = 15, slope = 1.15, linetype = "dashed", color = line_colors[1]) +
+  geom_point(color = "#222222", size = 1.2) +
+  #labs(title = "Reconstruction of fig. 3A from Muller et al, 2011") +
+  ylab(expression(ΔSV[500])) +
+  xlab(expression(ΔSV[100])) +
+  scale_x_continuous(labels = function(x) paste0(x, "%")) +
+  scale_y_continuous(labels = function(x) paste0(x, "%")) +
+  coord_cartesian(ylim = c(-15,80), xlim = c(-15,75))
+
+scatterPlot400 = ggplot(muller_data, aes(x = DeltaVTI100, y = DeltaVTI400))+
+  geom_abline(aes(color = "ΔSV₄₀₀ = 15%", linetype = "ΔSV₄₀₀ = 15%", intercept = 15, slope = 0)) +
+  geom_function(aes(color = "ΔSV₅₀₀ = 15%", linetype = "ΔSV₅₀₀ = 15%"), fun = function(x) 100*(0.15-x/100)/(x/100 + 1), xlim = c(-20, 50),
+                key_glyph = "abline") +
+  scale_color_manual(values = unname(line_colors)) +
+  scale_linetype_manual(values = c(2,1)) +
+  geom_point(color = "#222222", size = 1.2) +
+  labs(#title = expression(paste(ΔSV[400], " calculated from ", ΔSV[100]~and~ΔSV[500])),
+       color = NULL, linetype = NULL) +
+  guides(linetype = guide_legend(), color = guide_legend()) +
+  ylab(expression(ΔSV[400])) +
+  xlab(expression(ΔSV[100])) +
+  scale_x_continuous(labels = function(x) paste0(x, "%")) +
+  scale_y_continuous(labels = function(x) paste0(x, "%")) +
+  coord_cartesian(ylim = c(-15,80), xlim = c(-15,75)) +
+  theme(legend.position = c(0.7, 0.85))
+
+gen_roc_plot <- function(roc_sim) {
+  ci_auc <- ci.auc(roc_sim)
+  ggroc(roc_sim, color = "#222222") +
+    geom_abline(intercept = 1, linetype = 2) +
+    geom_label(
+        x = 0,
+        y = 0,
+        label.size = 0,
+        hjust = 1,
+        vjust = 0,
+        size = 3.5,
+        label = sprintf("AUC = %.2f",
+                        ci_auc[2])
+    ) +
+    labs(x = 'Specificity', y = 'Sensitivity'#, 
+         #caption = sprintf("AUC = %.2f; 95%% CI [%.2f, %.2f]", ci_auc[2], ci_auc[1], ci_auc[3])
+         ) +
+    coord_cartesian(expand = TRUE, xlim = c(1, -0.01), ylim =c(0,1.01)) +
+    theme(plot.caption = element_text(hjust = 0.5))
+}
+
+roc_500 <- pROC::roc(DeltaVTI500 > 15 ~ DeltaVTI100, data = muller_data, direction = '<') 
+ROCplot500 = gen_roc_plot(roc_500) 
+
+roc_400 <- pROC::roc(DeltaVTI400 > 15 ~ DeltaVTI100, data = muller_data, direction = '<')
+ROCplot400 = gen_roc_plot(roc_400) 
+
+combined_muller <- scatterPlot500 + scatterPlot400 + ROCplot500 + ROCplot400 + 
+  plot_layout(nrow = 2, ncol = 2) + plot_annotation(tag_levels = "a") 
+
+save_plot("results-muller-plot", combined_muller, width = 13, height = 12)
