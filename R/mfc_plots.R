@@ -22,7 +22,7 @@ SV_variation <- ggplot(sim1, aes(Time, SV)) +
   theme(panel.grid.major = element_blank(),
         legend.margin = margin(t = -13, b = 0))
 
-save_plot("methods-SV-variation", SV_variation)
+save_plot("method-reg-to-the-mean)", SV_variation)
 
 # Null sim plot
 
@@ -41,17 +41,20 @@ random_error_sd <- 3
 SVbaseline <- SV + rnorm(n, mean = 0, sd = random_error_sd)
 SV100      <- SV + rnorm(n, mean = 0, sd = random_error_sd)
 SV500      <- SV + rnorm(n, mean = 0, sd = random_error_sd)
+SV100b      <- SV + rnorm(n, mean = 0, sd = random_error_sd)
 
 sim_data <- tibble(
   id = 1:n,
   SV_true = SV,
   SVbaseline,
   SV100,
+  SV100b,
   SV500,
   response_100 = (SV100 - SVbaseline) / SVbaseline,  
   response_500 = (SV500 - SVbaseline) / SVbaseline, 
   responder_500 = response_500 > 0,
-  response_400 = (SV500 - SV100) / SV100
+  response_400 = (SV500 - SV100) / SV100,
+  response_400b = (SV500 - SV100b) / SV100
 )
 
 sample_plot <- head(sim_data, 15) %>% 
@@ -86,4 +89,33 @@ predict_400_plot <- ggplot(sim_data, aes(response_100, response_400)) +
 
 null_sim_plot <- sample_plot + (predict_500_plot / predict_400_plot) + plot_annotation(tag_levels = "a")
 
-save_plot("method-null-sim", null_sim_plot, width = 16, height = 12)
+save_plot("method-mfc-null-sim", null_sim_plot, width = 16, height = 12)
+
+# Plot with 100b
+
+sample_plot_b <- head(sim_data, 10) %>% 
+  select(id, SVbaseline, SV100, SV100b, SV500) %>% 
+  pivot_longer(-id, names_to = "Window", values_to = "SV") %>% 
+  ggplot(aes(Window, SV, group = id)) +
+  geom_line() +
+  geom_point() +
+  labs(y = 'SV [ml]', x = "",
+       title = "10 of 2000 simulated subjects") +
+  scale_x_discrete(limits = c('SVbaseline', 'SV100', 'SV100b', 'SV500'),
+                   labels = c('SV<sub>baseline</sub>', 'SV<sub>100</sub>', 
+                              'SV<sub>100</sub>b', 'SV<sub>500</sub>')) +
+  theme(axis.text.x = ggtext::element_markdown())
+
+predict_400b_plot <- ggplot(sim_data, aes(response_100, response_400b)) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(labels = scales::percent) +
+  geom_point(alpha = 0.2, shape = 16) +
+  labs(x = '∆SV<sub>100</sub> (MFC)', 
+       y = expression("Δ"*SV[400]*b == frac(SV[500]~"-"~SV[100]*b, SV[100]*b))
+       )+
+  coord_fixed() +
+  theme(axis.title.x = ggtext::element_markdown())
+
+null_sim_plot_b <- sample_plot_b + predict_400b_plot + plot_annotation(tag_levels = "a")
+
+save_plot("results-mfc-null-sim-better", null_sim_plot_b, width = 18, height = 8)
