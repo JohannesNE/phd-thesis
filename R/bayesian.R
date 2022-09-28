@@ -78,10 +78,10 @@ make_panel <- function(n, y_max_mu = NA, y_max_sigma = NA,
                        ) +
     coord_cartesian(clip="off", ylim = c(0, y_max_mu)) +
     labs(x = "μ [cm]", y = "Density",
-         title = ifelse(n==0, 
-                        "n = 0 (prior)", 
-                        glue::glue("n = {n}")
-         )) +
+         title = case_when(n==0 ~ "n = 0 (prior)", 
+                           n==1 ~ glue::glue("n = {n} (posterior)") |> as.character(),
+                           TRUE ~ glue::glue("n = {n}") |> as.character())
+         ) +
     lab_y +
     lab_x
   
