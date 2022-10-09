@@ -331,4 +331,4 @@ gen_PP_gam_page <- function(pt, color = FALSE) {
 
 plot_high_rr_PP_gam <- gen_PP_gam_page(sample_pt_high_rr)
 
-save_plot("results-PP-GAM-high-rr", plot_high_rr_PP_gam, width = 18, height = 15)
+save_plot("results-GAM-PP-high-rr", plot_high_rr_PP_gam, width = 18, height = 15)
