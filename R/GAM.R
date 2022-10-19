@@ -48,11 +48,15 @@ labels1 <- fct_inorder(
 plot_sim_lm <- ggplot(sim, aes(X, Y)) +
   geom_point(color = 'gray20', size = 1) +
   geom_line(aes(y = Y_lm), data = sim_pred) +
+  scale_x_continuous(limits = c(0.3, 5.7), n.breaks = 4) +
+  scale_y_continuous(n.breaks = 3) +
   labs(title = "Linear regression")
 
 plot_sim_gam <- ggplot(sim, aes(X, Y)) +
   geom_point(color = 'gray20', size = 1) +
   geom_line(aes(y = Y_cr), data = sim_pred) +
+  scale_x_continuous(limits = c(0.3, 5.7), n.breaks = 4) +
+  scale_y_continuous(n.breaks = 3) +
   labs(title = "GAM")
 
 lm_vs_gam <- plot_sim_lm + plot_sim_gam
