@@ -75,7 +75,7 @@ params:
   referenceHeading: "References"
 
 # citation and reference options (pandoc) #
-csl: bibliography/apa.csl # try csl: bibliography/transactions-on-computer-human-interaction.csl for numerical citations
+csl: bibliography/ACM.csl # try csl: bibliography/transactions-on-computer-human-interaction.csl for numerical citations
 refs-line-spacing: 6mm
 refs-space-between-entries: 1mm
 
@@ -198,6 +198,12 @@ source('scripts_and_filters/install_packages_if_missing.R')
 source('scripts_and_filters/create_chunk_options.R')
 source('scripts_and_filters/wrap_lines.R')
 ```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
 
 <!--
 Include the create_chunk_options chunk above at the top of your index.Rmd file
