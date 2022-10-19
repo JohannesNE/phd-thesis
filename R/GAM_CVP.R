@@ -188,4 +188,161 @@ combined_gam_cvp_plot_simple <- cvp_plot + model_cvp_plot + predict_resid_cvp_pl
   plot_annotation(tag_levels = "a") +
   plot_layout(ncol = 1, heights = c(1, 5, 1.5)) & shape_scale
 
-save_plot("methods-GAM-cvp", combined_gam_cvp_plot_simple, width = 18, height = 18)
+save_plot("methods-gam-CVP", combined_gam_cvp_plot_simple, width = 18, height = 18)
+
+
+## Before - After fluid fig =======
+
+cvp_pre_post <- readRDS("sample_data/cvp_pre_post.RDS")
+gam_cvp_pre_post_ad <- readRDS("sample_data/fitted_gam_cvp_pre_post_ad.RDS")
+
+scale_linetype_ventstate <- scale_linetype_manual(values = c("52","21"),
+                                                  breaks = c("End expiration",
+                                                             "End inspiration")) 
+
+scale_color_win <- scale_color_manual(values = c(darkred,
+                                                 darkblue),
+                                      breaks = c("Before 250 mL fluid",
+                                                 "After 250 mL fluid"))
+
+# Compare individual models
+new_data_cardiac <- expand_grid(window_f = factor(c("pre fluid", "post fluid")),
+                                time_s = 0,
+                                insp_rel_index = c(0,1/3),
+                                p_index = seq(0, 60/90, length.out = 200)) %>% 
+  mutate(vent_state = ifelse(insp_rel_index == 0, 
+                             "End expiration",
+                             "End inspiration"),
+         win = ifelse(window_f == "pre fluid", 
+                      "Before 250 mL fluid", "After 250 mL fluid") %>% fct_inorder() )
+
+new_data_insp <- expand_grid(window_f = factor(c("pre fluid", "post fluid")),
+                             time_s = 0,
+                             insp_rel_index = seq(0, 1, by = 0.005),
+                             p_index = 0) %>% 
+  mutate(win = ifelse(window_f == "pre fluid", 
+                      "Before 250 mL fluid", "After 250 mL fluid") %>% fct_inorder())
+
+new_data_interaction <- expand_grid(window_f = factor(c("pre fluid", "post fluid")),
+                                    time_s = 0,
+                                    p_index = seq(0, 60/90, length.out = 200),
+                                    insp_rel_index = seq(0, 1, by = 0.005)) %>% 
+  mutate(win = ifelse(window_f == "pre fluid", 
+                      "Before 250 mL fluid", "After 250 mL fluid") %>% fct_inorder())
+
+
+# Generate predictions and bind to newdata
+get_smooth <-  function(new_data, model, ...) {
+  bind_cols(
+    new_data,
+    predict(
+      model,
+      newdata = new_data,
+      se.fit = TRUE,
+      ...
+    )
+  )
+} 
+
+terms_by_window <- function(smooth) {
+  paste0(smooth, c(":window_fpre fluid", ":window_fpost fluid"))
+}
+
+cardiac_smooth_comb <- get_smooth(new_data_cardiac, gam_cvp_pre_post_ad, exclude = terms_by_window("s(time_s)"))
+
+cvp_landmarks <- tribble(
+  ~p_index, ~label,
+  0.12,   "a",
+  0.22,   "c",
+  0.27,   "x'",
+  0.45,   "v",
+  0.53,   "y",
+) 
+
+cardiac_smooth_landmark <- waveformtools::join_nearest(cardiac_smooth_comb %>% filter(vent_state == "End inspiration",
+                                                                       win == "After 250 mL fluid"),
+                                        cvp_landmarks,
+                                        xkey = "p_index",
+                                        ykey = "p_index") %>% 
+  group_by(label) %>% 
+  # Only keep label at minimum distance
+  mutate(label = ifelse(abs(p_index-p_index.y) == min(abs(p_index-p_index.y)),
+                        label,
+                        ""))
+
+
+plot_cardiac <- cardiac_smooth_comb %>%
+  ggplot(aes(p_index, fit, group = vent_state)) + 
+  geom_line(aes(color = win), show.legend = FALSE) + 
+  facet_wrap(~win, nrow = 1) +
+  scale_linetype_ventstate +
+  scale_color_win + 
+  directlabels::geom_dl(aes(label = vent_state),
+                        position = position_nudge(x = 0.02),
+                        color = "black",
+                        method = list("lines2", cex = 0.7), hjust = 0,
+                        data = ~filter(.x, p_index > 0.35, p_index < 0.7, 
+                                       win == "Before 250 mL fluid")) +
+  # Label CVP landmarks
+  geom_text(aes(label = label), 
+            color = "black",
+            size = 3,
+            position = ggpp::position_nudge_line(x = 0.02, y = 1),
+            data = cardiac_smooth_landmark, show.legend = FALSE) +
+  coord_cartesian(clip="off")+
+  
+  labs(y = "CVP [mmHg]", x = "Time since P wave [seconds]")
+
+
+cvp_aug <- mutate(cvp_pre_post, res = residuals(gam_cvp_pre_post_ad),
+                  fit_vent = predict(gam_cvp_pre_post_ad, 
+                                     terms = terms_by_window("s(insp_rel_index)")),
+                  fit_cardiac = predict(gam_cvp_pre_post_ad, 
+                                        terms = terms_by_window("s(p_index)")),
+                  fit_time = predict(gam_cvp_pre_post_ad,
+                                     terms = terms_by_window("s(time_s)")),
+                  partial_res_vent = res + fit_vent,
+                  partial_res_cardiac = res + fit_cardiac,
+                  partial_res_time = res + fit_time,
+                  win = ifelse(window_f == "pre fluid", 
+                               "Before 250 mL fluid", "After 250 mL fluid") %>% fct_inorder()
+)
+
+
+
+plot_vent_resid <- cvp_aug %>% 
+  ggplot(aes(insp_rel_index, fit_vent, group = win, color = win)) + 
+  geom_vline(xintercept = 0, linetype = 2, color = "#444444") + 
+  geom_vline(xintercept = 1/3, linetype = 2, color = "#444444") + 
+  geom_point(aes(y = partial_res_vent), size = 0.1, alpha = 0.2, show.legend = FALSE) +
+  geom_line(show.legend = FALSE, color = "#444444") +
+  scale_color_win +
+  scale_x_continuous(labels = scales::percent) + 
+  lab_cvp +
+  xlab("Position in respiratory cycle")
+
+
+plot_fluid_comb <- plot_cardiac + plot_vent_resid + 
+  plot_layout(nrow = 1, widths = c(2, 1)) + plot_annotation(tag_levels = "a")
+
+save_plot("results-GAM-CVP-fluid", plot_fluid_comb, width = 18, height = 7)
+
+# raw plot
+
+cvp_sample_comb <- cvp_pre_post %>% 
+  group_by(window_f) %>% 
+  filter(insp_n == first(insp_n) + 1) %>% 
+  mutate(win = ifelse(window_f == "pre fluid", 
+                      "Before 250 mL fluid", "After 250 mL fluid") %>% fct_inorder(),
+         time_s = time_s - first(time_s))
+
+plot_cvp <- cvp_sample_comb %>% 
+  ggplot(aes(time_s, CVP, group = win, color = win)) +
+  geom_line(show.legend = FALSE) +
+  facet_wrap(~win, nrow = 1) +
+  scale_color_win +
+  lab_cvp +
+  xlab("Time [seconds]")
+
+save_plot("results-raw-CVP-fluid", plot_cvp, width = 14, height = 6)
+
