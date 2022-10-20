@@ -13,10 +13,10 @@ documentclass: book
 ---
 
 
-```{block type='savequote', quote_author='(ref:osler-quote)', include=knitr::is_latex_output()}
+```{block type='savequote', quote_author='(ref:osler-quote)', echo=TRUE, include=knitr::is_latex_output()}
 Medicine is a science of uncertainty and an art of probability.
 ```
-(ref:osler-quote) --- *Sir William Osler* (1849--1919).
+(ref:osler-quote) --- **Sir William Osler** (1849--1919).
 
 <!-- 
 Notes for adding an opening quote in PDF output:
@@ -35,7 +35,7 @@ In long-duration surgery, continuous loss of fluid through bleeding, perspiratio
 
 Like every treatment, IV fluid should only be given to patients who will benefit from the fluid. 
 This is the setup for a prediction problem: can we, ahead of time, predict whether a patient will benefit from an intravenous fluid administration? 
-The first task is to define what we mean with *benefit*, and how we can measure it. This is not trivial, and it will be discussed further in section ??. 
+The first task is to define what we mean with *benefit*, and how we can measure it. This is not trivial, and it will be discussed further in section \@ref(why-fluid). 
 Luckily, a necessary (but not sufficient) condition for benefitting from a fluid administration is that the fluid causes an increase in cardiac output (CO). 
 This can be measured, and allows us to formulate a simpler prediction problem: 
 
@@ -44,6 +44,7 @@ Can we predict whether a patient’s CO will increase from a fluid administratio
 There is an entire subfield of anaesthesia and intensive care research dealing with this problem.
 This PhD dissertation describes a small, but hopefully meaningful addition to the field.
 
-In this dissertation I present the available tools for fluid responsiveness prediction in the intraoperative setting. The dissertation describes 3 papers that tackle specific limitations to the currently available tools.  
+In this dissertation, I present the available tools for fluid responsiveness prediction, with focus on the intraoperative setting. The dissertation covers 3 papers that tackle specific limitations to the most common tools.  
 
-The terms fluid challenge and bolus are used interchangeably. Stroke volume (SV) and cardiac output (CO) are often interchangeable and the term that best fits the context is used.
+The terms *fluid challenge* and *bolus* are used interchangeably. *Stroke volume* (SV) and *cardiac output* (CO) are often interchangeable and the term that best fits the context is used. Ventilation and respiration is also used interchangeably and refer to the act of breathing (either mechanically or spontaneously). 
+

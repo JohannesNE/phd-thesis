@@ -203,6 +203,10 @@ source('scripts_and_filters/create_chunk_options.R')
 source('scripts_and_filters/wrap_lines.R')
 ```
 
+```{r setup, include=FALSE}
+# don't show code unless we explicitly set echo = TRUE
+knitr::opts_chunk$set(echo = FALSE)
+```
 
 <!--
 Include the create_chunk_options chunk above at the top of your index.Rmd file
