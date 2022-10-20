@@ -176,7 +176,7 @@ output:
       - templates/bs4_style.css
       - templates/corrections.css # remove to stop highlighting corrections
     theme:
-      primary: "#6D1919"
+      primary: "#43658B"
     #repo: https://github.com/ulyngs/oxforddown
     pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
   bookdown::gitbook:
