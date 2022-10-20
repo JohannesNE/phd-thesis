@@ -22,7 +22,7 @@ SV_variation <- ggplot(sim1, aes(Time, SV)) +
   theme(panel.grid.major = element_blank(),
         legend.margin = margin(t = -13, b = 0))
 
-save_plot("method-reg-to-the-mean)", SV_variation)
+save_plot("method-reg-to-the-mean", SV_variation)
 
 # Null sim plot
 
