@@ -17,7 +17,11 @@ knit: (function(input, ...) {
 ## thesis metadata ##
 #####################
 title: |
-  Physiological and Methodological Limitations to Fluid Responsiveness Prediction.
+  Fluid Responsiveness Prediction \
+  During Surgery \
+  \
+  \LARGE -- Physiological and Methodological \
+  Limitations and Considerations\
 author: Johannes Enevoldsen
 college: Health
 university: Aarhus University
@@ -198,11 +202,6 @@ source('scripts_and_filters/install_packages_if_missing.R')
 source('scripts_and_filters/create_chunk_options.R')
 source('scripts_and_filters/wrap_lines.R')
 ```
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
-
 
 
 <!--
