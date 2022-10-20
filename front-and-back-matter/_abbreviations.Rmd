@@ -1,6 +1,10 @@
-\item[1-D, 2-D] One- or two-dimensional, referring **in this thesis** to spatial dimensions in an image.
+\item[AUROC] Area under the receiver operating characteristic curve.
 
-\item[Otter] One of the finest of water mammals.
+\item[CO] Cardiac output.
 
-\item[Hedgehog] Quite a nice prickly friend.
+\item[SV] Stroke volume.
+
+\item[SV] Stroke volume.
+
+\item[CI] Compatibility interval, e.g 95% CI [19.3; 25.2]. For Bayesian estimates, it is a *credible interval*; for frequentist estimates, it is a *confidence interval*. In both cases it represents the interval of parameter values compatible of the observed data.
 

@@ -10,7 +10,6 @@ _todo.md
 _bookdown_files
 .Rdata
 .httr-oauth
-
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -24,7 +23,6 @@ _bookdown_files
 *.cb
 *.cb2
 .*.lb
-
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf
@@ -35,3 +33,8 @@ _bookdown_files
 
 ## My additions
 temp_docs/*
+.mustashe
+*.pdf
+*.mtc*
+*.maf
+*.tex

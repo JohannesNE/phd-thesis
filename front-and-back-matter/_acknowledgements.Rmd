@@ -1,6 +1,6 @@
 Thanks to my supervisor, Simon Tilma Vistisen, colleagues, family and friends, as well as Aarhus University and Holger & Ruth Hesse's mindefond for founding this work. 
 
-Also, thanks to all the kind strangers on the internet who selflessly helped me with various statistical and technical issues. Special thanks to John George Karippacheril, developer of [VSCapture](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3788264/), who helped me customize his software to work with department ventilators; essential for acquiring the data used in study 2 and study 3. Also, special thanks to Gavin L. Simpson, who after helping me with several issues posted on <stackoverflow.com> and Twitter, agreed to co-write the paper resulting from study 2.
+Also, thanks to all the kind strangers on the internet who selflessly helped me with various statistical and technical issues. Special thanks to John George Karippacheril, developer of [VSCapture](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3788264/), who helped me customize his software to work with department ventilators; essential for acquiring the data used in study 2 and study 3. Also, special thanks to Gavin L. Simpson, who after helping me with several issues posted on <stackoverflow.com> and Twitter, agreed to co-write the paper resulting from Study 2.
 
 \begin{flushright}
 Johannes Enevoldsen \\

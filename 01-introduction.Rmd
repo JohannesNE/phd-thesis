@@ -27,7 +27,7 @@ iii) You can't use markdown syntax inside chunk options, so if you want to e.g. 
 
 # Introduction
 
-Fluid therapy is a ubiquitous medical intervention; both in the perioperative setting and for hospitalised patients in general. The aim of fluid therapy is to restore the patient’s circulating blood volume to the *optimum*, normal, level. Hence, the terms “fluid *resuscitation*” and “fluid *replacement* therapy” are commonly used. 
+Fluid therapy is a ubiquitous medical intervention; both in the perioperative setting and for hospitalised patients in general. The aim of fluid therapy is to restore the patient's circulating blood volume to the *optimum*, normal, level. Hence, the terms *fluid resuscitation* and *fluid replacement therapy* are commonly used. 
 
 Intraoperative fluid management is mainly relevant in acute or long-duration surgery. 
 In acute surgery, the preoperative fluid status is generally unknown, and it is often reasonable to assume that the patient arrives at the operating room dehydrated. 
@@ -47,4 +47,5 @@ This PhD dissertation describes a small, but hopefully meaningful addition to th
 In this dissertation, I present the available tools for fluid responsiveness prediction, with focus on the intraoperative setting. The dissertation covers 3 papers that tackle specific limitations to the most common tools.  
 
 The terms *fluid challenge* and *bolus* are used interchangeably. *Stroke volume* (SV) and *cardiac output* (CO) are often interchangeable and the term that best fits the context is used. Ventilation and respiration is also used interchangeably and refer to the act of breathing (either mechanically or spontaneously). 
+ 
 

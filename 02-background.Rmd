@@ -30,9 +30,16 @@ Since the end of the nineteenth century, IV fluid administration has been a stap
 
 ## Why give IV fluids? {#why-fluid}
 
-Fluid should only be administered when the patient is likely to benefit from it [@millerPerioperativeFluidTherapy2019]. As a treatment for hypovolemia, the goal is that the infused fluid will increase the circulating volume and thereby the mean systemic pressure. This gives an increase in cardiac preload and, through the Frank-Starling mechanism (see section ref:frank-starling), an increase in CO. This should increase microcirculation and, in turn, the oxygen available to organs, increasing (or retaining) organ function (see fig:monnet2018-fig) [@monnetMyPatientHas2018]. As discussed in section ref:fluid-bolus-physiology, this goal is not always achieved.
+Fluid should only be administered when the patient is likely to benefit from it [@millerPerioperativeFluidTherapy2019]. As a treatment for hypovolemia, the goal is that the infused fluid will increase the circulating volume and thereby the mean systemic pressure. This gives an increase in cardiac preload and, through the Frank-Starling mechanism (see section ref:frank-starling), an increase in CO. This should increase microcirculation and, in turn, the oxygen available to organs, increasing (or retaining) organ function (see Figure \@ref(fig:background-monnet2018-aic-fluid2organ)) [@monnetMyPatientHas2018]. As discussed in section ref:fluid-bolus-physiology, this goal is not always achieved.
 
-(Figure: background-monnet2018-aic-fluid2organ): Illustration of the physiological steps from fluid administration to benefit. Reprinted from Monnet et al, 2018 [@monnetMyPatientHas2018] ([CC BY](https://creativecommons.org/licenses/by/4.0/)).
+```{r background-monnet2018-aic-fluid2organ}
+#| out.width="14cm",
+#| fig.cap="(ref:background-monnet2018-aic-fluid2organ)",
+#| fig.scap="Steps from fluid administration to benefit"
+knitr::include_graphics("figures/background-monnet2018-aic-fluid2organ.png")
+```
+
+(ref:background-monnet2018-aic-fluid2organ) Illustration of the physiological steps from fluid administration to benefit. Reprinted from Monnet et al, 2018 [@monnetMyPatientHas2018] ([CC BY](https://creativecommons.org/licenses/by/4.0/)).
 
 Another common aim with IV fluid therapy is to resuscitate dehydration, characterised by hypertonicity (excess salt) due to loss of water—e.g., due to gastroenteritis or diabetic polyuria. While hypovolemia can be corrected rapidly with IV infusion of an isotonic fluid, hypertonicity should be corrected slowly through oral intake of water or with IV hypotonic fluid [@bhaveVolumeDepletionDehydration2011]. This dissertation focuses on fluid as a treatment of hypovolemia, and dehydration/hypertonicity will not be discussed further.
 

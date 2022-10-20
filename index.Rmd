@@ -33,7 +33,7 @@ university-logo-width: 5cm
 submitted-text: PhD dissertation
 #degree: Doctor of Philosophy
 degreedate: 2022
-dedication: For freedom
+dedication: For my girls
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
 show-acknowledgements-in-toc: false
@@ -137,7 +137,7 @@ section-numbering-depth: 2 # to which depth should headings be numbered?
 ### tables of content ###
 toc-depth: 1 # to which depth should headings be included in table of contents?
 lof: true # include list of figures in front matter?
-lot: true # include list of tables in front matter?
+lot: false # include list of tables in front matter?
 mini-toc: true  # include mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
 mini-lot: false  # include mini-list of tables by start of each chapter?
 mini-lof: false  # include mini-list of figures by start of each chapter?
@@ -205,7 +205,9 @@ source('scripts_and_filters/wrap_lines.R')
 
 ```{r setup, include=FALSE}
 # don't show code unless we explicitly set echo = TRUE
-knitr::opts_chunk$set(echo = FALSE)
+options(knitr.graphics.auto_pdf = TRUE)
+knitr::opts_chunk$set(echo = FALSE,
+                      fig.align="center")
 ```
 
 <!--
