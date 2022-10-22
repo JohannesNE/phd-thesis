@@ -13,7 +13,7 @@ documentclass: book
 ---
 
 ```{block type='savequote', quote_author='(ref:lewins-quote)', echo=TRUE, include=knitr::is_latex_output()}
-The most wonderful and satisfactory effect is the immediate consequence of the injection [of fluid]. To produce the effect referred to, a large quantity must be injected---from five to ten pounds in an adult—and repeated at longer or shorter intervals, as the state of the pulse, and other symptoms, may indicate.
+"The most wonderful and satisfactory effect is the immediate consequence of the injection [of fluid]. To produce the effect referred to, a large quantity must be injected---from five to ten pounds in an adult—and repeated at longer or shorter intervals, as the state of the pulse, and other symptoms, may indicate."
 ```
 
 (ref:lewins-quote) --- **Robert Lewins, M.D.**, 1832 (Injection of Saline Solutions Into the Veins).
@@ -138,7 +138,7 @@ The mechanism for oedema formation is classically described with Ernest Starling
 
 #### A revised mechanism of oedema formation: the endothelial glycocalyx
 
-In recent years, increasing focus has been on the endothelial glycocalyx layer’s role in fluid resuscitation and oedema formation. The glycocalyx is a gel of macromolecules (mainly glycoproteins, hyaluronans and proteoglycans) lining the vascular endothelium [@weinbaumStructureFunctionEndothelial2007]. One function of this layer is to form a semipermeable membrane that, in addition to retaining plasma proteins, also retains water to a variable degree. In this model, the flow of water from vaculatere to tissue is determined less by oncotic pressure difference and more by the current state of the glycocalyx layer [@milfordResuscitationFluidChoices2019]. The permeability of the glycocalyx layer may be impacted by volume loading. A proposed mechanism for this regulation is that volume loading increases right atrial pressure, causing release of atrial natriuretic peptide (ANP). ANP increases water filtration and may, directly or indirectly, damage the glycocalyx [@chappellHypervolemiaIncreasesRelease2014]. This mechanism has, however, later been questioned [@damenAtrialNatriureticPeptide2021]. Another important cause of glycocalyx degradation is inflammation---especially related to sepsis [@ibaDerangementEndothelialGlycocalyx2019].
+In recent years, increasing focus has been on the endothelial glycocalyx layer's role in fluid resuscitation and oedema formation. The glycocalyx is a gel of macromolecules lining the vascular endothelium [@weinbaumStructureFunctionEndothelial2007]. One function of this layer is to form a semipermeable membrane that, in addition to retaining plasma proteins, also retains water to a variable degree. In this model, the flow of water from vaculatere to tissue is determined less by oncotic pressure difference and more by the current state of the glycocalyx layer [@milfordResuscitationFluidChoices2019]. The permeability of the glycocalyx layer may be impacted by volume loading. A proposed mechanism for this regulation is that volume loading increases right atrial pressure, causing release of atrial natriuretic peptide (ANP). ANP increases water filtration and may, directly or indirectly, damage the glycocalyx [@chappellHypervolemiaIncreasesRelease2014]. This mechanism has, however, later been questioned [@damenAtrialNatriureticPeptide2021]. Another important cause of glycocalyx degradation is inflammation---especially related to sepsis [@ibaDerangementEndothelialGlycocalyx2019].
 
 #### How long does fluid remain in circulation?
 

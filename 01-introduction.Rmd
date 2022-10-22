@@ -14,7 +14,7 @@ documentclass: book
 
 
 ```{block type='savequote', quote_author='(ref:osler-quote)', echo=TRUE, include=knitr::is_latex_output()}
-Medicine is a science of uncertainty and an art of probability.
+"Medicine is a science of uncertainty and an art of probability."
 ```
 (ref:osler-quote) --- **Sir William Osler** (1849--1919).
 
