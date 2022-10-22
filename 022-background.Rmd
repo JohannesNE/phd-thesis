@@ -41,11 +41,7 @@ With a MFC, a low volume of fluid, 100 ml, is used to test fluid responsiveness.
 
 The accuracy of the MFC in predicting fluid responsiveness was summarised in a systematic review from 2019 including seven studies [@messinaFunctionalHemodynamicTests2019]. The pooled area under the receiver operating characteristic curve (AUROC) was 0.91, 95%CI [0.85; 0.97], indicating a highly accurate prediction. 
 
-### Pulse pressure variation and other dynamic preload indicators 
-
-A group of methods for predicting fluid responsiveness utilise that preload can also vary independent of mean systemic filling pressure. An example of this is ventilator induced pulse pressure variation (PPV). 
-
-#### Heart-lung interaction physiology and pulse pressure variation {#heart-lung-interaction-physiology}
+### Heart-lung interaction physiology and pulse pressure variation {#heart-lung-interaction-physiology}
 
 Ventilator induced pulse pressure variation (PPV) is the cyclic variation in pulse pressure (PP) caused by mechanical ventilation (see Figure \@ref(fig:background-ppv-example)). 
 
@@ -80,11 +76,11 @@ knitr::include_graphics("figures/background-starling-ppv.png")
 
 (ref:background-starling-ppv) Illustration of how pulse pressure variation reflects the current slope on the Frank-Starling curve, and, therefore, is an indicator of fluid responsiveness.  
 
-#### Pulse pressure variation as a predictor of fluid responsiveness
+### Pulse pressure variation as a predictor of fluid responsiveness
 
 In the late 1900s, a number of studies found that systolic pressure variation increased with lower circulating volume in both dogs [@perelSystolicBloodPressure1987; @pizovSystolicPressureVariation1988] and humans [@coriatComparisonSystolicBlood1994; @rookeEffectGradedHemorrhage1995]. In 1998, Tavernier et al investigated the more clinically relevant question: did high systolic pressure variation predict fluid responsiveness?---it did [@tavernierSystolicPressureVariation1998]. The following couple years, results by Michard et al indicated that PPV was an even better predictor [@michardClinicalUseRespiratory1999; @michardRelationRespiratoryChanges2000a]. This finding was supported in a systematic review from 2009 that reported a pooled AUROC of 0.94, 95%CI [0.92; 0.96] [@marikDynamicChangesArterial2009].
 
-#### Other dynamic preload indicators
+### Other dynamic preload indicators
 
 During the past two decades, other methods have emerged that utilise reversible shifts in preload or other manipulations to the working position of the Frank-Starling curve. These include the end-expiratory occlusion test (EEOT), and the VT challenge [@monnetPredictionFluidResponsiveness2022]. 
 

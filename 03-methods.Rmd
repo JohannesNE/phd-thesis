@@ -29,57 +29,47 @@ This chapter introduces and discusses the methods used in the three studies. In 
 Most scientists will be familiar with using *model* as a synonym for both a statistical analysis, a mental representation of a complex system or a computer simulation. However, the word’s exact meaning is often not specified and has to be assumed from context. I will use this section to present the different meanings of the term *model*, focusing on those that are relevant for the present dissertation: specifically, I will describe the use of conceptual representations of complex systems, mathematical representations of complex systems and the related statistical models. 
 
 ### A model can be a mental and communicative tool
-Consider the four effects of ventilation, causing pulse pressure variation, presented in section ref:heart-lung-interaction-physiology. To recap: in the right ventricle, inspiration lowers SV by limiting venous return and increasing afterload; in the left ventricle, inspiration increases pulmonary venous return by squeezing blood from the lungs and reduces afterload by increasing thoracic pressure relative to the remaining arterial pressure. Together these effects cause PPV. Of course, real physiology is more complex, this simple *model* may aid a scientist in designing a study investigating the effect of e.g. PEEP on PPV, and it can give colleagues a common reference when discussing the interpretation of a high PPV in a patient with right ventricular failure. Without a common model, miscommunication will likely happen as each colleague has their own private mental model of the situation, and may assume that their peer’s mental model is identical. 
+Consider the four effects of ventilation, causing pulse pressure variation, presented in Section \@ref(heart-lung-interaction-physiology). To recap, in the right ventricle, inspiration lowers SV by limiting venous return and increasing afterload; in the left ventricle, inspiration increases pulmonary venous return by squeezing blood from the lungs and reduces afterload by increasing thoracic pressure relative to the remaining arterial pressure. Together these effects cause PPV. Of course, real physiology is more complex, this simple *model* may aid a scientist in designing a study investigating the effect of e.g. PEEP on PPV, and it can give colleagues a common reference when discussing the interpretation of a high PPV in a patient with right ventricular failure. Without a common model, miscommunication will likely happen as each colleague has their own private mental model of the situation, and may assume that their peer’s mental model is identical. 
 
 This conceptual model of PPV is, however, not detailed enough to allow us to precisely predict what will happen to PPV if we change ventilator settings; it is only a qualitative description of the relationship between ventilation and SV. To make quantitative predictions from a model, we need to mathematically define the relationship between the variables in the model. 
 
 ### Mathematical models
-A mathematical model is a set of equations that, unambiguously, describe how a system behaves, often over time. The 2-compartment model of venous return (see figure fig:background-venous-return-simple) can be presented as a mathematical model. We can present equations defining how the compartments behave and how they are connected. The pressure in the compartments (exemplified here with the right atrial compartment) is:  
-
+A mathematical model is a set of equations that, unambiguously, describe how a system behaves, often over time. The 2-compartment model of venous return (see Figure \@ref(fig:background-venous-return-simple)) can be presented as a mathematical model. We can present equations defining how the compartments behave and how they are connected. The pressure in the compartments (exemplified here with the right atrial compartment) is  
 $$ 
 P_{RA} = \frac{V_{RA}}{C_{RA}},
 $$
-
 and venous return is
-
 $$
 Q_V = \frac{P_V - P_{RA}}{R_V}.
 $$
-
 The change in volume in each compartment is:
-
 $$
 \dot{V}_V = CO - Q_{V}, \quad \dot{V}_{RA} = Q_{V} - CO.
 $$
-
-To solve this set of differential equations, we define a constant CO, a fixed compliance for each vascular compartment, a fixed resistance to venous return (R~V~) and set the starting volumes for each vascular compartment. We can now simulate how these volumes will evolve over time, and what their steady-state values will be. 
+To solve this set of differential equations, we define a constant CO, a fixed compliance for each vascular compartment, a fixed resistance to venous return ($R_V$) and set the starting volumes for each vascular compartment. We can now simulate how these volumes will evolve over time, and what their steady-state values will be. 
 
 ### Statistical models
 
 A statistical model is a specific type of mathematical model that uses random variation to explain the difference between the values expected from the model, and the values that are actually measured. In medical science, statistical models are usually extremely simplified representations of the actual (or assumed) causal relationship between variables. 
 
 For example, we may believe that tidal volume (VT) affects PPV through a number of intermediate steps. But often, we are not interested in the intermediate effects—they may not even be identifiable from the data we have available. Instead we may assume that if we vary VT in a single individual, there is a linear relationship between VT and PPV:
-
 $$
 PPV = \alpha + \beta VT.
 $$
-
-\noindent If we measure PPV thrice, and only change VT between measurements, we expect that PPV will vary according to the linear model above. Additionally, we also anticipate some variation in PPV that is not explained by the change in VT. This additional variation can be due to a physiological change over time, unrelated to the VT change, or due to imprecise measurements. Unexplained variation is traditionally represented by the greek letter $\epsilon$, creating the statistical linear model:
-
+If we measure PPV thrice, and only change VT between measurements, we expect that PPV will vary according to the linear model above. Additionally, we also anticipate some variation in PPV that is not explained by the change in VT. This additional variation can be due to a physiological change over time, unrelated to the VT change, or due to imprecise measurements. Unexplained variation is traditionally represented by the greek letter $\epsilon$, creating the statistical linear model:
 $$
 PPV = \alpha + \beta VT + \epsilon.
 $$
+The statistical analysis of such a model quantifies how the independent variables (here VT) and random variation ($\epsilon$) together explain the observed variation in the dependent variable (here PPV), and, importantly, how certain we are of each component’s contribution.
 
-\noindent The statistical analysis of such a model quantifies how the independent variables (here VT) and random variation ($\epsilon$) together explain the observed variation in the dependent variable (here PPV), and, importantly, how certain we are of each component’s contribution.
-
-## Paper 1 - Mini-fluid challenge
+## Paper 1 - The mini-fluid challenge
 
 Paper 1 is a critique of the method used in most existing studies of the mini-fluid challenge (MFC) as a predictor of fluid responsiveness. In this section, I will describe this common design and explain why it is problematic. 
 
-Most MFC studies [@Muller2011; @smorenbergMinifluidChallenge1502018; @biaisMinifluidChallenge1002017; @wu10secondFluidChallenge2014; @aliAbilityMinifluidChallenge2019; @mukhtarValidityMinifluidChallenge2019; @leeMinifluidChallengeTest2020; @fotDynamicTestsPredict2020; @messinaMiniFluidChAllenge2021] use a design where SV, or a related variable, is measured thrice. First, a baseline measurement before any fluid is given; then, after the MFC is given; and, lastly, after the remaining fluid is given. The response to the MFC, here referred to as $\Delta SV_{100}$, is then calculated as the relative change in SV from baseline to after the MFC. The outcome predicted is the change from baseline to after the entire volume is given (MFC and the remaining fluid), here referred to as $\Delta SV_{500}$ (see figure fig:methods-mfc-common-design).
+Most MFC studies [@Muller2011; @smorenbergMinifluidChallenge1502018; @biaisMinifluidChallenge1002017; @wu10secondFluidChallenge2014; @aliAbilityMinifluidChallenge2019; @mukhtarValidityMinifluidChallenge2019; @leeMinifluidChallengeTest2020; @fotDynamicTestsPredict2020; @messinaMiniFluidChAllenge2021] use a design where SV, or a related variable, is measured thrice. First, a baseline measurement before any fluid is given; then, after the MFC is given; and, lastly, after the remaining fluid is given. The response to the MFC, here referred to as $\Delta SV_{100}$, is then calculated as the relative change in SV from baseline to after the MFC. The outcome predicted is the change from baseline to after the entire volume is given (MFC and the remaining fluid), here referred to as $\Delta SV_{500}$ (see Figure \@ref(fig:methods-mfc-common-design)).
 
 ```{r methods-mfc-common-design}
-#| out.width="12cm",
+#| out.width="14cm",
 #| fig.cap="(ref:methods-mfc-common-design)",
 #| fig.scap="The common mini-fluid challenge study design"
 knitr::include_graphics("figures/methods-mfc-common-design.png")
@@ -89,7 +79,7 @@ knitr::include_graphics("figures/methods-mfc-common-design.png")
 
 This design has two major problems. The first problem is that the response elicited by the MFC is also included in the response the MFC is supposed to predict, creating a self-fulfilling prophecy: if the MFC response is high enough, the patient can have no response to the remaining fluid, and the conclusion will still be that the MFC correctly predicted the response. 
 
-The second problem is more subtle. Measurements of SV are influenced by some random variation. This variation is caused by both measurement error and short-term physiological variation in SV. Both are essentially "noise" to the clinician who wants to evaluate the response to a fluid challenge. The clinician is interested in the underlying, but unknowable average SV, not the short-term variation around this value. I will call this the "true" SV. If a measurement is, by chance, higher than the "true" SV, the next measurement will most likely decrease. Likewise, if a measurement is randomly low, the next will likely be higher. This phenomenon is called *regression towards the mean* (see figure fig:method-reg-to-the-mean).
+The second problem is more subtle. Measurements of SV are influenced by some random variation. This variation is caused by both measurement error and short-term physiological variation in SV. Both are essentially "noise" to the clinician who wants to evaluate the response to a fluid challenge. The clinician is interested in the underlying, but unknowable average SV, not the short-term variation around this value. I will call this the "true" SV. If a measurement is, by chance, higher than the "true" SV, the next measurement will most likely decrease. Likewise, if a measurement is randomly low, the next will likely be higher. This phenomenon is called *regression towards the mean* (see Figure \@ref(fig:method-reg-to-the-mean)).
 
 ```{r method-reg-to-the-mean}
 #| out.width="12cm",
@@ -100,7 +90,7 @@ knitr::include_graphics("figures/method-reg-to-the-mean.png")
 
 (ref:method-reg-to-the-mean) An illustration of *regression towards the mean*. An outlying SV measurement is likely followed by a measurement closer to the "true" SV.
 
-In the common MFC study design, $SV_{baseline}$ is included in the calculation of both the predictor ($\Delta SV_{100}$) and the outcome ($\Delta SV_{500}$). Therefore, the random measurement error in $SV_{baseline}$ is included in both the predictor and the outcome, making them spuriously correlated [@archieMathematicCouplingData1981; @strattonRegressionCalculatedVariables1987]. In Paper 1, we illustrate this spurious correlation with a simple computer simulation: We simulated an MFC study where all subjects had no response to fluid; only random variation in measured SV. A correct analysis should show that the MFC has no predictive ability—since there is nothing to predict—but it is clear that the change over the MFC ($\Delta SV_{100}$) is correlated to the change over the full fluid administration ($\Delta SV_{500}$) (see figure fig:method-null-sim).
+In the common MFC study design, $SV_{baseline}$ is included in the calculation of both the predictor ($\Delta SV_{100}$) and the outcome ($\Delta SV_{500}$). Therefore, the random measurement error in $SV_{baseline}$ is included in both the predictor and the outcome, making them spuriously correlated [@archieMathematicCouplingData1981; @strattonRegressionCalculatedVariables1987]. In Paper 1, we illustrate this spurious correlation with a simple computer simulation: We simulated an MFC study where all subjects had no response to fluid; only random variation in measured SV. A correct analysis should show that the MFC has no predictive ability—since there is nothing to predict—but it is clear that the change over the MFC ($\Delta SV_{100}$) is correlated to the change over the full fluid administration ($\Delta SV_{500}$) (see Figure \@ref(fig:method-mfc-null-sim)).
 
 ```{r method-mfc-null-sim}
 #| out.width="16cm",
@@ -111,7 +101,7 @@ knitr::include_graphics("figures/method-mfc-null-sim.png")
 
 (ref:method-mfc-null-sim) A simulated MFC study with 2000 subjects. Each subject has a constant "true" SV, and only random measurement variation around this value. **a**) A sample of data from 15 of the simulated subjects. **b**) Relationship between the MFC response and full fluid response. **c**) Relationship between MFC response and the response to the remaining fluid.
 
-The first problem, that the predictor is included in the outcome, can be fixed by predicting the response to only the remaining 400 ml ($\Delta SV_{400}$). This, however, simply reverses the second problem, as the predictor and outcome now share the measurement error at $SV_{100}$, creating an inverse spurious correlation (see figure fig:method-null-sim c).
+The first problem, that the predictor is included in the outcome, can be fixed by predicting the response to only the remaining 400 ml ($\Delta SV_{400}$). This, however, simply reverses the second problem, as the predictor and outcome now share the measurement error at $SV_{100}$, creating an inverse spurious correlation (see Figure \@ref(fig:method-mfc-null-sim)c).
 
 To illustrate the magnitude of the bias, we reanalysed data from the MFC study by Muller et al. [@Muller2011]. Instead of showing the MFC’s ability to predict the full fluid response, we analysed the MFC’s ability to predict the response to the remaining 400 ml fluid. We did this by extracting data from Fig. 3A in Muller et al., 2011 [@Muller2011] and used the plotted $\Delta SV_{100}$ and $\Delta SV_{500}$ to calculate $\Delta SV_{400}$. As noted in the paragraph above, this approach is also biased, but now in the opposite direction.
 
@@ -123,7 +113,7 @@ Paper 2 introduces generalized additive models (GAMs) as a tool for analysing me
 
 ### An introduction to generalized additive models
 
-A GAM is an extension of the generalized linear model [@hastieGeneralizedAdditiveModels1986]. For the purposes described here and in Paper 3, we can, however, mostly forget about the *generalized* part, and simply consider GAMs as multiple regression models that can fit smooth functions instead of only straight lines. These smooth functions are called regression splines (see Figure fig:method-wood-spline). Figure fig:method-lm-vs-gam illustrate how a linear model and a GAM fit the same simulated data.
+A GAM is an extension of the generalized linear model [@hastieGeneralizedAdditiveModels1986]. For the purposes described here and in Paper 3, we can, however, mostly forget about the *generalized* part, and simply consider GAMs as multiple regression models that can fit smooth functions instead of only straight lines. These smooth functions are called regression splines (see Figure \@ref(fig:method-wood-spline)). Figure \@ref(fig:method-lm-vs-gam) illustrates how a linear model and a GAM fit the same simulated data.
 
 ```{r method-wood-spline}
 #| out.width="7cm",
@@ -143,7 +133,7 @@ knitr::include_graphics("figures/method-lm-vs-gam.png")
 
 (ref:method-lm-vs-gam) A linear model and a generalized additive model (GAM) fitting the same simulated data.
 
-In hemodynamic time series and waveforms, we often have patterns that repeat with each respiratory cycle or heart beat. If we fit such a repeating pattern with GAM, we can constrain the smooth function to start and end at the same value, slope and curvature (0th, 1st and 2nd derivative), to create a smoothly repeating curve (a cyclic spline). The function that generates the data in Figure fig:method-lm-vs-GAM is a $ Y = sin(X)$, so we know that it repeats itself at $X = 2\pi = 6.28$. Figure fig:method-gam-cyclic illustrates the fit of the GAM with this additional constraint.
+In hemodynamic time series and waveforms, we often have patterns that repeat with each respiratory cycle or heart beat. If we fit such a repeating pattern with GAM, we can constrain the smooth function to start and end at the same value, slope and curvature (0th, 1st and 2nd derivative), to create a smoothly repeating curve (a cyclic spline). The function that generates the data in Figure \@ref(fig:method-lm-vs-gam) is $Y = sin(X)$, so we know that it repeats itself at $X = 2\pi = 6.28$. Figure \@ref(fig:method-gam-cyclic) illustrates the fit of the GAM with this additional constraint.
 
 ```{r method-gam-cyclic}
 #| out.width="12cm",
@@ -168,39 +158,36 @@ $$
 \sum_{i=1}^n (Y_i-\hat{Y}_i)^2 + \lambda\int f''(X)^2 dX.
 $$
 
-$f’’(X)$ is the curvature of the spline (for a straight line, the curvature is 0). This is squared to keep it positive and then integrated over the range of the independent variable, $X$. The smoothing parameter, $\lambda$ is used to control the tradeoff between fitting data with minimal error and preferring a smooth spline less "prone" to overfitting [@woodGeneralizedAdditiveModels2017]. It is possible, and often recommended, to automatically choose the smoothing parameter to optimise out-of-sample prediction [@woodFastStableRestricted2011] (see Figure fig:method-gam-wiggliness).
+$f’’(X)$ is the curvature of the spline (for a straight line, the curvature is 0). This is squared to keep it positive and then integrated over the range of the independent variable, $X$. The smoothing parameter, $\lambda$ is used to control the tradeoff between fitting data with minimal error and preferring a smooth spline less "prone" to overfitting [@woodGeneralizedAdditiveModels2017]. It is possible, and often recommended, to automatically choose the smoothing parameter to optimise out-of-sample prediction [@woodFastStableRestricted2011] (see Figure \@ref(fig:method-gam-wiggliness)).
 
 ```{r method-gam-wiggliness}
 #| out.width="12cm",
 #| fig.cap="(ref:method-gam-wiggliness)",
-# fig.scap="Penalised regression spline"
+#| fig.scap="Penalised regression spline"
 knitr::include_graphics("figures/method-gam-wiggliness.png")
 ```
 
-(fig:method-gam-wiggliness): In a penalised spline, the smoothing parameter, $\lambda$, determines the tradeoff between fitting the data and creating a smooth line. $lambda$ can be automatically chosen to minimise the risk of overfitting.
+(ref:method-gam-wiggliness) In a penalised spline, the smoothing parameter, $\lambda$, determines the tradeoff between fitting the data and creating a smooth line. $lambda$ can be automatically chosen to minimise the risk of overfitting.
 
 ### Estimating PPV using GAMs {#gam-ppv}
 
 Using GAMs for estimating PPV was first proposed by Wyffels et al. [@wyffelsNewAlgorithmQuantify2021]. They demonstrated how GAMs could be used to isolate the respiratory variation in PP in patients with atrial fibrillation, from the PPV caused by irregular beat-to-beat intervals. In Paper 2, we demonstrate how to use a simpler version of Wyffel’s model to estimate PPV from PP time series recorded on patients in sinus rhythm.
 
-In sinus rhythm, the major source of PPV is respiratory variation in PP (as described in section ref:heart-lung-interaction-physiology). We expect that there is some smooth relationship between *when in the respiratory cycle a heart beat occurs* and *the PP it produces*. We also expect that the PP produced by a beat in the end of a cycle is very similar to the PP produced by a beat in the beginning of a cycle; i.e., that the effect of the *position in the respiratory cycle* is cyclic. This cyclic respiratory variation in PP can be represented with the following GAM:
+In sinus rhythm, the major source of PPV is respiratory variation in PP (as described in Section \@ref(heart-lung-interaction-physiology)). We expect that there is some smooth relationship between *when in the respiratory cycle a heart beat occurs* and *the PP it produces*. We also expect that the PP produced by a beat in the end of a cycle is very similar to the PP produced by a beat in the beginning of a cycle; i.e., that the effect of the *position in the respiratory cycle* is cyclic. This cyclic respiratory variation in PP can be represented with the following GAM:
 
 $$
 E(PP) = \alpha + f(pos_{\text{respiratory cycle}}),
 $$
-
-where $E(PP)$ is the expected PP, $\alpha$ is the mean PP and $f(pos_{\text{respiratory cycle}})$ is the variation in PP around the mean, represented as a smooth cyclic function that goes from 0 (start of respiratory cycle) to 1 (end of respiratory cycle) and continues smoothly from 1 to 0 (see Figure fig:method-gam-PP b).
+where $E(PP)$ is the expected PP, $\alpha$ is the mean PP and $f(pos_{\text{respiratory cycle}})$ is the variation in PP around the mean, represented as a smooth cyclic function that goes from 0 (start of respiratory cycle) to 1 (end of respiratory cycle) and continues smoothly from 1 to 0 (see Figure \@ref(fig:method-gam-PP)b).
 
 In addition to the respiratory variation in PP, we also want the model to allow that PP can change slowly over time:
-
 $$
 E(PP) = \alpha + f(pos_{\text{respiratory cycle}}) + f(time).
 $$
-
-Now, the expected value of PP ($E(PP)$) is the sum of the effect of repeating effect respiration and a smooth trend in PP over time ($f(time)$) (see Figure fig:method-gam-PP). 
+Now, the expected value of PP ($E(PP)$) is the sum of the effect of repeating effect respiration and a smooth trend in PP over time ($f(time)$) (see Figure \@ref(fig:method-gam-PP)). 
 
 ```{r method-gam-PP}
-#| out.width="12cm",
+#| out.width="100%",
 #| fig.cap="(ref:method-gam-PP)",
 #| fig.scap="Fitting a GAM pulse pressure"
 knitr::include_graphics("figures/method-gam-PP.png")
@@ -208,7 +195,7 @@ knitr::include_graphics("figures/method-gam-PP.png")
 
 (ref:method-gam-PP) Illustration of how a pulse pressure (PP) time series (**a**) can be modelled as a smooth repeating effect of ventilation (**b**) and a slow trend over time (**c**). Panel **d** shows the models prediction (fit): the sum of the mean PP, the effect of ventilation (**b**) and the trend over time (**c**). 
 
-From the fitted GAM, we can calculate PPV as the amplitude of the respiratory effect (Figure Figure fig:method-gam-PP b) divided by the mean PP ($\alpha$):
+From the fitted GAM, we can calculate PPV as the amplitude of the respiratory effect (Figure Figure \@ref(fig:method-gam-PP)b) divided by the mean PP ($\alpha$):
 
 $$
 PPV = 100% \frac{ max(f(pos_{\text{respiratory cycle}})) - min(f(pos_{\text{respiratory cycle}})) }{\alpha} 
@@ -223,16 +210,16 @@ E(CVP) = \alpha + f(pos_{\text{cardiac cycle}}) + f(pos_{\text{respiratory cycle
 + f(pos_{\text{cardiac cycle}}, pos_{\text{respiratory cycle}}) + f(time).
 $$
 
-Here, $f(pos_{\text{cardiac cycle}})$ is similar to $f(pos_{\text{respiratory cycle}})$, but repeats with every cardiac cycle (starting at the P-wave in the ECG). $ f(pos_{\text{cardiac cycle}}, pos_{\text{respiratory cycle}})$ is a 2-dimensional smooth plane representing the effect of the interaction between the respiratory cycle and the cardiac cycle on CVP (see Figure fig:methods-GAM-cvp).
+Here, $f(pos_{\text{cardiac cycle}})$ is similar to $f(pos_{\text{respiratory cycle}})$, but repeats with every cardiac cycle (starting at the P-wave in the ECG). $ f(pos_{\text{cardiac cycle}}, pos_{\text{respiratory cycle}})$ is a 2-dimensional smooth plane representing the effect of the interaction between the respiratory cycle and the cardiac cycle on CVP (see Figure \@ref(fig:method-gam-CVP)).
 
 ```{r method-gam-CVP}
-#| out.width="18cm",
+#| out.width="100%",
 #| fig.cap="(ref:method-gam-CVP)",
 #| fig.scap="Fitting a GAM to CVP"
 knitr::include_graphics("figures/method-gam-CVP.png")
 ```
 
-(ref:method-gam-CVP) Central venous pressure (CVP) (**a**) can be decomposed using a GAM. The CVP waveform is decomposed into: **b**), a repeating effect for each heartbeat; **c**), a cyclic effect of ventilation; **d**), an interaction effect between the respiratory- and cardiac cycles; and, **e**), a slow trend over time (added to the mean CVP). Panel **f**) shows the models prediction and the prediction error (residual): The prediction is the sum of the effects visualised in **b**) to **e**). 
+(ref:method-gam-CVP) Central venous pressure (CVP) (**a**) can be decomposed using a GAM. The CVP waveform is decomposed into: **b**, a repeating effect for each heartbeat; **c**, a cyclic effect of ventilation; **d**, an interaction effect between the respiratory- and cardiac cycles; and, **e**, a slow trend over time (added to the mean CVP). Panel **f** shows the models prediction and the prediction error (residual): The prediction is the sum of the effects visualised in **b** to **e**. 
 
 ## Paper 3 - Effects of Ventilator Settings on PPV
 
@@ -240,11 +227,11 @@ Paper 3 investigates PPV’s ability to predict the CO response to a fluid bolus
 
 The study was approved by the regional ethics committee (January 2020, case 1-10-72-245-19) and registered on ClinicalTrials.gov (March 2020, NCT04298931). It was conducted at Aarhus University Hospital from May 2020 to June 2021.
 
-The paper presents a number of statistical methods including Bland-Altman analysis for method comparison, bootstrapping, a mixed-effects model and Bayesian statistics. In this thesis, I will only elaborate on Bayesian statistics and explain the Bayesian mixed-effects model presented in the paper.
+Paper 3 presents a number of statistical methods including Bland-Altman analysis for method comparison, bootstrapping, a mixed-effects model and Bayesian statistics. In this thesis, I will only elaborate on Bayesian statistics and explain the Bayesian mixed-effects model presented in the paper.
 
 ### Protocol
 
-The experiment protocol was initiated after anaesthesia induction, in relation to a planned 250 ml fluid administration, where the patient was considered hemodynamically stable by the treating anaesthesiologist. First, the patient was ventilated with ten different ventilator settings for 30 s each. Each setting was unique combination of VT between 4 and 10 ml kg^-1^ (predicted body weight [@theacuterespiratorydistresssyndromenetworkVentilationLowerTidal2000]) and RR between 10 and 31 min^-1^ (see Figure \@ref(fig:methods-vent-settings)). Then, a two minute period was used to establish a baseline SV, after which a 250 fluid bolus was administered. If SV increased by more than 10% from the fluid administration, the patient classified as a fluid responder.
+The experiment protocol was initiated after anaesthesia induction, in relation to a planned 250 ml fluid administration, where the patient was considered hemodynamically stable by the treating anaesthesiologist. First, the patient was ventilated with ten different ventilator settings for 30 s each. Each setting was unique combination of VT between 4 and 10 ml kg^-1^ (predicted body weight [@theacuterespiratorydistresssyndromenetworkVentilationLowerTidal2000]) and RR between 10 and 31 min^-1^ (see Figure \@ref(fig:methods-vent-settings)). Then, a two-minute period was used to establish a baseline SV, after which a 250 fluid bolus was administered. If SV increased by more than 10% during the fluid administration, the patient classified as a fluid responder.
 
 ```{r methods-vent-settings}
 #| out.width="10cm",
@@ -305,7 +292,7 @@ where,
 
 #### Bayesian updating of a simple model
 
-To gain some intuition about how Bayesian updating works, we will go through fitting a very simple model. We sample subjects from a population and measure their height. The aim is to estimate the mean and standard deviation (SD) of heights in the population from the heights in the sample. 
+\noindent To gain some intuition about how Bayesian updating works, we will go through fitting a very simple model. We sample subjects from a population and measure their height. The aim is to estimate the mean and standard deviation (SD) of heights in the population from the heights in the sample. 
 
 First, we define a generative model, i.e., a model that---with the right parameter values---will generate data that looks like the data we have collected. In this example, the model is simple: we assume that each subjects is drawn from a normal (Gaussian) distribution with a mean, $\mu$, and standard deviation (SD), $\sigma$:
 
@@ -320,12 +307,12 @@ $$
 \sigma \sim Uniform(1, 30).
 $$
 
-The interpretation of this prior distribution is, that before we see any data, we are quite certain that the mean height in the population ($\mu$) is somewhere between 130 and 210 cm, and that the SD ($\sigma$) is between 1 and 30 cm with all values equally probable and values outside this range entirely impossible. These priors are only weakly informative and could be improved without much controversy, but here, their purpose is to illustrate how prior beliefs can be updated through observation of data (see Figure fig:method-bayes-update).
+The interpretation of this prior distribution is, that before we see any data, we are quite certain that the mean height in the population ($\mu$) is somewhere between 130 and 210 cm, and that the SD ($\sigma$) is between 1 and 30 cm with all values equally probable and values outside this range entirely impossible. These priors are only weakly informative and could be improved without much controversy, but here, their purpose is to illustrate how prior beliefs can be updated through observation of data (see Figure \@ref(fig:method-bayes-update)).
 
-In this example, data is simulated. We, therefore, know that the *true* mean height is 165 cm and the *true* SD is 10 cm. The top panel-pair in Figure fig:method-bayes-update displays our prior belief about the model parameters. Remaining panel-pairs show how we update our beliefs about the parameter values when we observe more and more data (heights).
+In this example, data is simulated. We, therefore, know that the *true* mean height is 165 cm and the *true* SD is 10 cm. The top panel-pair in Figure \@ref(fig:method-bayes-update) displays our prior belief about the model parameters. Remaining panel-pairs show how we update our beliefs about the parameter values when we observe more and more data (heights).
 
 ```{r method-bayes-update}
-#| out.width="18cm",
+#| out.width="100%",
 #| fig.cap="(ref:method-bayes-update)",
 #| fig.scap="Bayesian updating"
 knitr::include_graphics("figures/method-bayes-update.png")
@@ -333,7 +320,7 @@ knitr::include_graphics("figures/method-bayes-update.png")
 
 (ref:method-bayes-update) Illustration of how prior beliefs can be updated through observation of data. See main text for an explanation of the simulation. Orange lines are *true* parameter values. Shaded areas are 95% compatibility intervals. Black ticks are observations.
 
-In Figure fig:method-bayes-update, the distributions of $\mu$ and $\sigma$ are visualised separately. They do, however, constitute a single, multidimensional, distribution, and in some models, parameter values can be highly correlated. Figure fig:method-bayes-update-2d visualise the two-dimensional distribution of the model parameters.
+In Figure \@ref(fig:method-bayes-update), the distributions of $\mu$ and $\sigma$ are visualised separately. They do, however, constitute a single, multidimensional, distribution, and in some models, parameter values can be highly correlated. Figure \@ref(fig:method-bayes-update-2d) visualise the two-dimensional distribution of the model parameters.
 
 ```{r method-bayes-update-2d}
 #| out.width="18cm",
@@ -344,7 +331,7 @@ knitr::include_graphics("figures/method-bayes-update-2d.png")
 
 (ref:method-bayes-update-2d) The prior and posterior distributions are multidimensional distributions with a dimension for each parameter in the model.
 
-The shaded areas in Figure fig:method-bayes-update contain 95% of the probability mass for the parameter values. These are traditionally called 95% credible intervals, but I will use the alternative term *compatibility interval* (CI), as they can be interpreted as containing the parameter values that are compatible with the data we observe---this is also a reasonable interpretation of frequentist *confidence intervals* [@gelmanAreConfidenceIntervals2019]. 
+The shaded areas in Figure \@ref(fig:method-bayes-update) contain 95% of the probability mass for the parameter values. These are traditionally called 95% credible intervals, but I will use the alternative term *compatibility interval* (CI), as they can be interpreted as containing the parameter values that are compatible with the data we observe---this is also a reasonable interpretation of frequentist *confidence intervals* [@gelmanAreConfidenceIntervals2019]. 
 
 ### The mixed-effects model in Paper 3
 
@@ -379,7 +366,6 @@ $$
 This greatly reduces the degrees of freedom associated with estimating a parameter value for each subject, and reduces the risk of overfitting, as the estimate of $\alpha$ for subjects with extreme values for PPV is shrunk towards the mean (an effect known as *partial pooling*) [@mcelreathStatisticalRethinkingBayesian2020].
 
 The linear model for $\sigma$ is similar to the model for $\mu$, but without the random effect:
-
 $$
 log(\sigma_i) = 
 \gamma0_{\operatorname{PPVmethod}[i]} + 
@@ -390,24 +376,25 @@ $$
 It allows the variance of the likelihood function to vary with ventilator setting and PPV-method. 
 
 Lastly, priors for all parameters are specified:
-
 \begin{align*}
 &\text{\bfseries [Prior for SD of subjects]}\\
-\sigma_\alpha \sim &truncNormal(0, 1.5, low = 0) \\
+\sigma_\alpha \sim &truncNormal(0, 1.5, trunc_{low} = 0) \\
 %
 &\text{\bfseries [Prior for PPVmethod-specific intercept]} \\
-\beta0_{m} \sim &Normal(2.3, 1) \\
-&\quad\text{, for PPVmethod m = (gam, classic)} \\
+\beta0_{m} \sim &Normal(2.3, 1)\text{, for PPVmethod m = (gam, classic)} \\
 %
 &\text{\bfseries [Prior for } \beta s]\\
-(\beta1_{t,m},\beta2_{r,m}) \sim &Normal(0, 2) \\
-&\quad\text{, for ventVT t = (8,6,4); ventRR r = (17,24,31); PPVmethod m = (gam, classic)} \\
+(\beta1_{t,m},\beta2_{r,m}) \sim &Normal(0, 2), \\
+&\quad\text{for ventVT t = (8,6,4),} \\
+&\quad\text{ventRR r = (17,24,31),} \\
+&\quad\text{PPVmethod m = (gam, classic)} \\
 % Sigma prior
 &\text{\bfseries [Prior for } \gamma s \text{]} \\
-(\gamma0_{m},\gamma1_{t,m},\gamma2_{r,m}) \sim &Normal(0, 1.5) \\
-&\quad\text{, for ventVT t = (8,6,4); ventRR r = (17,24,31); PPVmethod m = (gam, classic)}
+(\gamma0_{m},\gamma1_{t,m},\gamma2_{r,m}) \sim &Normal(0, 1.5), \\
+&\quad\text{for ventVT t = (8,6,4),} \\
+&\quad\text{ventRR r = (17,24,31),} \\
+&\quad\text{PPVmethod m = (gam, classic)}
 \end{align*}
-
 These are all weakly informative (they allow all parameter values that are even remotely reasonable), and mainly serve to make the parameter estimation more efficient. Arguments for why these values are considered weakly informative are presented in Paper 3’s supplementary 1.
 
 ### Sample size
