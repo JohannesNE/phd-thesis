@@ -188,7 +188,7 @@ combined_gam_cvp_plot_simple <- cvp_plot + model_cvp_plot + predict_resid_cvp_pl
   plot_annotation(tag_levels = "a") +
   plot_layout(ncol = 1, heights = c(1, 5, 1.5)) & shape_scale
 
-save_plot("methods-gam-CVP", combined_gam_cvp_plot_simple, width = 18, height = 18)
+save_plot("method-gam-CVP", combined_gam_cvp_plot_simple, width = 18, height = 18)
 
 
 ## Before - After fluid fig =======
@@ -258,6 +258,8 @@ cvp_landmarks <- tribble(
   0.45,   "v",
   0.53,   "y",
 ) 
+
+lab_cvp <- ylab("CVP [mmHg]")
 
 cardiac_smooth_landmark <- waveformtools::join_nearest(cardiac_smooth_comb %>% filter(vent_state == "End inspiration",
                                                                        win == "After 250 mL fluid"),

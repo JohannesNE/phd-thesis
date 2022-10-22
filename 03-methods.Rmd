@@ -103,7 +103,7 @@ knitr::include_graphics("figures/method-reg-to-the-mean.png")
 In the common MFC study design, $SV_{baseline}$ is included in the calculation of both the predictor ($\Delta SV_{100}$) and the outcome ($\Delta SV_{500}$). Therefore, the random measurement error in $SV_{baseline}$ is included in both the predictor and the outcome, making them spuriously correlated [@archieMathematicCouplingData1981; @strattonRegressionCalculatedVariables1987]. In Paper 1, we illustrate this spurious correlation with a simple computer simulation: We simulated an MFC study where all subjects had no response to fluid; only random variation in measured SV. A correct analysis should show that the MFC has no predictive ability—since there is nothing to predict—but it is clear that the change over the MFC ($\Delta SV_{100}$) is correlated to the change over the full fluid administration ($\Delta SV_{500}$) (see figure fig:method-null-sim).
 
 ```{r method-mfc-null-sim}
-#| out.width="12cm",
+#| out.width="16cm",
 #| fig.cap="(ref:method-mfc-null-sim)",
 #| fig.scap="MFC simulation without response"
 knitr::include_graphics("figures/method-mfc-null-sim.png")
@@ -135,7 +135,7 @@ knitr::include_graphics("figures/method-wood-spline.png")
 (ref:method-wood-spline) A regression spline is named after the wooden splines traditionally used by technical drawers for tracing smooth curves. (by Pearson Scott Foresman, public domain).
 
 ```{r method-lm-vs-gam}
-#| out.width="12cm",
+#| out.width="15cm",
 #| fig.cap="(ref:method-lm-vs-gam)",
 #| fig.scap="Linear model vs GAM"
 knitr::include_graphics("figures/method-lm-vs-gam.png")
@@ -143,10 +143,16 @@ knitr::include_graphics("figures/method-lm-vs-gam.png")
 
 (ref:method-lm-vs-gam) A linear model and a generalized additive model (GAM) fitting the same simulated data.
 
-In hemodynamic time series and waveforms, we often have patterns that repeat with each respiratory cycle or heart beat. If we fit such a repeating pattern with GAM, we can constrain the smooth function to start and end at the same value, slope and curvature (0th, 1st and 2nd derivative), to create a smoothly repeating curve (a cyclic spline). The function that generates the data in figure fig:method-lm-vs-GAM is a $ Y = sin(X)$, so we know that it repeats itself at $X = 2\pi = 6.28$. Figure fig:method-gam-cyclic illustrates the fit of the GAM with this additional constraint.
+In hemodynamic time series and waveforms, we often have patterns that repeat with each respiratory cycle or heart beat. If we fit such a repeating pattern with GAM, we can constrain the smooth function to start and end at the same value, slope and curvature (0th, 1st and 2nd derivative), to create a smoothly repeating curve (a cyclic spline). The function that generates the data in Figure fig:method-lm-vs-GAM is a $ Y = sin(X)$, so we know that it repeats itself at $X = 2\pi = 6.28$. Figure fig:method-gam-cyclic illustrates the fit of the GAM with this additional constraint.
 
+```{r method-gam-cyclic}
+#| out.width="12cm",
+#| fig.cap="(ref:method-gam-cyclic)",
+#| fig.scap="Cyclic spline"
+knitr::include_graphics("figures/method-gam-cyclic.png")
+```
 
-(fig:method-gam-cyclic): Illustration comparing a cyclic spline fit to the data-generating function (Y = sin(X) with added noise).
+(ref:method-gam-cyclic) Illustration comparing a cyclic spline fit to the data-generating function ($Y = sin(X)$ with added Gaussian noise).
 
 The high flexibility of GAMs could also make them prone to overfitting data. This is countered by penalising splines by their wiggliness (wiggliness is the inverse of smoothness). 
 
@@ -156,7 +162,7 @@ $$
 \sum_{i=1}^n (Y_i-\hat{Y}_i)^2,
 $$
 
-where $Y$ is the observed values and $\hat{Y}$ is the values predicted by the model. For fitting penalised splines this is extended by adding a the wiggliness penalty:
+where $Y_i$ are the observed values and $\hat{Y}_i$ are the values predicted by the model. For fitting penalised splines this is extended by adding a the wiggliness penalty:
 
 $$
 \sum_{i=1}^n (Y_i-\hat{Y}_i)^2 + \lambda\int f''(X)^2 dX.
@@ -164,12 +170,18 @@ $$
 
 $f’’(X)$ is the curvature of the spline (for a straight line, the curvature is 0). This is squared to keep it positive and then integrated over the range of the independent variable, $X$. The smoothing parameter, $\lambda$ is used to control the tradeoff between fitting data with minimal error and preferring a smooth spline less "prone" to overfitting [@woodGeneralizedAdditiveModels2017]. It is possible, and often recommended, to automatically choose the smoothing parameter to optimise out-of-sample prediction [@woodFastStableRestricted2011] (see Figure fig:method-gam-wiggliness).
 
+```{r method-gam-wiggliness}
+#| out.width="12cm",
+#| fig.cap="(ref:method-gam-wiggliness)",
+# fig.scap="Penalised regression spline"
+knitr::include_graphics("figures/method-gam-wiggliness.png")
+```
 
-(fig:method-gam-wiggliness): The smoothing, $\lambda$, determines the tradeoff between fitting the data and creating a smooth line. $lambda$ can be automatically chosen to minimise the risk of overfitting.
+(fig:method-gam-wiggliness): In a penalised spline, the smoothing parameter, $\lambda$, determines the tradeoff between fitting the data and creating a smooth line. $lambda$ can be automatically chosen to minimise the risk of overfitting.
 
 ### Estimating PPV using GAMs {#gam-ppv}
 
-Using GAMs for estimating PPV was first proposed by Wyffels et al [@wyffelsNewAlgorithmQuantify2021]. They demonstrated how GAMs could be used to isolate the respiratory variation in PP in patients with atrial fibrillation, from the PPV caused by irregular beat-to-beat intervals. In Paper 2, we demonstrate how to use a simpler version of Wyffel’s model to estimate PPV from PP time series recorded on patients in sinus rhythm.
+Using GAMs for estimating PPV was first proposed by Wyffels et al. [@wyffelsNewAlgorithmQuantify2021]. They demonstrated how GAMs could be used to isolate the respiratory variation in PP in patients with atrial fibrillation, from the PPV caused by irregular beat-to-beat intervals. In Paper 2, we demonstrate how to use a simpler version of Wyffel’s model to estimate PPV from PP time series recorded on patients in sinus rhythm.
 
 In sinus rhythm, the major source of PPV is respiratory variation in PP (as described in section ref:heart-lung-interaction-physiology). We expect that there is some smooth relationship between *when in the respiratory cycle a heart beat occurs* and *the PP it produces*. We also expect that the PP produced by a beat in the end of a cycle is very similar to the PP produced by a beat in the beginning of a cycle; i.e., that the effect of the *position in the respiratory cycle* is cyclic. This cyclic respiratory variation in PP can be represented with the following GAM:
 
@@ -187,8 +199,14 @@ $$
 
 Now, the expected value of PP ($E(PP)$) is the sum of the effect of repeating effect respiration and a smooth trend in PP over time ($f(time)$) (see Figure fig:method-gam-PP). 
 
+```{r method-gam-PP}
+#| out.width="12cm",
+#| fig.cap="(ref:method-gam-PP)",
+#| fig.scap="Fitting a GAM pulse pressure"
+knitr::include_graphics("figures/method-gam-PP.png")
+```
 
-(fig:method-gam-PP): Illustration of how a pulse pressure (PP) time series (**a**) can be modelled as a smooth repeating effect of ventilation (**b**) and a slow trend over time (**c**). Panel **d** shows the models prediction (fit): the sum of the mean PP, the effect of ventilation (**b**) and the trend over time (**c**). 
+(ref:method-gam-PP) Illustration of how a pulse pressure (PP) time series (**a**) can be modelled as a smooth repeating effect of ventilation (**b**) and a slow trend over time (**c**). Panel **d** shows the models prediction (fit): the sum of the mean PP, the effect of ventilation (**b**) and the trend over time (**c**). 
 
 From the fitted GAM, we can calculate PPV as the amplitude of the respiratory effect (Figure Figure fig:method-gam-PP b) divided by the mean PP ($\alpha$):
 
@@ -207,8 +225,14 @@ $$
 
 Here, $f(pos_{\text{cardiac cycle}})$ is similar to $f(pos_{\text{respiratory cycle}})$, but repeats with every cardiac cycle (starting at the P-wave in the ECG). $ f(pos_{\text{cardiac cycle}}, pos_{\text{respiratory cycle}})$ is a 2-dimensional smooth plane representing the effect of the interaction between the respiratory cycle and the cardiac cycle on CVP (see Figure fig:methods-GAM-cvp).
 
+```{r method-gam-CVP}
+#| out.width="18cm",
+#| fig.cap="(ref:method-gam-CVP)",
+#| fig.scap="Fitting a GAM to CVP"
+knitr::include_graphics("figures/method-gam-CVP.png")
+```
 
-(fig:method-gam-CVP): Central venous pressure (CVP) (**a**) can be decomposed using a GAM. The CVP waveform is decomposed into: **b**, a repeating effect for each heartbeat; **c**, a cyclic effect of ventilation; **d**, an interaction effect between the respiratory- and cardiac cycles; and, **e**, a slow trend over time (added to the mean CVP). Panel **f** shows the models prediction and the prediction error (residual): The prediction is the sum of the effects visualised in **b** to **e**. 
+(ref:method-gam-CVP) Central venous pressure (CVP) (**a**) can be decomposed using a GAM. The CVP waveform is decomposed into: **b**), a repeating effect for each heartbeat; **c**), a cyclic effect of ventilation; **d**), an interaction effect between the respiratory- and cardiac cycles; and, **e**), a slow trend over time (added to the mean CVP). Panel **f**) shows the models prediction and the prediction error (residual): The prediction is the sum of the effects visualised in **b**) to **e**). 
 
 ## Paper 3 - Effects of Ventilator Settings on PPV
 
@@ -222,7 +246,14 @@ The paper presents a number of statistical methods including Bland-Altman analys
 
 The experiment protocol was initiated after anaesthesia induction, in relation to a planned 250 ml fluid administration, where the patient was considered hemodynamically stable by the treating anaesthesiologist. First, the patient was ventilated with ten different ventilator settings for 30 s each. Each setting was unique combination of VT between 4 and 10 ml kg^-1^ (predicted body weight [@theacuterespiratorydistresssyndromenetworkVentilationLowerTidal2000]) and RR between 10 and 31 min^-1^ (see Figure \@ref(fig:methods-vent-settings)). Then, a two minute period was used to establish a baseline SV, after which a 250 fluid bolus was administered. If SV increased by more than 10% from the fluid administration, the patient classified as a fluid responder.
 
-(fig:methods-vent-settings): Example of the ventilation protocol. Dots represent combinations of VT and RR. Settings were applied in numerical order. The order of RR=17, 24 and 31 min^-1^ were drawn at random for each subject. Curved lines represent settings that should result in equal alveolar ventilation, assuming a dead space volume of 1 ml kg^-1^. 
+```{r methods-vent-settings}
+#| out.width="10cm",
+#| fig.cap="(ref:methods-vent-settings)",
+#| fig.scap="Ventilator settings in Paper 3"
+knitr::include_graphics("figures/methods-vent-settings.png")
+```
+
+(ref:methods-vent-settings) Example of the ventilation protocol. Dots represent combinations of VT and RR. Settings were applied in numerical order. The order of RR=17, 24 and 31 min^-1^ were drawn at random for each subject. Curved lines represent settings that should result in equal alveolar ventilation, assuming a dead space volume of 1 ml kg^-1^. 
 
 ### PPV calculation
 
@@ -236,17 +267,17 @@ $$
 
 averaged over three consecutive ventilation cycles.
 
-$PPV_{GAM}$ was calculated as described in Paper 2 (see Section ref:gam-ppv). 
+$PPV_{GAM}$ was calculated as described in Paper 2 (see Section \@ref(gam-ppv)). 
 
 ### Stroke volume measurement using uncalibrated pulse contour analysis {#methods-co}
 
 In Paper 3, we measured SV using the commercial FloTrac algorithm (fourth generation) built into the cardiac monitor (Hemosphere or EV1000, Edwards Lifesciences, Irvine, California) routinely used during major abominal surgery at Aarhus University Hospital. The FloTrac estimates beat-to-beat SV with a proprietary algorithm that analyses the arterial blood pressure waveform. 
 
-Since change in SV is used to determine a patient's response to a fluid bolus, it is important that the FlotTrac estimates SV correctly, and, especially, that changes in SV are measured correctly. 
+Since change in SV is used to determine a patient's response to a fluid bolus, it is important that the FloTrac estimates SV correctly, and, especially, that changes in SV are measured correctly. 
 
 There are several methods for estimating SV or CO. The conversion between these is $CO = SV \cdot HR$, and in the following, I will simply refer to all methods as estimating CO. The gold standard for CO measurement is debated, but is generally considered to be the *direct Fick principle* or *thermodilution* (CO~TD~) via a pulmonary artery catheter [@kovacsOfficialEuropeanRespiratory2017; @mckenzieReliabilityThermodilutionDerived2018]. Thermodilution is more common in clinical practice, and is usually the reference, when new methods for measuring CO are evaluated [@joostenAccuracyPrecisionNoninvasive2017; @montenijMethodologyMethodComparison2016].  
 
-The first three generations of the FloTrac algorithm were evaluated in a systematic review of 65 studies [@slagtSystematicReviewUncalibrated2014]. The overall *percentage error* was \~50%; a slightly simplified interpretation of this statistic is, that if a patient has a *true* CO of 5 L^min-1^, the difference between CO~FloTrac~  and CO~TD~ can be up to 2.5 L^min-1^. The fourth-generation FloTrac (used in Paper 3) aimed to improve performance, but of 6 studies comparing the fourth-generation FloTrac against CO~TD~, one showed a percentage error of 35% [@geisenAccuracyPrecisionTrending2018] while the other had a percentage error of >50% [@heijneFourDifferentMethods2020; @murataAgreementContinuousCardiac2022; @eisenriedAccuracyTrendingAbility2019; @suehiroImprovedPerformanceFourthGeneration2015; @maedaAccuracyTrendingAbility2019].
+The first three generations of the FloTrac algorithm were evaluated in a systematic review of 65 studies [@slagtSystematicReviewUncalibrated2014]. The overall *percentage error* was approx. 50%; a slightly simplified interpretation of this statistic is, that if a patient has a *true* CO of 5 L min^-1^, the difference between CO~FloTrac~  and CO~TD~ can be up to 2.5 L min^-1^. The fourth-generation FloTrac (used in Paper 3) aimed to improve performance, but of 6 studies comparing the fourth-generation FloTrac against CO~TD~, one showed a percentage error of 35% [@geisenAccuracyPrecisionTrending2018] while the other had a percentage error of >50% [@heijneFourDifferentMethods2020; @murataAgreementContinuousCardiac2022; @eisenriedAccuracyTrendingAbility2019; @suehiroImprovedPerformanceFourthGeneration2015; @maedaAccuracyTrendingAbility2019].
 
 Even if CO~FloTrac~ does not always agree with CO~TD~, they could agree on the changes in CO, if the bias between the devices is constant within each patient. This agreement on CO changes (often denoted *trending ability*) is evaluated in most recent studies. These results are, unfortunately, not encouraging either; they show that a 20% increase in CO~TD~ may be accompanied by a fall in CO~FloTrac~ or *vice versa* [@geisenAccuracyPrecisionTrending2018; @eisenriedAccuracyTrendingAbility2019; @heijneFourDifferentMethods2020; @murataAgreementContinuousCardiac2022; @maedaAccuracyTrendingAbility2019].
 
@@ -274,7 +305,7 @@ where,
 
 #### Bayesian updating of a simple model
 
-To gain some intuition about how Bayesian updating works, we will go through fitting a very simple model. We sample subjects from a population and measure their height. The aim is to estimate the mean and standard deviation of heights in the population from the heights in the sample. 
+To gain some intuition about how Bayesian updating works, we will go through fitting a very simple model. We sample subjects from a population and measure their height. The aim is to estimate the mean and standard deviation (SD) of heights in the population from the heights in the sample. 
 
 First, we define a generative model, i.e., a model that---with the right parameter values---will generate data that looks like the data we have collected. In this example, the model is simple: we assume that each subjects is drawn from a normal (Gaussian) distribution with a mean, $\mu$, and standard deviation (SD), $\sigma$:
 
@@ -289,17 +320,29 @@ $$
 \sigma \sim Uniform(1, 30).
 $$
 
-The interpretation of this prior distribution is, that before we see any data, we are quite certain that the mean height in the population ($\mu$) is somewhere between 130 and 210 cm, and that the SD is between 1 and 30 cm with all values equally probable and values outside this range entirely impossible. These priors are only weakly informative and could be improved without much controversy, but here, their purpose is to illustrate how prior beliefs can be updated through observation of data (see Figure fig:method-bayes-update).
+The interpretation of this prior distribution is, that before we see any data, we are quite certain that the mean height in the population ($\mu$) is somewhere between 130 and 210 cm, and that the SD ($\sigma$) is between 1 and 30 cm with all values equally probable and values outside this range entirely impossible. These priors are only weakly informative and could be improved without much controversy, but here, their purpose is to illustrate how prior beliefs can be updated through observation of data (see Figure fig:method-bayes-update).
 
 In this example, data is simulated. We, therefore, know that the *true* mean height is 165 cm and the *true* SD is 10 cm. The top panel-pair in Figure fig:method-bayes-update displays our prior belief about the model parameters. Remaining panel-pairs show how we update our beliefs about the parameter values when we observe more and more data (heights).
 
+```{r method-bayes-update}
+#| out.width="18cm",
+#| fig.cap="(ref:method-bayes-update)",
+#| fig.scap="Bayesian updating"
+knitr::include_graphics("figures/method-bayes-update.png")
+```
 
-(fig:method-bayes-update): Illustration of how prior beliefs can be updated through observation of data. See main text for an explanation of the simulation. Orange lines are *true* parameter values. Shaded areas are 95% compatibility intervals. Black ticks are observations.
+(ref:method-bayes-update) Illustration of how prior beliefs can be updated through observation of data. See main text for an explanation of the simulation. Orange lines are *true* parameter values. Shaded areas are 95% compatibility intervals. Black ticks are observations.
 
 In Figure fig:method-bayes-update, the distributions of $\mu$ and $\sigma$ are visualised separately. They do, however, constitute a single, multidimensional, distribution, and in some models, parameter values can be highly correlated. Figure fig:method-bayes-update-2d visualise the two-dimensional distribution of the model parameters.
 
+```{r method-bayes-update-2d}
+#| out.width="18cm",
+#| fig.cap="(ref:method-bayes-update-2d)",
+#| fig.scap="Bayesian updating with two-dimentional visualisation of distributions"
+knitr::include_graphics("figures/method-bayes-update-2d.png")
+```
 
-(fig: method-bayes-update-2d): The prior and posterior distributions are multidimensional distributions with a dimension for each parameter in the model.
+(ref:method-bayes-update-2d) The prior and posterior distributions are multidimensional distributions with a dimension for each parameter in the model.
 
 The shaded areas in Figure fig:method-bayes-update contain 95% of the probability mass for the parameter values. These are traditionally called 95% credible intervals, but I will use the alternative term *compatibility interval* (CI), as they can be interpreted as containing the parameter values that are compatible with the data we observe---this is also a reasonable interpretation of frequentist *confidence intervals* [@gelmanAreConfidenceIntervals2019]. 
 

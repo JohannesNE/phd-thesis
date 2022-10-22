@@ -73,7 +73,7 @@ plot_sim_gam_cyclic <- ggplot(sim, aes(X, Y)) +
   scale_color_manual(values = c(darkred, "gray50")) +
   labs(linetype = NULL, color = NULL) 
 
-save_plot("method_gam_cyclic", plot_sim_gam_cyclic)
+save_plot("method-gam-cyclic", plot_sim_gam_cyclic)
 
 ## Wiggliness
 
@@ -115,9 +115,9 @@ PP_plot <- ggplot(beats, aes(time, PP)) +
   geom_point(aes(time, y = 53, shape = 'Inspiration start'), 
              color = darkcolor, data = insp, show.legend = FALSE) +
   geom_point(aes(color = as.factor(resp_n)), 
-             data = filter(beats_pre, resp_n < 5), size = 1.6, show.legend = FALSE) +
+             data = filter(beats, resp_n < 5), size = 1.6, show.legend = FALSE) +
   geom_line(aes(color = as.factor(resp_n), group = as.factor(resp_n)), 
-            data = filter(beats_pre, resp_n < 5), show.legend = FALSE) +
+            data = filter(beats, resp_n < 5), show.legend = FALSE) +
   #scale_color_manual(values = unname(plot_colors_alt)) +
   scale_x_continuous(limits = c(0,30), expand = c(0.02,0.02)) +
   scale_y_continuous(breaks = seq(54, 60, by = 2)) +
@@ -216,7 +216,7 @@ combined_gam_PP_plot <- PP_plot + model_plot + plot_layout(nrow = 3, heights = c
   predict_plot +
   plot_annotation(tag_levels = c('a')) 
 
-save_plot('methods-gam-PP', combined_gam_PP_plot, width = 18, height = 13)
+save_plot('method-gam-PP', combined_gam_PP_plot, width = 18, height = 13)
 
 
 ## High RR GAM
