@@ -34,7 +34,7 @@
 
 \item[MFC] Mini-fluid challenge.
 
-\item[P~MSF~] Mean systemic filling pressure.
+\item[P\textsubscript{MSF}] Mean systemic filling pressure.
 
 \item[PBW] Predicted body weight.
 
@@ -67,6 +67,6 @@
 
 \item[TIPS] Transjugular intrahepatic portosystemic shunt.
 
-\item[V~T~] Tidal volume (generally in ml kg(PBW)^-1^).
+\item[V\textsubscript{T}] Tidal volume (generally in ml kg(PBW)^-1^).
 
 \item[VTI] (Left ventricular outflow tract) velocity time integral.
