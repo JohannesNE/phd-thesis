@@ -35,7 +35,7 @@ In long-duration surgery, continuous loss of fluid through bleeding, perspiratio
 
 Like every treatment, IV fluid should only be given to patients who will benefit from the fluid. 
 This is the setup for a prediction problem: can we, ahead of time, predict whether a patient will benefit from an intravenous fluid administration? 
-The first task is to define what we mean with *benefit*, and how we can measure it. This is not trivial, and it will be discussed further in section \@ref(why-fluid). 
+The first task is to define what we mean with *benefit*, and how we can measure it. This is not trivial, and it will be discussed further in Section \@ref(why-fluid). 
 Luckily, a necessary (but not sufficient) condition for benefitting from a fluid administration is that the fluid causes an increase in cardiac output (CO). 
 This can be measured, and allows us to formulate a simpler prediction problem: 
 
