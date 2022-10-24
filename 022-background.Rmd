@@ -18,7 +18,7 @@ To limit the detrimental effects of fluid overload, fluid should only be given t
 
 Clinical observations and measurements have long been used as indications that a patient might benefit from fluid administration. Examples are: tachycardia, hypotension, low central venous pressure (CVP). These clinical findings are all common in hypovolemia, but they also have several other causes. Generally, these findings are poorly related to fluid responsiveness [@marikDoesCentralVenous2013; @monnetArterialPressureAllows2011; @debackerPulsePressureVariations2005].
 
-Instead, several *dynamic* methods for predicting fluid responsiveness have been proposed. Here, *dynamic* refers to the concept of manipulating the heart’s working position on the Frank-Starling curve, and evaluating the effect on SV (either directly or *via* a surrogate measure). Preferably, the manipulation should be reversible. 
+Instead, several *dynamic* methods for predicting fluid responsiveness have been proposed. Here, *dynamic* refers to the concept of manipulating the heart's working position on the Frank-Starling curve, and evaluating the effect on SV (either directly or *via* a surrogate measure). Preferably, the manipulation should be reversible. 
 
 ### Passive leg raise
 
