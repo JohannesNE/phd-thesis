@@ -26,4 +26,6 @@ This PhD dissertation is based upon the following three papers:
 *[Published in Acta Anaesthesiologica Scandinavica, 2021. DOI: 10.1111/aas.13965](https://doi.org/10.1111/aas.13965).*
 - **Paper 2** Using generalized additive models to decompose time series and waveforms, and dissect heart–lung interaction physiology.
 *[Published in Journal of Clinical Monitoring and Computing, 2022. DOI: 10.1007/s10877-022-00873-7](http://https://doi.org/10.1007/s10877-022-00873-7).*
-- **Paper 3**
+- **Paper 3** The Effects of Respiratory Rate and Tidal Volume on Pulse Pressure Variation in
+Healthy Lungs---A Generalized Additive Model Approach May Help Overcome
+Limitations. *Submitted for publication.*
