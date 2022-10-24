@@ -52,15 +52,15 @@ To solve this set of differential equations, we define a constant CO, a fixed co
 
 A statistical model is a specific type of mathematical model that uses random variation to explain the difference between the values expected from the model, and the values that are actually measured. In medical science, statistical models are usually extremely simplified representations of the actual (or assumed) causal relationship between variables. 
 
-For example, we may believe that tidal volume (VT) affects PPV through a number of intermediate steps. But often, we are not interested in the intermediate effects—they may not even be identifiable from the data we have available. Instead we may assume that if we vary VT in a single individual, there is a linear relationship between VT and PPV:
+For example, we may believe that tidal volume ($V_T$) affects PPV through a number of intermediate steps. But often, we are not interested in the intermediate effects—they may not even be identifiable from the data we have available. Instead we may assume that if we vary $V_T$ in a single individual, there is a linear relationship between $V_T$ and PPV:
 $$
-PPV = \alpha + \beta VT.
+PPV = \alpha + \beta V_T.
 $$
-If we measure PPV thrice, and only change VT between measurements, we expect that PPV will vary according to the linear model above. Additionally, we also anticipate some variation in PPV that is not explained by the change in VT. This additional variation can be due to a physiological change over time, unrelated to the VT change, or due to imprecise measurements. Unexplained variation is traditionally represented by the greek letter $\epsilon$, creating the statistical linear model:
+If we measure PPV thrice, and only change $V_T$ between measurements, we expect that PPV will vary according to the linear model above. Additionally, we also anticipate some variation in PPV that is not explained by the change in $V_T$. This additional variation can be due to a physiological change over time, unrelated to the $V_T$ change, or due to imprecise measurements. Unexplained variation is traditionally represented by the greek letter $\epsilon$, creating the statistical linear model:
 $$
-PPV = \alpha + \beta VT + \epsilon.
+PPV = \alpha + \beta V_T + \epsilon.
 $$
-The statistical analysis of such a model quantifies how the independent variables (here VT) and random variation ($\epsilon$) together explain the observed variation in the dependent variable (here PPV), and, importantly, how certain we are of each component’s contribution.
+The statistical analysis of such a model quantifies how the independent variables (here $V_T$) and random variation ($\epsilon$) together explain the observed variation in the dependent variable (here PPV), and, importantly, how certain we are of each component’s contribution.
 
 ## Paper 1 - The mini-fluid challenge
 
@@ -223,7 +223,7 @@ knitr::include_graphics("figures/method-gam-CVP.png")
 
 ## Paper 3 - Effects of Ventilator Settings on PPV
 
-Paper 3 investigates PPV’s ability to predict the CO response to a fluid bolus, and especially, how ventilator settings affect this ability. We expected that PPV at VT=10 ml kg^-1^ and RR=10 min^-1^ would predict fluid responsiveness with high accuracy, but that the accuracy would fall with lower VT and higher RR. The CO response was evaluated from pulse contour analysis; I will, therefore, present a section about the accuracy of pulse contour derived CO.
+Paper 3 investigates PPV’s ability to predict the CO response to a fluid bolus, and especially, how ventilator settings affect this ability. We expected that PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^ would predict fluid responsiveness with high accuracy, but that the accuracy would fall with lower $V_T$ and higher RR. The CO response was evaluated from pulse contour analysis; I will, therefore, present a section about the accuracy of pulse contour derived CO.
 
 The study was approved by the regional ethics committee (January 2020, case 1-10-72-245-19) and registered on ClinicalTrials.gov (March 2020, NCT04298931). It was conducted at Aarhus University Hospital from May 2020 to June 2021.
 
@@ -231,7 +231,7 @@ Paper 3 presents a number of statistical methods including Bland-Altman analysis
 
 ### Protocol
 
-The experiment protocol was initiated after anaesthesia induction, in relation to a planned 250 ml fluid administration, where the patient was considered hemodynamically stable by the treating anaesthesiologist. First, the patient was ventilated with ten different ventilator settings for 30 s each. Each setting was unique combination of VT between 4 and 10 ml kg^-1^ (predicted body weight [@theacuterespiratorydistresssyndromenetworkVentilationLowerTidal2000]) and RR between 10 and 31 min^-1^ (see Figure \@ref(fig:methods-vent-settings)). Then, a two-minute period was used to establish a baseline SV, after which a 250 fluid bolus was administered. If SV increased by more than 10% during the fluid administration, the patient classified as a fluid responder.
+The experiment protocol was initiated after anaesthesia induction, in relation to a planned 250 ml fluid administration, where the patient was considered hemodynamically stable by the treating anaesthesiologist. First, the patient was ventilated with ten different ventilator settings for 30 s each. Each setting was unique combination of $V_T$ between 4 and 10 ml kg^-1^ (predicted body weight [@theacuterespiratorydistresssyndromenetworkVentilationLowerTidal2000]) and RR between 10 and 31 min^-1^ (see Figure \@ref(fig:methods-vent-settings)). Then, a two-minute period was used to establish a baseline SV, after which a 250 fluid bolus was administered. If SV increased by more than 10% during the fluid administration, the patient classified as a fluid responder.
 
 ```{r methods-vent-settings}
 #| out.width="10cm",
@@ -240,7 +240,7 @@ The experiment protocol was initiated after anaesthesia induction, in relation t
 knitr::include_graphics("figures/methods-vent-settings.png")
 ```
 
-(ref:methods-vent-settings) Example of the ventilation protocol. Dots represent combinations of VT and RR. Settings were applied in numerical order. The order of RR=17, 24 and 31 min^-1^ were drawn at random for each subject. Curved lines represent settings that should result in equal alveolar ventilation, assuming a dead space volume of 1 ml kg^-1^. 
+(ref:methods-vent-settings) Example of the ventilation protocol. Dots represent combinations of $V_T$ and RR. Settings were applied in numerical order. The order of RR=17, 24 and 31 min^-1^ were drawn at random for each subject. Curved lines represent settings that should result in equal alveolar ventilation, assuming a dead space volume of 1 ml kg^-1^. 
 
 ### PPV calculation
 
@@ -335,7 +335,7 @@ The shaded areas in Figure \@ref(fig:method-bayes-update) contain 95% of the pro
 
 ### The mixed-effects model in Paper 3
 
-A main aim in Paper 3 is to understand how tidal volume (VT) and respiratory rate (RR) impact PPV. The experiment has a hierarchical structure, where PPV is measured repeatedly in each subject, but with different RR and VT settings; we also calculate PPV with two different methods (PPV~Classic~ and PPV~GAM~) and want to know if VT and RR impact PPV differently depending on the method. In Paper 3, we use a Bayesian generalized mixed-effects model to find the effects of VT, RR and PPV-method on PPV. Below, I will walk through this model.
+A main aim in Paper 3 is to understand how tidal volume ($V_T$) and respiratory rate (RR) impact PPV. The experiment has a hierarchical structure, where PPV is measured repeatedly in each subject, but with different RR and $V_T$ settings; we also calculate PPV with two different methods (PPV~Classic~ and PPV~GAM~) and want to know if $V_T$ and RR impact PPV differently depending on the method. In Paper 3, we use a Bayesian generalized mixed-effects model to find the effects of $V_T$, RR and PPV-method on PPV. Below, I will walk through this model.
 
 First, we specifiy a *likelihood function*. This specifies how likely different PPV values are given a mean, $\mu$, and a variance parameter, $\sigma$.
 
@@ -355,7 +355,7 @@ log(\mu_i) =
 \alpha_{subject[i]}.
 $$
 
-Specifically, the linear model is for $log(\mu)$. Therefore, the exponential of the parameters correspond to relative effects on PPV. $e^{\beta1}$ and $e^{\beta2}$ are the effects of each VT and RR setting for each method relative to the effect at VT=10 ml kg^-1^ and RR=10 min^-1^.  $e^{\beta0}$ is the median PPV at VT=10 ml kg^-1^ and RR=10 min^-1^ for each method. $\alpha$ is a random effect of each subject. This random effect captures that subjects have individual levels of PPV across ventilator settings---it captures the between-individual variation in PPV.
+Specifically, the linear model is for $log(\mu)$. Therefore, the exponential of the parameters correspond to relative effects on PPV. $e^{\beta1}$ and $e^{\beta2}$ are the effects of each $V_T$ and RR setting for each method relative to the effect at $V_T$=10 ml kg^-1^ and RR=10 min^-1^.  $e^{\beta0}$ is the median PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^ for each method. $\alpha$ is a random effect of each subject. This random effect captures that subjects have individual levels of PPV across ventilator settings---it captures the between-individual variation in PPV.
 
 The random effect, $\alpha$, is estimated for each subject. Instead of estimating an independent value for each subject, we assume that all $\alpha$ for all subjects is draw from a shared normal distribution:
 

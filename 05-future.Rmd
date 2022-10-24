@@ -27,7 +27,7 @@ With this PhD I have tackled challenges in fluid responsiveness prediction durin
 
 **Paper 2** introduces generalized additive models (GAMs) as a tool for analysing medical time series and waveforms. Two motivated examples are presented. The first is relatively simple and has a direct clinical use: by modelling a PP time series with a GAM, we can derive PPV in a robust manner that should work even with few beats per ventilation (low HR/RR). In the second example, we demonstrate that a GAM can be used to decompose a CVP waveform into cardiac and ventilatory components.
 
-**Paper 3** presents a clinical study of the effects of VT and RR on PPV. The results indicate that using a GAM derribed PPV may enable fluid responsiveness prediction despite low HR/RR, and that it may be valuable to correct PPV for the applied VT.
+**Paper 3** presents a clinical study of the effects of $V_T$ and RR on PPV. The results indicate that using a GAM derribed PPV may enable fluid responsiveness prediction despite low HR/RR, and that it may be valuable to correct PPV for the applied $V_T$.
 
 ## Future research
 
@@ -39,11 +39,11 @@ SV_{500} = \beta_1 \cdot SV_{100} + \beta_2 \cdot SV_{baseline}.
 $$
 This is essentially a second order autoregressive model. The part that is still unclear to me, is how to turn the fit of this model into a simple clinical tool and how to report its accuracy.
 
-The GAM-method for estimating PPV, presented in Paper 2, should be evaluated as a predictor of fluid responsiveness in future studies. To include patients with a higher average fluid response, the study protocol should be shorter than what was used in Paper 3. A fast protocol, with e.g. a two minute baseline measurement of both SV and PPV, immediately followed by a fluid challenge, would allow evaluation during a more hemodynamically unstable state. This setup could be run in an ICU, with ARDS patients on lung-protective ventilation, to assess the performance of GAM-derived PPV in a setting with low HR/RR. It could also be run in a setting with a large variation in VT, to assess the value of using VT-corrected PPV.
+The GAM-method for estimating PPV, presented in Paper 2, should be evaluated as a predictor of fluid responsiveness in future studies. To include patients with a higher average fluid response, the study protocol should be shorter than what was used in Paper 3. A fast protocol, with e.g. a two minute baseline measurement of both SV and PPV, immediately followed by a fluid challenge, would allow evaluation during a more hemodynamically unstable state. This setup could be run in an ICU, with ARDS patients on lung-protective ventilation, to assess the performance of GAM-derived PPV in a setting with low HR/RR. It could also be run in a setting with a large variation in $V_T$, to assess the value of using $V_T$-corrected PPV.
 
-The data presented in Paper 3 contains four VT challenges for each subject (a VT challenge analyses the effect on PPV of increasing VT from 6 to 8 ml kg^-1^). There is currently a medical Master’s student analysing the effect of RR on the response to the VT challenge. 
+The data presented in Paper 3 contains four $V_T$ challenges for each subject (a $V_T$ challenge analyses the effect on PPV of increasing $V_T$ from 6 to 8 ml kg^-1^). There is currently a medical Master’s student analysing the effect of RR on the response to the $V_T$ challenge. 
 
-In Paper 2, we also describe how a GAM can be used to decompose a waveform. A proposed use case of this technique is that the $x'$ descend of the CVP may represent the right ventricle's speed of contraction, and that a high respiratory variation in this feature could indicate that the right ventricle is sensitive to changes in afterload. It would be interesting to investigate the association between the slope of the $x’$ descend and TAPSE (ultrasound derived) before and after an increase in PEEP, and whether the respiratory variation in the $x'$ descend could predict the effect of the PEEP increase. 
+In Paper 2, we also describe how a GAM can be used to decompose a waveform. A proposed use case of this technique is that the $x'$ descend of the CVP may represent the right ventricle's speed of contraction, and that a high respiratory variation in this feature could indicate that the right ventricle is sensitive to changes in afterload. It would be interesting to investigate the association between the slope of the $x'$ descend and TAPSE (ultrasound derived) before and after an increase in PEEP, and whether the respiratory variation in the $x'$ descend could predict the effect of the PEEP increase. 
 
 ## Ongoing challenges in intraoperative fluid responsiveness prediction
 
