@@ -27,7 +27,7 @@ The passive leg raise manoeuvre attempts to evaluate the effect of a fluid bolus
 ```{r background-plr-test}
 #| out.width="10cm",
 #| fig.cap="(ref:background-plr-test)",
-# fig.scap="Passive leg raise manoeuvre"
+#| fig.scap="Passive leg raise manoeuvre"
 knitr::include_graphics("figures/background-plr-test.png")
 ```
 
@@ -35,7 +35,7 @@ knitr::include_graphics("figures/background-plr-test.png")
 
 ### The mini-fluid challenge
 
-In the OPTIMISE trial, all fluid challenges were 250 ml, and each bolus was used to determine whether the next bolus should be given. This can be seen as a form of fluid responsiveness prediction. If the patient does not respond to the bolus, there is a low probability that a subsequent bolus will elicit a response. If the patient does respond, the probability is higher, and a subsequent bolus is given (and so on ...). If these boluses are given often to test fluid responsiveness in a non-responsive patient, it can accumulate to a significant amount of unnecessary fluid. A potential solution was proposed by Muller et al in 2011: the mini-fluid challenge (MFC) [@Muller2011].
+In the OPTIMISE trial, all fluid challenges were 250 ml, and each bolus was used to determine whether the next bolus should be given. This can be seen as a form of fluid responsiveness prediction. If the patient does not respond to the bolus, there is a low probability that a subsequent bolus will elicit a response. If the patient does respond, the probability is higher, and a subsequent bolus is given (and so on ...). If these boluses are given often to test fluid responsiveness in a non-responsive patient, it can accumulate to a significant amount of unnecessary fluid. A potential solution was proposed by Muller et al. in 2011: the mini-fluid challenge (MFC) [@Muller2011].
 
 With a MFC, a low volume of fluid, 100 ml, is used to test fluid responsiveness. If the patient responds, 400 ml of fluid is subsequently given. Thus, if a patient is non-responsive to fluid, only 100 ml of ineffective fluid have been given.
 
@@ -48,18 +48,18 @@ Ventilator induced pulse pressure variation (PPV) is the cyclic variation in pul
 ```{r background-ppv-example}
 #| out.width="12cm",
 #| fig.cap="(ref:background-ppv-example)",
-# fig.scap="short caption"
+#| fig.scap="Example of ventilator induced PPV"
 knitr::include_graphics("figures/background-ppv-example.png")
 ```
 
-(ref:background-ppv-example) Example of ventilator induced pulse pressure variation in a patient ventilated with a VT of 8 ml kg^-1^ and a respiratory rate of 17 min^-1^. ABP, arterial blood pressure. PP, pulse pressure
+(ref:background-ppv-example) Example of ventilator-induced PPV in a patient ventilated with a VT of 8 ml kg^-1^ and a respiratory rate of 17 min^-1^. ABP, arterial blood pressure. PP, pulse pressure
 
 Mechanical ventilation affects circulation in multiple ways [@vistisenWhatAnaesthesiologistNeeds2019]. The four principal factors contributing to PPV are illustrated in Figure \@ref(fig:background-heart-lung-interactions). During inspiration, alveolar pressure squeezes out blood from lung capillaries and veins, increasing left-ventricular preload (1). Also, increasing lung volume raises pleural pressure and aids the flow of blood from the thorax, reducing left-ventricular afterload (2). Both effects (1 and 2) tend to increase left-ventricular SV during inspiration. Conversely, right-ventricular preload is decreased as the increased pleural pressure reduces venous return (3), and right-ventricular afterload is increased by the alveolar pressure. These effects (3 and 4) decrease right-ventricular SV during inspiration. A decrease in right-ventricular SV will decrease left-ventricular preload, but this effect is delayed through the pulmonary circulation. The decreased SV from the right ventricle affects the left ventricle a few seconds later---at the beginning of the expiration---making all four effects contribute to respiratory variation in left-ventricular SV. In most patients, the effect on the right-ventricular preload (3) is the main mediator of ventilator-induced stroke volume variation (SVV) [@michardChangesArterialPressure2005]. 
 
 ```{r background-heart-lung-interactions}
 #| out.width="8cm",
 #| fig.cap="(ref:background-heart-lung-interactions)",
-# fig.scap="short caption"
+#| fig.scap="Heart-lung interaction physiology"
 knitr::include_graphics("figures/background-heart-lung-interactions.png")
 ```
 
@@ -70,15 +70,15 @@ Pulse pressure (PP) is directly proportional to SV for a given arterial complian
 ```{r background-starling-ppv}
 #| out.width="10cm",
 #| fig.cap="(ref:background-starling-ppv)",
-# fig.scap="short caption"
+#| fig.scap="PPV reflects the current slope on the Frank-Starling curve"
 knitr::include_graphics("figures/background-starling-ppv.png")
 ```
 
-(ref:background-starling-ppv) Illustration of how pulse pressure variation reflects the current slope on the Frank-Starling curve, and, therefore, is an indicator of fluid responsiveness.  
+(ref:background-starling-ppv) Illustration of how PPV reflects the current slope on the Frank-Starling curve, and, therefore, is an indicator of fluid responsiveness.  
 
 ### Pulse pressure variation as a predictor of fluid responsiveness
 
-In the late 1900s, a number of studies found that systolic pressure variation increased with lower circulating volume in both dogs [@perelSystolicBloodPressure1987; @pizovSystolicPressureVariation1988] and humans [@coriatComparisonSystolicBlood1994; @rookeEffectGradedHemorrhage1995]. In 1998, Tavernier et al investigated the more clinically relevant question: did high systolic pressure variation predict fluid responsiveness?---it did [@tavernierSystolicPressureVariation1998]. The following couple years, results by Michard et al indicated that PPV was an even better predictor [@michardClinicalUseRespiratory1999; @michardRelationRespiratoryChanges2000a]. This finding was supported in a systematic review from 2009 that reported a pooled AUROC of 0.94, 95%CI [0.92; 0.96] [@marikDynamicChangesArterial2009].
+In the late 1900s, a number of studies found that systolic pressure variation increased with lower circulating volume in both dogs [@perelSystolicBloodPressure1987; @pizovSystolicPressureVariation1988] and humans [@coriatComparisonSystolicBlood1994; @rookeEffectGradedHemorrhage1995]. In 1998, Tavernier et al. investigated the more clinically relevant question: did high systolic pressure variation predict fluid responsiveness?---it did [@tavernierSystolicPressureVariation1998]. The following couple years, results by Michard et al. indicated that PPV was an even better predictor [@michardClinicalUseRespiratory1999; @michardRelationRespiratoryChanges2000a]. This finding was supported in a systematic review from 2009 that reported a pooled AUROC of 0.94, 95%CI [0.92; 0.96] [@marikDynamicChangesArterial2009].
 
 ### Other dynamic preload indicators
 
@@ -86,7 +86,7 @@ During the past two decades, other methods have emerged that utilise reversible 
 
 Of these, the EEOT is the best validated. The method utilises that an transient end-expiratory occlusion manoeuvre (15 s) increases the pressure gradient for venous return, causing a right-shift on the Frank-Starling curve [@monnetPredictingVolumeResponsiveness2009]. If the flow response to the EEOT is high, patients are likely to be fluid responders. A systematic review of this method reported an AUROC of 0.96 95%CI [0.92; 1.00] for predicting fluid responsiveness [@messinaFunctionalHemodynamicTests2019]. The drawback of the EEOT is that it requires active intervention, and patients must be mechanically ventilated with no or little breathing effort. It is best validated with continuous flow monitoring as the predictor, though an increase in PP with end-expiratory occlusion seems to predict fluid responsiveness as well [@monnetPredictionFluidResponsiveness2022]. Also, it may work best when the baseline VT is larger than 8 ml kg^-1^ [@myatraChangesPulsePressure2017].
 
-The VT challenge consists of changing the VT from 6 ml kg^-1^ to 8 ml kg^-1^, causing an increase in PPV [@myatraChangesPulsePressure2017]. Although the mean Frank-Starling curve operating position is probably not altered much with the VT challenge, the manoeuvre increases PPV and the increase should be higher in fluid responders. In a recent systematic review that only included a few VT challenge studies, the VT challenge predicted fluid responsiveness with an AUROC of 0.92 (no CI reported) [@alvaradosanchezPredictorsFluidResponsiveness2021]. The VT challenge requires an active intervention, and has the same limitations as PPV itself. When the VT challenge is done, and VT is 8 ml kg^-1^, the VT limitation is of course removed. The PPV at a VT of 8 ml kg^-1^ is in itself predictive of fluid responsiveness, though the VT challenge seems to offer some additional predictive accuracy [@myatraChangesPulsePressure2017]. However, the performance of the VT challenges has rarely been compared to the performance of PPV at VT=8 ml kg^-1^, and Xu et al, 2022 showed no difference in performance between the two predictors [@xuEfficacyUsingTidal2022].
+The VT challenge consists of changing the VT from 6 ml kg^-1^ to 8 ml kg^-1^, causing an increase in PPV [@myatraChangesPulsePressure2017]. Although the mean Frank-Starling curve operating position is probably not altered much with the VT challenge, the manoeuvre increases PPV and the increase should be higher in fluid responders. In a recent systematic review that only included a few VT challenge studies, the VT challenge predicted fluid responsiveness with an AUROC of 0.92 (no CI reported) [@alvaradosanchezPredictorsFluidResponsiveness2021]. The VT challenge requires an active intervention, and has the same limitations as PPV itself. When the VT challenge is done, and VT is 8 ml kg^-1^, the VT limitation is of course removed. The PPV at a VT of 8 ml kg^-1^ is in itself predictive of fluid responsiveness, though the VT challenge seems to offer some additional predictive accuracy [@myatraChangesPulsePressure2017]. However, the performance of the VT challenges has rarely been compared to the performance of PPV at VT=8 ml kg^-1^, and Xu et al., 2022 showed no difference in performance between the two predictors [@xuEfficacyUsingTidal2022].
 
 ## Limitations to fluid responsiveness prediction in the operating room
 
@@ -106,7 +106,7 @@ The use of blood pressure swings induced by heart-lung interactions by mechanica
 
 Dissecting the effects of VT and RR on PPV is the topic of Paper 3, and Paper 2 presents an alternative method for calculating PPV, which may be less sensitive to low HR/RR.
 
-The ventilation-related limitations to PPV presented above are not the only situations where PPV may be unreliable. I will present some additional limitations here, but these will not be addressed further in this thesis. The most common limitations to the use of PPV has been summarised with the **LIMITS** acronym [@michardApplicabilityPulsePressure2015]: **L** is for low HR/RR, which is one of the limitations addressed in this thesis. **I** is for irregular heart beats, representing that arrhythmia and frequent extrasystoles causes PPV that is not just related to ventilatory preload variation, but also related to beat-to-beat interval. Wyffels et al, 2021 present a promising method for extracting ventilatory PPV in patients with atrial fibrillation, but this has not yet been clinically validated [@wyffelsNewAlgorithmQuantify2021]. **M** is for mechanical ventilation with VT < 8 ml kg^-1^: the other limitation addressed in this thesis. **I** is for increased abdominal pressure, which primarily refers to laparoscopic surgery. High abdominal pressure decreases thoracic compliance, potentially increasing PPV for a given VT [@magderClinicalUsefulnessRespiratory2004]. **T** is for open thorax, where variation in intrathoracic pressure is eliminated. And **S** is for spontaneous breathing, which also refers to minimally sedated patients whose ventilation is supported by a ventilator. Spontaneous breathing reduces or inverts the ventilatory variation in thoracic pressure, making any resulting PPV difficult to interpret.
+The ventilation-related limitations to PPV presented above are not the only situations where PPV may be unreliable. I will present some additional limitations here, but these will not be addressed further in this thesis. The most common limitations to the use of PPV has been summarised with the **LIMITS** acronym [@michardApplicabilityPulsePressure2015]: **L** is for low HR/RR, which is one of the limitations addressed in this thesis. **I** is for irregular heart beats, representing that arrhythmia and frequent extrasystoles causes PPV that is not just related to ventilatory preload variation, but also related to beat-to-beat interval. Wyffels et al., 2021 present a promising method for extracting ventilatory PPV in patients with atrial fibrillation, but this has not yet been clinically validated [@wyffelsNewAlgorithmQuantify2021]. **M** is for mechanical ventilation with VT < 8 ml kg^-1^: the other limitation addressed in this thesis. **I** is for increased abdominal pressure, which primarily refers to laparoscopic surgery. High abdominal pressure decreases thoracic compliance, potentially increasing PPV for a given VT [@magderClinicalUsefulnessRespiratory2004]. **T** is for open thorax, where variation in intrathoracic pressure is eliminated. And **S** is for spontaneous breathing, which also refers to minimally sedated patients whose ventilation is supported by a ventilator. Spontaneous breathing reduces or inverts the ventilatory variation in thoracic pressure, making any resulting PPV difficult to interpret.
 
 ## Aims
 

@@ -1,0 +1,56 @@
+---
+#########################################
+# options for knitting a single chapter #
+#########################################
+output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+    citation_package: biblatex
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+documentclass: book
+#bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
+---
+
+```{block type='savequote', quote_author='(ref:altman-quote)', echo=TRUE, include=knitr::is_latex_output()}
+"Statistics used to be seen as analysing data, the combination of numbers. I’ve come to see that as the least important part. The difficult bit is how you design a study, collect the data, avoid bias and provide an honest representation of what you found."
+```
+
+(ref:altman-quote) --- **Douglas Altman**
+
+
+# Conclusion and future research
+
+With this PhD I have tackled challenges in fluid responsiveness prediction during surgery. This was done through three different types of papers: Paper 1 critiques a specific research method, Paper 2 introduces a statistical method and presents novel uses that may be relevant for fluid responsiveness prediction, and Paper 3 is a clinical.  
+
+**Paper 1** unravels a methodological problem associated with a specific method for predicting fluid responsiveness: the mini-fluid challenge (MFC). The bias that occurs in these studies due to shared measurement error, is a common pitfall in studies of *change* in some measurement. While the problem is especially clear in the MFC studies, it is a problem that is important to keep in mind when designing a fluid responsiveness study or basically any study where *change* is an outcome of interest.
+
+**Paper 2** introduces generalized additive models (GAMs) as a tool for analysing medical time series and waveforms. Two motivated examples are presented. The first is relatively simple and has a direct clinical use: by modelling a PP time series with a GAM, we can derive PPV in a robust manner that should work even with few beats per ventilation (low HR/RR). In the second example, we demonstrate that a GAM can be used to decompose a CVP waveform into cardiac and ventilatory components.
+
+**Paper 3** presents a clinical study of the effects of VT and RR on PPV. The results indicate that using a GAM derribed PPV may enable fluid responsiveness prediction despite low HR/RR, and that it may be valuable to correct PPV for the applied VT.
+
+## Future research
+
+Future studies of the MFC should take great care to minimise the problems presented in Paper 1. I am aware of one MFC study published after the publication of Paper 1 [@abdullahShortTimeLow2022]. This study used the same problematic design as previous MFC studies---reportedly to easen comparison with previous MFC studies. They do, however, acknowledge that the design might be problematic. 
+
+Also, it may be possible to do an unbiased reanalysis of data from the existing MFC studies with only three SV measurements. I do not have a complete recipe for this---nor the data---but a simple regression model of absolute SV measurements, rather than changes, is probably a good starting point. Example:
+$$
+SV_{500} = \beta_1 \cdot SV_{100} + \beta_2 \cdot SV_{baseline}.
+$$
+This is essentially a second order autoregressive model. The part that is still unclear to me, is how to turn the fit of this model into a simple clinical tool and how to report its accuracy.
+
+The GAM-method for estimating PPV, presented in Paper 2, should be evaluated as a predictor of fluid responsiveness in future studies. To include patients with a higher average fluid response, the study protocol should be shorter than what was used in Paper 3. A fast protocol, with e.g. a two minute baseline measurement of both SV and PPV, immediately followed by a fluid challenge, would allow evaluation during a more hemodynamically unstable state. This setup could be run in an ICU, with ARDS patients on lung-protective ventilation, to assess the performance of GAM-derived PPV in a setting with low HR/RR. It could also be run in a setting with a large variation in VT, to assess the value of using VT-corrected PPV.
+
+The data presented in Paper 3 contains four VT challenges for each subject (a VT challenge analyses the effect on PPV of increasing VT from 6 to 8 ml kg^-1^). There is currently a medical Master’s student analysing the effect of RR on the response to the VT challenge. 
+
+In Paper 2, we also describe how a GAM can be used to decompose a waveform. A proposed use case of this technique is that the $x'$ descend of the CVP may represent the right ventricle's speed of contraction, and that a high respiratory variation in this feature could indicate that the right ventricle is sensitive to changes in afterload. It would be interesting to investigate the association between the slope of the $x’$ descend and TAPSE (ultrasound derived) before and after an increase in PEEP, and whether the respiratory variation in the $x'$ descend could predict the effect of the PEEP increase. 
+
+## Ongoing challenges in intraoperative fluid responsiveness prediction
+
+The accuracy of any fluid responsiveness study hinges on the accuracy of the CO or SV measurement. These measurements are generally not very accurate (as described in section ref:methods-co), and uncertainty of the outcome sets a hard limit to how accurate a predictor can be. It would be highly valuable to do rigorous investigations of the agreement between different methods for measuring CO, in a setting where we can trust the *gold standard*, e.g. using Fick’s principle for CO estimation in a very stable setting or using magnetic resonance velocity mapping [@arhedenLefttoRightCardiacShunts1999].
+
+In fluid responsiveness studies, the outcome is generally dichotomised into *fluid responders* (e.g. $\Delta SV > 15 \%$) and *non-responders*. This is probably done to make the results simpler to interpret, but the choice of the threshold is somewhat arbitrary, and dichotomisation decreases the power of the analysis [@altmanCostDichotomisingContinuous2006]. It is possible to have the power of the continuous analysis, but report the prediction accuracy dichotomously, by, e.g., reporting the PPV value where 80% of the prediction interval for $\Delta SV$ is above 15%. [^paper3] It would also be interesting to start analysing fluid responsiveness prediction studies using absolute measurements of flow rather than changes. Changes are notoriously difficult to work with [@tuRevisitingRelationChange2007; @enevoldsenExistingFluidResponsiveness2022], and relative change can be especially problematic [@tornqvistHowShouldRelative1985]. If we use a regression model to predict the body weight indexed SV (SVI) after a fluid challenge using PPV and the baseline SVI, we can still evaluate the predictive ability of PPV, and we can investigate whether the baseline SVI level modifies this predictive ability. 
+
+[^paper3]: We did not do this in Paper 3, because the quality and distribution of our fluid response measurement was not good enough to get any meaningful results for prediction accuracy. We presented the standard analysis, because it was registered as the primary outcome of the study. 
+
+It is important to be aware that the predictive performance, e.g. AUROC, reported from a fluid responsiveness prediction study is not simply a measure of the test, but a measure of the test *in that setting* [@hoisethPredictingFluidResponsiveness2018]. In some fluid responsiveness studies the is a wide, or even bimodal, distribution of fluid responses, with changes in SV or CO ranging from -10% to 50% [@michardClinicalUseRespiratory1999; @michardRelationRespiratoryChanges2000; @feisselPlethysmographicDynamicIndices2007; @cannessonRespiratoryVariationsPulse2007]. These studies report accurate fluid responsiveness prediction. In studies where most subjects have a fluid response close to 10%, the AUROC will likely be low, and the authors may conclude that the investigated method did not work. Really, the results from the two types of studies may be entirely compatible, with one study including only the most difficult subset of the other study. This would be clear, if we compared parameters from continuous regression analyses---rather than dichotomous classification characteristics---across studies. 

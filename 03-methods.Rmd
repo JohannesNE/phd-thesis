@@ -84,7 +84,7 @@ The second problem is more subtle. Measurements of SV are influenced by some ran
 ```{r method-reg-to-the-mean}
 #| out.width="12cm",
 #| fig.cap="(ref:method-reg-to-the-mean)",
-# fig.scap="Regression towards the mean"
+#| fig.scap="Regression towards the mean"
 knitr::include_graphics("figures/method-reg-to-the-mean.png")
 ```
 

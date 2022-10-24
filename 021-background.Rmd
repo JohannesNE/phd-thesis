@@ -35,11 +35,11 @@ Fluid should only be administered when the patient is likely to benefit from it 
 ```{r background-monnet2018-aic-fluid2organ}
 #| out.width="14cm",
 #| fig.cap="(ref:background-monnet2018-aic-fluid2organ)",
-#| fig.scap="Steps from fluid administration to benefit"
+#| fig.scap="Steps from fluid administration to patient benefit"
 knitr::include_graphics("figures/background-monnet2018-aic-fluid2organ.png")
 ```
 
-(ref:background-monnet2018-aic-fluid2organ) Illustration of the physiological steps from fluid administration to benefit. Reprinted from Monnet et al, 2018 [@monnetMyPatientHas2018] ([CC BY](https://creativecommons.org/licenses/by/4.0/)).
+(ref:background-monnet2018-aic-fluid2organ) Illustration of the physiological steps from fluid administration to benefit. Reprinted from Monnet et al., 2018 [@monnetMyPatientHas2018] ([CC BY](https://creativecommons.org/licenses/by/4.0/)).
 
 Another common aim with IV fluid therapy is to resuscitate dehydration, characterised by hypertonicity (excess salt) due to loss of water---e.g., due to gastroenteritis or diabetic polyuria. While hypovolemia can be corrected rapidly with IV infusion of an isotonic fluid, hypertonicity should be corrected slowly through oral intake of water or with IV hypotonic fluid [@bhaveVolumeDepletionDehydration2011]. This dissertation focuses on fluid as a treatment of hypovolemia, and dehydration/hypertonicity will not be discussed further.
 
@@ -62,7 +62,7 @@ The relation between cardiac preload and SV is often termed the "Frank-Starling 
 ```{r background-frank1895}
 #| out.width="12cm",
 #| fig.cap="(ref:background-frank1895)",
-# fig.scap="Otto Frank's tracings"
+#| fig.scap="Otto Frank's tracings"
 knitr::include_graphics("figures/background-frank1895.png")
 ```
 
@@ -73,13 +73,13 @@ A clinical consequence of the Frank-Starling mechanism is that a patient’s SV 
 ```{r background-starling-curve}
 #| out.width="10cm",
 #| fig.cap="(ref:background-starling-curve)",
-# fig.scap="Illustration of the Frank-Starling mechanism"
+#| fig.scap="Illustration of the Frank-Starling mechanism"
 knitr::include_graphics("figures/background-starling-curve.png")
 ```
 
 (ref:background-starling-curve) Illustration of the Frank-Starling mechanism---the relation between the end-diastolic volume and the stroke volume. If end-diastolic volume is increased in a heart operating on the steep part of the curve (e.g. by a fluid bolus) stroke volume will increase. If the heart is already operating on the flat part of the curve, no increase in stroke volume can be expected.
 
-A few concepts are used interchangeably for both the cause and the effect in the Frank-Starling relationship. Starling et al note that the physiological relationship must be between the length of a piece of cardiac muscle and the tension it exerts when it contracts, but, since they are not able to measure these in an intact heart, assume that ventricular  volume is linearly related to muscle length, and that ventricular pressure is linearly related to muscle tension. They appropriately note that this assumption will become increasingly incorrect with distension and a more globular shape of the ventrice [@pattersonRegulationHeartBeat1914]. Other terms used as proxies for end-diastolic muscle length are preload and end-diastolic pressure. Preload should be synonymous with end-diastolic volume or muscle length, but the term is often not well defined. End-diastolic pressure is of course related to muscle length, but it also depends on static mechanical factors (e.g. fibrosis), external pressure and the shape and size of the heart. Proxies for the systolic muscle tension include afterload, systolic ventricular pressure, stroke volume and mechanical work. 
+A few concepts are used interchangeably for both the cause and the effect in the Frank-Starling relationship. Starling et al. note that the physiological relationship must be between the length of a piece of cardiac muscle and the tension it exerts when it contracts, but, since they are not able to measure these in an intact heart, assume that ventricular  volume is linearly related to muscle length, and that ventricular pressure is linearly related to muscle tension. They appropriately note that this assumption will become increasingly incorrect with distension and a more globular shape of the ventrice [@pattersonRegulationHeartBeat1914]. Other terms used as proxies for end-diastolic muscle length are preload and end-diastolic pressure. Preload should be synonymous with end-diastolic volume or muscle length, but the term is often not well defined. End-diastolic pressure is of course related to muscle length, but it also depends on static mechanical factors (e.g. fibrosis), external pressure and the shape and size of the heart. Proxies for the systolic muscle tension include afterload, systolic ventricular pressure, stroke volume and mechanical work. 
 
 ### Venous return and mean systemic filling pressure
 
@@ -88,7 +88,7 @@ In steady state, blood circulates continuously from the heart to the arteries, t
 ```{r background-venous-return-simple}
 #| out.width="8cm",
 #| fig.cap="(ref:background-venous-return-simple)",
-# fig.scap="Simple model of venous return"
+#| fig.scap="Simple model of venous return"
 knitr::include_graphics("figures/background-venous-return-simple.png")
 ```
 
@@ -97,7 +97,7 @@ knitr::include_graphics("figures/background-venous-return-simple.png")
 ```{r background-venous-return-art}
 #| out.width="8cm",
 #| fig.cap="(ref:background-venous-return-art)",
-# fig.scap="The arterial system in the simple model of venous return"
+#| fig.scap="The arterial system in the simple model of venous return"
 knitr::include_graphics("figures/background-venous-return-art.png")
 ```
 
@@ -114,7 +114,7 @@ As described in the section above, the Frank-Starling curve describes the relati
 ```{r background-guyton}
 #| out.width="16cm",
 #| fig.cap="(ref:background-guyton)",
-# fig.scap="Guyton's venous return graph"
+#| fig.scap="Guyton's venous return graph"
 knitr::include_graphics("figures/background-guyton.png")
 ```
 
