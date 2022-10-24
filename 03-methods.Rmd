@@ -29,11 +29,13 @@ This chapter introduces and discusses the methods used in the three studies. In 
 Most scientists will be familiar with using *model* as a synonym for both a statistical analysis, a mental representation of a complex system or a computer simulation. However, the word's exact meaning is often not specified and has to be assumed from context. I will use this section to present the different meanings of the term *model*, focusing on those that are relevant for the present dissertation: specifically, I will describe the use of conceptual representations of complex systems, mathematical representations of complex systems and the related statistical models. 
 
 ### A model can be a mental and communicative tool
+
 Consider the four effects of ventilation, causing pulse pressure variation, presented in Section \@ref(heart-lung-interaction-physiology). To recap, in the right ventricle, inspiration lowers SV by limiting venous return and increasing afterload; in the left ventricle, inspiration increases pulmonary venous return by squeezing blood from the lungs and reduces afterload by increasing thoracic pressure relative to the remaining arterial pressure. Together these effects cause PPV. Of course, real physiology is more complex, this simple *model* may aid a scientist in designing a study investigating the effect of e.g. PEEP on PPV, and it can give colleagues a common reference when discussing the interpretation of a high PPV in a patient with right ventricular failure. Without a common model, miscommunication will likely happen as each colleague has their own private mental model of the situation, and may assume that their peer's mental model is identical. 
 
 This conceptual model of PPV is, however, not detailed enough to allow us to precisely predict what will happen to PPV if we change ventilator settings; it is only a qualitative description of the relationship between ventilation and SV. To make quantitative predictions from a model, we need to mathematically define the relationship between the variables in the model. 
 
 ### Mathematical models
+
 A mathematical model is a set of equations that, unambiguously, describe how a system behaves, often over time. The 2-compartment model of venous return (see Figure \@ref(fig:background-venous-return-simple)) can be presented as a mathematical model. We can present equations defining how the compartments behave and how they are connected. The pressure in the compartments (exemplified here with the right atrial compartment) is  
 $$ 
 P_{RA} = \frac{V_{RA}}{C_{RA}},
@@ -147,17 +149,13 @@ knitr::include_graphics("figures/method-gam-cyclic.png")
 The high flexibility of GAMs could also make them prone to overfitting data. This is countered by penalising splines by their wiggliness (wiggliness is the inverse of smoothness). 
 
 A classic least squares fit is found by minimising
-
 $$
 \sum_{i=1}^n (Y_i-\hat{Y}_i)^2,
 $$
-
 where $Y_i$ are the observed values and $\hat{Y}_i$ are the values predicted by the model. For fitting penalised splines this is extended by adding a the wiggliness penalty:
-
 $$
 \sum_{i=1}^n (Y_i-\hat{Y}_i)^2 + \lambda\int f''(X)^2 dX.
 $$
-
 $f’’(X)$ is the curvature of the spline (for a straight line, the curvature is 0). This is squared to keep it positive and then integrated over the range of the independent variable, $X$. The smoothing parameter, $\lambda$ is used to control the tradeoff between fitting data with minimal error and preferring a smooth spline less "prone" to overfitting [@woodGeneralizedAdditiveModels2017]. It is possible, and often recommended, to automatically choose the smoothing parameter to optimise out-of-sample prediction [@woodFastStableRestricted2011] (see Figure \@ref(fig:method-gam-wiggliness)).
 
 ```{r method-gam-wiggliness}
@@ -174,7 +172,6 @@ knitr::include_graphics("figures/method-gam-wiggliness.png")
 Using GAMs for estimating PPV was first proposed by Wyffels et al. [@wyffelsNewAlgorithmQuantify2021]. They demonstrated how GAMs could be used to isolate the respiratory variation in PP in patients with atrial fibrillation, from the PPV caused by irregular beat-to-beat intervals. In Paper 2, we demonstrate how to use a simpler version of Wyffel’s model to estimate PPV from PP time series recorded on patients in sinus rhythm.
 
 In sinus rhythm, the major source of PPV is respiratory variation in PP (as described in Section \@ref(heart-lung-interaction-physiology)). We expect that there is some smooth relationship between *when in the respiratory cycle a heart beat occurs* and *the PP it produces*. We also expect that the PP produced by a beat in the end of a cycle is very similar to the PP produced by a beat in the beginning of a cycle; i.e., that the effect of the *position in the respiratory cycle* is cyclic. This cyclic respiratory variation in PP can be represented with the following GAM:
-
 $$
 E(PP) = \alpha + f(pos_{\text{respiratory cycle}}),
 $$
@@ -196,20 +193,17 @@ knitr::include_graphics("figures/method-gam-PP.png")
 (ref:method-gam-PP) Illustration of how a pulse pressure (PP) time series (**a**) can be modelled as a smooth repeating effect of ventilation (**b**) and a slow trend over time (**c**). Panel **d** shows the models prediction (fit): the sum of the mean PP, the effect of ventilation (**b**) and the trend over time (**c**). 
 
 From the fitted GAM, we can calculate PPV as the amplitude of the respiratory effect (Figure Figure \@ref(fig:method-gam-PP)b) divided by the mean PP ($\alpha$):
-
 $$
-PPV = 100% \frac{ max(f(pos_{\text{respiratory cycle}})) - min(f(pos_{\text{respiratory cycle}})) }{\alpha} 
+PPV = 100\% \cdot \frac{ max(f(pos_{\text{respiratory cycle}})) - min(f(pos_{\text{respiratory cycle}})) }{\alpha} 
 $$ 
 
 ### Decomposing waveforms
 
 For the PP model above, we reduced the arterial blood pressure waveform to a series of PP measurements before fitting the GAM. It is also possible to decompose a raw waveform. In addition to the effect of ventilation, we now also have a smooth effect that repeats with each heartbeat. Furthermore, these two effects may interact. In Paper 2, we exemplify this by decomposing a CVP waveform. The GAM has the following form:
-
 $$
 E(CVP) = \alpha + f(pos_{\text{cardiac cycle}}) + f(pos_{\text{respiratory cycle}}) 
 + f(pos_{\text{cardiac cycle}}, pos_{\text{respiratory cycle}}) + f(time).
 $$
-
 Here, $f(pos_{\text{cardiac cycle}})$ is similar to $f(pos_{\text{respiratory cycle}})$, but repeats with every cardiac cycle (starting at the P-wave in the ECG). $ f(pos_{\text{cardiac cycle}}, pos_{\text{respiratory cycle}})$ is a 2-dimensional smooth plane representing the effect of the interaction between the respiratory cycle and the cardiac cycle on CVP (see Figure \@ref(fig:method-gam-CVP)).
 
 ```{r method-gam-CVP}
@@ -227,7 +221,7 @@ Paper 3 investigates PPV’s ability to predict the CO response to a fluid bolus
 
 The study was approved by the regional ethics committee (January 2020, case 1-10-72-245-19) and registered on ClinicalTrials.gov (March 2020, NCT04298931). It was conducted at Aarhus University Hospital from May 2020 to June 2021.
 
-Paper 3 presents a number of statistical methods including Bland-Altman analysis for method comparison, bootstrapping, a mixed-effects model and Bayesian statistics. In this thesis, I will only elaborate on Bayesian statistics and explain the Bayesian mixed-effects model presented in the paper.
+Paper 3 presents a number of statistical methods including Bland-Altman analysis for method comparison, bootstrapping, a mixed-effects model and Bayesian statistics. In this dissertation, I will only elaborate on Bayesian statistics and explain the Bayesian mixed-effects model presented in the paper.
 
 ### Protocol
 
@@ -247,11 +241,9 @@ knitr::include_graphics("figures/methods-vent-settings.png")
 PPV is calculated using two different methods: 
 
 $PPV_{Classic}$ is calculated as described in the study introducing low HR/RR as a limitation to the reliability of PPV [@Backer2009; michardClinicalUseRespiratory1999]:
-
 $$
 PPV_{Classic} = \frac{PP_{max} - PP_{min}}{(PP_{max} + PP_{min})/)},
 $$
-
 averaged over three consecutive ventilation cycles.
 
 $PPV_{GAM}$ was calculated as described in Paper 2 (see Section \@ref(gam-ppv)). 
@@ -277,11 +269,9 @@ The use of Bayesian statistics in Paper 3 is mainly due to the flexibility of Ba
 Bayesian statistical models can be understood from a generative perspective: we define a model that we believe could generate data similar to what we have observed ... if only we set the model parameters correctly. When we *fit* a Bayesian model, we define a model based on our *domain knowledge* about the relation between the predictor- and outcome variables, we specify our *prior* knowledge about the model parameters, and we provide some data we have observed. From these three components, the *model*, the *data* and the *priors*---we can answer the question: *If the data was generated by our proposed model, which sets of parameter values are compatible with the data we have observed?* [@mcelreathStatisticalRethinkingBayesian2020].
 
 Bayesian updating is the act of turning *data* and *prior* knowledge about model parameters into *posterior* knowledge about model parameters (*prior* is before seeing the data, *posterior* is after seeing the data). This is formalised in Bayes theorem:
-
 $$
 P(parameters|data) = \frac{P(data|parameters) P(parameters)}{P(data)}
 $$
-
 where, 
 
 - $parameters$ is a specific set of values for the parameters,
@@ -295,18 +285,14 @@ where,
 \noindent To gain some intuition about how Bayesian updating works, we will go through fitting a very simple model. We sample subjects from a population and measure their height. The aim is to estimate the mean and standard deviation (SD) of heights in the population from the heights in the sample. 
 
 First, we define a generative model, i.e., a model that---with the right parameter values---will generate data that looks like the data we have collected. In this example, the model is simple: we assume that each subjects is drawn from a normal (Gaussian) distribution with a mean, $\mu$, and standard deviation (SD), $\sigma$:
-
 $$
 Height_i \sim Normal(\mu, \sigma),
 $$
-
 where $Height_i$ is the height of subject $i$. To complete the model, we add prior distributions for the two parameters: $\mu$ and $\sigma$.
-
 $$
 \mu \sim Normal(170, 20) \\
 \sigma \sim Uniform(1, 30).
 $$
-
 The interpretation of this prior distribution is, that before we see any data, we are quite certain that the mean height in the population ($\mu$) is somewhere between 130 and 210 cm, and that the SD ($\sigma$) is between 1 and 30 cm with all values equally probable and values outside this range entirely impossible. These priors are only weakly informative and could be improved without much controversy, but here, their purpose is to illustrate how prior beliefs can be updated through observation of data (see Figure \@ref(fig:method-bayes-update)).
 
 In this example, data is simulated. We, therefore, know that the *true* mean height is 165 cm and the *true* SD is 10 cm. The top panel-pair in Figure \@ref(fig:method-bayes-update) displays our prior belief about the model parameters. Remaining panel-pairs show how we update our beliefs about the parameter values when we observe more and more data (heights).
@@ -335,18 +321,15 @@ The shaded areas in Figure \@ref(fig:method-bayes-update) contain 95% of the pro
 
 ### The mixed-effects model in Paper 3
 
-A main aim in Paper 3 is to understand how tidal volume ($V_T$) and respiratory rate (RR) impact PPV. The experiment has a hierarchical structure, where PPV is measured repeatedly in each subject, but with different RR and $V_T$ settings; we also calculate PPV with two different methods (PPV~Classic~ and PPV~GAM~) and want to know if $V_T$ and RR impact PPV differently depending on the method. In Paper 3, we use a Bayesian generalized mixed-effects model to find the effects of $V_T$, RR and PPV-method on PPV. Below, I will walk through this model.
+A main aim in Paper 3 was to understand how tidal volume ($V_T$) and respiratory rate (RR) impact PPV. The experiment had a hierarchical structure, where PPV was measured repeatedly in each subject, but with different RR and $V_T$ settings; we also calculated PPV with two different methods (PPV~Classic~ and PPV~GAM~) and wanted to know if $V_T$ and RR impact PPV differently depending on the method. In Paper 3, we used a Bayesian generalized mixed-effects model to find the effects of $V_T$, RR and PPV-method on PPV. Below, I will walk through this model.
 
-First, we specifiy a *likelihood function*. This specifies how likely different PPV values are given a mean, $\mu$, and a variance parameter, $\sigma$.
-
+First, we specified a *likelihood function*. This specifies how likely different PPV values are given a mean, $\mu$, and a variance parameter, $\sigma$.
 $$
 PPV_i \sim StudentT(\mu_i,\sigma_i, \text{df} = 4).
 $$
-
 We use a Student’s T distribution with 4 degrees of freedom rather than a normal distribution, because it puts higher likelihood on extreme observations, and, therefore, is more robust to outliers.
 
-We specified a linear model for both $\mu$.
-
+We specified a linear model for the expected PPV value, $\mu$:
 $$
 log(\mu_i) = 
 \beta0_{\operatorname{PPVmethod}[i]} + 
@@ -354,16 +337,13 @@ log(\mu_i) =
 \beta2_{\operatorname{ventRR}[i]\times\operatorname{PPVmethod}[i]} +
 \alpha_{subject[i]}.
 $$
+Specifically, the linear model is for $log(\mu)$. Therefore, the exponential of the parameters correspond to relative effects on PPV. $exp(\beta1)$ and $exp(\beta2)$ are the effects of each $V_T$- and RR setting for each PPV method relative to the expected PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^. $exp(\beta0)$ is the median PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^ for each method. $\alpha$ is a random effect of each subject. This random effect captures that subjects have individual levels of PPV across ventilator settings---it captures the between-individual variation in PPV.
 
-Specifically, the linear model is for $log(\mu)$. Therefore, the exponential of the parameters correspond to relative effects on PPV. $e^{\beta1}$ and $e^{\beta2}$ are the effects of each $V_T$ and RR setting for each method relative to the effect at $V_T$=10 ml kg^-1^ and RR=10 min^-1^.  $e^{\beta0}$ is the median PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^ for each method. $\alpha$ is a random effect of each subject. This random effect captures that subjects have individual levels of PPV across ventilator settings---it captures the between-individual variation in PPV.
-
-The random effect, $\alpha$, is estimated for each subject. Instead of estimating an independent value for each subject, we assume that all $\alpha$ for all subjects is draw from a shared normal distribution:
-
+The random effect, $\alpha$, was estimated for each subject. We assumed that all $\alpha$ for all subjects is draw from a shared normal distribution:
 $$
 \alpha_s \sim Normal(0, \sigma_{\alpha})
 $$
-
-This greatly reduces the degrees of freedom associated with estimating a parameter value for each subject, and reduces the risk of overfitting, as the estimate of $\alpha$ for subjects with extreme values for PPV is shrunk towards the mean (an effect known as *partial pooling*) [@mcelreathStatisticalRethinkingBayesian2020].
+This greatly reduces the degrees of freedom associated with estimating a parameter value for each subject. It also reduces the risk of overfitting, as the estimate of $\alpha$ for subjects with extreme values for PPV is shrunk towards the mean (an effect known as *partial pooling*) [@mcelreathStatisticalRethinkingBayesian2020].
 
 The linear model for $\sigma$ is similar to the model for $\mu$, but without the random effect:
 $$
@@ -372,10 +352,9 @@ log(\sigma_i) =
 \gamma1_{\operatorname{ventVT}[i]\times\operatorname{PPVmethod}[i]} +
 \gamma2_{\operatorname{ventRR}[i]\times\operatorname{PPVmethod}[i]}.
 $$
-
 It allows the variance of the likelihood function to vary with ventilator setting and PPV-method. 
 
-Lastly, priors for all parameters are specified:
+Lastly, priors for all parameters are specified. These are all weakly informative (they allow all parameter values that are even remotely reasonable), and mainly serve to make the parameter estimation more efficient. Arguments for why these values are considered weakly informative are presented in Paper 3’s supplementary 1.
 \begin{align*}
 &\text{\bfseries [Prior for SD of subjects]}\\
 \sigma_\alpha \sim &truncNormal(0, 1.5, trunc_{low} = 0) \\
@@ -395,7 +374,6 @@ Lastly, priors for all parameters are specified:
 &\quad\text{ventRR r = (17,24,31),} \\
 &\quad\text{PPVmethod m = (gam, classic)}
 \end{align*}
-These are all weakly informative (they allow all parameter values that are even remotely reasonable), and mainly serve to make the parameter estimation more efficient. Arguments for why these values are considered weakly informative are presented in Paper 3’s supplementary 1.
 
 ### Sample size
 
