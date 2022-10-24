@@ -8,7 +8,7 @@
 
 ```{r, results='asis', echo=FALSE, include=knitr::is_latex_output()}
 # split PDF into pages
-# pdftk papers/paper1.pdf burst output papers/paper1/page-%d.pdf
+# pdftk papers/paper1.pdf burst output papers/paper1/page-%02d.pdf
 
 # grab the pages
 pages <- list.files("papers/paper1/", pattern = "pdf$", full.names = TRUE)
@@ -16,7 +16,7 @@ pages <- list.files("papers/paper1/", pattern = "pdf$", full.names = TRUE)
 # set how wide you want the inserted PDFs to be: 
 # 1.0 is 100 per cent of the oxforddown PDF page width;
 # you may want to make it a bit bigger
-pdf_width <- 1.2
+pdf_width <- 1.3
 
 # for each PDF page, insert it nicely and
 # end with a page break
@@ -29,9 +29,17 @@ cat(stringr::str_c("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includ
 ```{r, results='asis', echo=FALSE, include=knitr::is_latex_output()}
 pages <- list.files("papers/paper2/", pattern = "pdf$", full.names = TRUE)
 
-pdf_width <- 1.2
+pdf_width <- 1.3
 
 cat(stringr::str_c("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=", pdf_width, "\\linewidth]{", pages, "}} \\end{center}"))
 ```
 
 # Paper 3
+
+```{r, results='asis', echo=FALSE, include=knitr::is_latex_output()}
+pages <- list.files("papers/paper3/", pattern = "pdf$", full.names = TRUE)
+
+pdf_width <- 1.2
+
+cat(stringr::str_c("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=", pdf_width, "\\linewidth]{", pages, "}} \\end{center}"))
+```
