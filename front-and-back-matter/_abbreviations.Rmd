@@ -1,10 +1,72 @@
+\item[ABP] Arterial blood pressure.
+
+\item[ANP] Atrial natriuretic peptide.
+
+\item[ARDS] Acute respiratory distress syndrome.
+
 \item[AUROC] Area under the receiver operating characteristic curve.
+
+\item[CI] Compatibility interval, e.g 95%CI [19.3; 25.2]. For Bayesian estimates, it is a *credible interval*; for frequentist estimates, it is a *confidence interval*. In both cases it represents the interval of parameter values compatible of the observed data.
 
 \item[CO] Cardiac output.
 
-\item[SV] Stroke volume.
+\item[CVP] Central venous pressure.
+
+\item[ECG] Electrocardiogram.
+
+\item[EEOT] End-expiratory occlusion test.
+
+\item[GAM] Generalized additive model.
+
+\item[GDT] Goal-directed hemodynamic therapy.
+
+\item[HES] Hydroxyethyl-starch.
+
+\item[HR] Heart rate. 
+
+\item[ICU] Intensive care unit.
+
+\item[IV] Intravenous.
+
+\item[LVOT] Left ventricular outflow tract.
+
+\item[MAP] Mean arterial pressure.
+
+\item[MFC] Mini-fluid challenge.
+
+\item[P~MSF~] Mean systemic filling pressure.
+
+\item[PBW] Predicted body weight.
+
+\item[PEEP] Positive end-expiratory pressure.
+
+\item[PLR] Passive leg raise.
+
+\item[PP] Pulse pressure.
+\item[PPV] Pulse pressure variation.
+
+\item[RA] Right atrium.
+
+\item[ROC] Receiver operating characteristics.
+
+\item[RR] Respiratory rate.
+
+\item[RV] Right ventricle.
+
+\item[SD] Standard deviation.
 
 \item[SV] Stroke volume.
 
-\item[CI] Compatibility interval, e.g 95% CI [19.3; 25.2]. For Bayesian estimates, it is a *credible interval*; for frequentist estimates, it is a *confidence interval*. In both cases it represents the interval of parameter values compatible of the observed data.
+\item[SVI] Body weight indexed stroke volume.
 
+\item[SVV] Stroke volume variation.
+
+\item[TAPSE] Tricuspid annular plane systolic excursion.
+
+\item[TD] Thermodilution.
+
+\item[TIPS] Transjugular intrahepatic portosystemic shunt.
+
+\item[V~T~] Tidal volume (generally in ml kg(PBW)^-1^).
+
+\item[VTI] (Left ventricular outflow tract) velocity time integral.
