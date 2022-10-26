@@ -12,9 +12,9 @@ I wish to thank all my colleagues and collaborators. Thank you for interesting s
 
 Also, thanks to all the kind strangers on the internet who selflessly helped me with various statistical and technical questions issues. Special thanks to John George Karippacheril, developer of [VSCapture](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3788264/), who helped me customize his software to work with department ventilators; essential for acquiring the data used in Papers 2 and 3. Also, special thanks to Gavin L. Simpson, who after helping out with several of the questions I posted on Stackoverflow.com and Twitter, agreed to co-write Paper 2.
 
-Thanks to friends and family for laying ear to both frustrations and excitement over nerdy detail, and for your support in general. 
+Thanks to friends and family for laying ear to both frustrations and excitement over nerdy details, and for your support in general. 
 
-Anna-Elisabeth, thank you for being a loving wife and mother and for admirable patience during periods with frequent absent-minded gazes from your husband. And thanks Senja and Gry for making every day meaningful and interesting.
+Anna-Elisabeth, thank you for being a loving wife and mother, and for your admirable patience during periods with frequent absent-minded gazes from your husband. And thanks Senja and Gry for making every day meaningful and interesting.
 
 \begin{flushright}
 Johannes Enevoldsen \\

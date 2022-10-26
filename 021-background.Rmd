@@ -101,7 +101,7 @@ knitr::include_graphics("figures/background-venous-return-simple.png")
 knitr::include_graphics("figures/background-venous-return-art.png")
 ```
 
-(ref:background-venous-return-art) An illustration of how the arterial system could be represented in the simple model illustrated in Figure fig:background-venous-return-simple. MAP, mean arterial pressure.
+(ref:background-venous-return-art) An illustration of how the arterial system could be represented in the simple model illustrated in Figure \@ref(fig:background-venous-return-simple). MAP, mean arterial pressure.
 
 From this simple model, we can appreciate some factors that determine CO. First, the heart's ability to pump is the absolute limitation to cardiac output. However, the heart also cannot pump more than what is returned from the veins. This venous return is determined by the resistance to venous return and the pressure difference between the venous compartment and the right atrial compartment:
 $$
