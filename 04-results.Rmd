@@ -97,7 +97,7 @@ The GAM is only fitted to a single subject's CVP, so the conclusions apply only 
 
 Many hypotheses regarding the shape of a waveform could be investigated and formally tested from GAMs similar to this. For example, it has been proposed that the depth of the slope and depth of the $x'$ descend is related to the strength of the strength of the speed of the right ventricular contraction (similarly to the ultrasonic measure, *tricuspid annular plane systolic excursion* (TAPSE)) [@rautDescentCVPIndirect2014]. If this is the case, the respiratory variation in the $x'$ descend may represent the right ventricular response to changes in afterload, and a variable $x'$ descend could imply that increases in airway pressure (through *positive end expiratory pressure* (PEEP) or $V_T$) should be avoided. The respiratory variation in the $x'$ descend is captured in the cardiac-respiratory interaction term (illustrated in Figure \@ref(fig:method-gam-CVP)d).
 
-## Paper 3 - There is a near-linear relationship between PPV and tidal volume
+## Paper 3 - There is a near-linear relationship between PPV and $V_T$
 
 Paper 3 covers a clinical study of 52 subjects undergoing open abdominal surgery. Of these, 50 received a 250 ml fluid bolus. We had three overall aims for the study: First, we investigated the accuracy of fluid responsiveness prediction for PPV measured at different ventilator settings. Second, we compared a classic method for deriving PPV ($PPV_{Classic}$) [@Backer2009; @michardClinicalUseRespiratory1999] to the GAM derived PPV presented in Paper 2 ($PPV_{GAM}$). Third, we investigated the effect of $V_T$ and RR on PPV (*Classic* and *GAM derived*). 
 

@@ -54,7 +54,7 @@ To solve this set of differential equations, we define a constant CO, a fixed co
 
 A statistical model is a specific type of mathematical model that uses random variation to explain the difference between the values expected from the model, and the values that are actually measured. In medical science, statistical models are usually extremely simplified representations of the actual (or assumed) causal relationship between variables. 
 
-For example, we may believe that tidal volume ($V_T$) affects PPV through a number of intermediate steps. But often, we are not interested in the intermediate effects—they may not even be identifiable from the data we have available. Instead we may assume that if we vary $V_T$ in a single individual, there is a linear relationship between $V_T$ and PPV:
+For example, we may believe that $V_T$ affects PPV through a number of intermediate steps. But often, we are not interested in the intermediate effects—they may not even be identifiable from the data we have available. Instead we may assume that if we vary $V_T$ in a single individual, there is a linear relationship between $V_T$ and PPV:
 $$
 PPV = \alpha + \beta V_T.
 $$
@@ -321,7 +321,7 @@ The shaded areas in Figure \@ref(fig:method-bayes-update) contain 95% of the pro
 
 ### The mixed-effects model in Paper 3
 
-A main aim in Paper 3 was to understand how tidal volume ($V_T$) and respiratory rate (RR) impact PPV. The experiment had a hierarchical structure, where PPV was measured repeatedly in each subject, but with different RR and $V_T$ settings; we also calculated PPV with two different methods (PPV~Classic~ and PPV~GAM~) and wanted to know if $V_T$ and RR impact PPV differently depending on the method. In Paper 3, we used a Bayesian generalized mixed-effects model to find the effects of $V_T$, RR and PPV-method on PPV. Below, I will walk through this model.
+A main aim in Paper 3 was to understand how $V_T$ and RR impact PPV. The experiment had a hierarchical structure, where PPV was measured repeatedly in each subject, but with different RR and $V_T$ settings; we also calculated PPV with two different methods (PPV~Classic~ and PPV~GAM~) and wanted to know if $V_T$ and RR impact PPV differently depending on the method. In Paper 3, we used a Bayesian generalized mixed-effects model to find the effects of $V_T$, RR and PPV-method on PPV. Below, I will walk through this model.
 
 First, we specified a *likelihood function*. This specifies how likely different PPV values are given a mean, $\mu$, and a variance parameter, $\sigma$.
 $$
