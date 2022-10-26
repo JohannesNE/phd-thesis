@@ -43,3 +43,15 @@ pdf_width <- 1.2
 
 cat(stringr::str_c("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=", pdf_width, "\\linewidth]{", pages, "}} \\end{center}"))
 ```
+
+## Paper 3 - Supplementary figures and tables 
+
+The following pages contain Paper 3's Supplementary 3. Supplementary 1 and 2, data and analysis code is available at [DOI:10.5281/zenodo.6984310](https://doi.org/10.5281/zenodo.6984310).
+
+```{r, results='asis', echo=FALSE, include=knitr::is_latex_output()}
+pages <- list.files("papers/paper3-supplementary3", pattern = "pdf$", full.names = TRUE)
+
+pdf_width <- 1.2
+
+cat(stringr::str_c("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=", pdf_width, "\\linewidth]{", pages, "}} \\end{center}"))
+```
