@@ -1,0 +1,46 @@
+InfoBegin
+InfoKey: Creator
+InfoValue: AUHAARPJB1179
+InfoBegin
+InfoKey: ModDate
+InfoValue: D:20221026142039+01&apos;00&apos;
+InfoBegin
+InfoKey: CreationDate
+InfoValue: D:20221026142039+01&apos;00&apos;
+InfoBegin
+InfoKey: Producer
+InfoValue: KONICA MINOLTA bizhub C458
+InfoBegin
+InfoKey: Title
+InfoValue: SAUHAARPJB122102614190
+NumberOfPages: 6
+PageMediaBegin
+PageMediaNumber: 1
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 841
+PageMediaDimensions: 595 841
+PageMediaBegin
+PageMediaNumber: 2
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 841
+PageMediaDimensions: 595 841
+PageMediaBegin
+PageMediaNumber: 3
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 841
+PageMediaDimensions: 595 841
+PageMediaBegin
+PageMediaNumber: 4
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 841
+PageMediaDimensions: 595 841
+PageMediaBegin
+PageMediaNumber: 5
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 841
+PageMediaDimensions: 595 841
+PageMediaBegin
+PageMediaNumber: 6
+PageMediaRotation: 0
+PageMediaRect: 0 0 595 841
+PageMediaDimensions: 595 841
