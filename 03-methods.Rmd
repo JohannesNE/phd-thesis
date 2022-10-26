@@ -240,7 +240,7 @@ knitr::include_graphics("figures/methods-vent-settings.png")
 
 PPV is calculated using two different methods: 
 
-$PPV_{Classic}$ is calculated as described in the study introducing low HR/RR as a limitation to the reliability of PPV [@Backer2009; michardClinicalUseRespiratory1999]:
+$PPV_{Classic}$ is calculated as described in the study introducing low HR/RR as a limitation to the reliability of PPV [@Backer2009; @michardClinicalUseRespiratory1999]:
 $$
 PPV_{Classic} = \frac{PP_{max} - PP_{min}}{(PP_{max} + PP_{min})/)},
 $$
