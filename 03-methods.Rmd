@@ -219,7 +219,7 @@ knitr::include_graphics("figures/method-gam-CVP.png")
 
 Paper 3 investigates PPV’s ability to predict the CO response to a fluid bolus, and especially, how ventilator settings affect this ability. We expected that PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^ would predict fluid responsiveness with high accuracy, but that the accuracy would fall with lower $V_T$ and higher RR. The CO response was evaluated from pulse contour analysis; I will, therefore, present a section about the accuracy of pulse contour derived CO.
 
-The study was approved by the regional ethics committee (January 2020, case 1-10-72-245-19) and registered on ClinicalTrials.gov (March 2020, NCT04298931). It was conducted at Aarhus University Hospital from May 2020 to June 2021.
+The study was approved by the regional ethics committee (January 2020, case 1-10-72-245-19) and registered on ClinicalTrials.gov (March 2020, NCT04298931). It was conducted at Aarhus University Hospital from May 2020 to June 2021. Patients gave written informed consent to participate.
 
 Paper 3 presents a number of statistical methods including Bland-Altman analysis for method comparison, bootstrapping, a mixed-effects model and Bayesian statistics. In this dissertation, I will only elaborate on Bayesian statistics and explain the Bayesian mixed-effects model presented in the paper.
 
