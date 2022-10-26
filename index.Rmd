@@ -36,14 +36,14 @@ degreedate: 2022
 dedication: For my girls
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
-show-acknowledgements-in-toc: false
+show-acknowledgements-in-toc: true
 abstract-heading: "Abstract"
 abstract: |
   `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = "\n  ")`
 abstract-second-heading: "Dansk Resumé"
 abstract-second: |
   `r paste(readLines("front-and-back-matter/_abstract-danish.Rmd"), collapse = "\n  ")`
-show-abstract-in-toc: false
+show-abstract-in-toc: true
 abbreviations: |
   `r paste(readLines("front-and-back-matter/_abbreviations.Rmd"), collapse = '\n  ')`
 
@@ -147,7 +147,7 @@ space-before-code-block: 10pt
 space-after-code-block: 8pt
 
 ### linespacing ###
-linespacing: 22pt plus2pt # 22pt is official for submission & library copies
+linespacing: 18pt plus2pt minus1pt # 22pt is official for submission & library copies
 frontmatter-linespacing: 17pt plus1pt minus1pt #spacing in roman-numbered pages (acknowledgments, table of contents, etc.)
 
 ### title page
