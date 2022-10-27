@@ -4,7 +4,9 @@ Also, a big thanks to my co-supervisors, Thomas Scheeren, Stephen Edward Rees an
 
 Thanks to Thomas Scheeren for inviting me to Groningen---a stay that was canceled due to COVID19. Also, thanks to Stephen Rees and Dan Karbing for supervising my overly ambitious project on cardiovascular models at Aalborg University. I have never learned so much in one month.
 
-I am also grateful to the patients who agreed to participate in the clinical study comprising a large part of this PhD.
+Thanks to the members of the assessment committee, Professor Hanne Berg Ravn and Professor Anders Åneman, for agreeing to assess this dissertation and the public defence, and to Professor Ebbe Bødtkjer, chairman at the public defence.
+
+I am grateful to the patients who agreed to participate in the clinical study comprising a large part of this PhD.
 
 Thanks to Aarhus University and *Holger & Ruth Hesse's mindefond* for funding this work. 
 
