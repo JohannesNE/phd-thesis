@@ -1,6 +1,6 @@
 First, thanks to my supervisor, Simon Tilma Vistisen. I have interrupted Simon's endlessly for close to four years, and he has kept his door open regardless. Many half-baked ideas, questions and frustrations have been resolved over a quick (rarely), unsolicited redecoration of Simon's whiteboard. I suspect that few students are lucky to have a supervisor who tolerates, and even engages in, biweekly musings on the wonders of *mixed models*.
 
-Also, a big thanks to my co-supervisors, Thomas Scheeren, Stephen Edward Rees and Peter Juhl-Olsen. They helped design a clinical study, that was both safe, clinically relevant and practical to conduct.
+Also, a big thanks to my co-supervisors, Thomas Scheeren, Stephen Edward Rees and Peter Juhl-Olsen. They helped design a clinical study, that was both safe, clinically relevant and practical to conduct, and were always available to answer questions.
 
 Thanks to Thomas Scheeren for inviting me to Groningen---a stay that was canceled due to COVID19. Also, thanks to Stephen Rees and Dan Karbing for supervising my overly ambitious project on cardiovascular models at Aalborg University. I have never learned so much in one month.
 
@@ -8,7 +8,7 @@ Thanks to the members of the assessment committee, Professor Hanne Berg Ravn and
 
 I am grateful to the patients who agreed to participate in the clinical study comprising a large part of this PhD.
 
-Thanks to Aarhus University and *Holger & Ruth Hesse's mindefond* for funding this work. 
+Thanks to Aarhus University and *Holger & Ruth Hesse's mindefond* for supporting this work. 
 
 I wish to thank all my colleagues and collaborators. Thank you for interesting scientific discussions and entertaining lunch conversation. Thanks to the clinical staff who welcomed me and my data cables in the operating room, and helped me conduct the clinical study. 
 
@@ -16,7 +16,7 @@ Also, thanks to all the kind strangers on the internet who selflessly helped me 
 
 Thanks to friends and family for laying ear to both frustrations and excitement over nerdy details, and for your support in general. 
 
-Anna-Elisabeth, thank you for being a loving wife and mother, and for your admirable patience during periods with frequent absent-minded gazes from your husband. And thanks Senja and Gry for making every day meaningful and interesting.
+Anna-Elisabeth, thank you for being a loving wife and mother, and for your admirable patience during periods with frequent absent-minded gazes from your husband. And thanks Senja and Gry for making every day meaningful, interesting and joyful.
 
 \begin{flushright}
 Johannes Enevoldsen \\
