@@ -22,21 +22,21 @@ discourse more promiscuously than 'model'. A model is something to be admired or
 
 # Methods
 
-This chapter introduces and discusses the methods used in the three studies. In all three studies, *models* play a central role; both as communicative tools and as specific statistical models (Papers 2 and 3). Therefore, the first section is a general introduction to the scientific use of the term *model*.
+This chapter introduces and discusses the methods used in the three Papers. In all three Papers, *models* have a central role; both as communicative tools and as specific statistical models (Papers 2 and 3). Therefore, the first section is a general introduction to the scientific use of the term *model*.
 
 ## An introduction to *models*
 
-Most scientists will be familiar with using *model* as a synonym for both a statistical analysis, a mental representation of a complex system or a computer simulation. However, the word's exact meaning is often not specified and has to be assumed from context. I will use this section to present the different meanings of the term *model*, focusing on those that are relevant for the present dissertation: specifically, I will describe the use of conceptual representations of complex systems, mathematical representations of complex systems and the related statistical models. 
+In science, *model* is often used as a synonym for both a statistical analysis, a simple representation of a complex system or a sophisticated computer simulation. However, the word's exact meaning is often not specified, and has to be assumed from context. I will use this section to present the different meanings of the term *model*, focusing on those that are relevant for the present dissertation.
 
 ### A model can be a mental and communicative tool
 
-Consider the four effects of ventilation, causing pulse pressure variation, presented in Section \@ref(heart-lung-interaction-physiology). To recap, in the right ventricle, inspiration lowers SV by limiting venous return and increasing afterload; in the left ventricle, inspiration increases pulmonary venous return by squeezing blood from the lungs and reduces afterload by increasing thoracic pressure relative to the remaining arterial pressure. Together these effects cause PPV. Of course, real physiology is more complex, this simple *model* may aid a scientist in designing a study investigating the effect of e.g. PEEP on PPV, and it can give colleagues a common reference when discussing the interpretation of a high PPV in a patient with right ventricular failure. Without a common model, miscommunication will likely happen as each colleague has their own private mental model of the situation, and may assume that their peer's mental model is identical. 
+Consider the four effects of ventilation causing pulse pressure variation, illustrated in Figure \@ref(fig:background-heart-lung-interactions). To recap, in the right ventricle, inspiration lowers SV by limiting venous return and increasing afterload; in the left ventricle, inspiration increases pulmonary venous return by squeezing blood from the lungs and reduces afterload by increasing thoracic pressure relative to the remaining arterial pressure. Together these effects cause PPV. Of course, real physiology is more complex, but this simple *model* may aid a scientist in designing a study investigating the effect of e.g. PEEP on PPV, and it can give colleagues a common reference when discussing the interpretation of a high PPV in a patient with right ventricular failure. Without a common model, miscommunication will likely happen as each colleague has their own private mental model of the situation, and may assume that their peer's mental model is identical. 
 
-This conceptual model of PPV is, however, not detailed enough to allow us to precisely predict what will happen to PPV if we change ventilator settings; it is only a qualitative description of the relationship between ventilation and SV. To make quantitative predictions from a model, we need to mathematically define the relationship between the variables in the model. 
+This conceptual model of PPV is, however, not detailed enough, to enable quantitative predictions of what will happen to PPV, if we change ventilator settings; it is only a qualitative description of the relationship between ventilation and SV. To make quantitative predictions from a model, we need to mathematically define the relationship between the variables in the model. 
 
 ### Mathematical models
 
-A mathematical model is a set of equations that, unambiguously, describe how a system behaves, often over time. The 2-compartment model of venous return (see Figure \@ref(fig:background-venous-return-simple)) can be presented as a mathematical model. We can present equations defining how the compartments behave and how they are connected. The pressure in the compartments (exemplified here with the right atrial compartment) is  
+A mathematical model is a set of equations that, unambiguously, describes how a system behaves, often over time. The 2-compartment model of venous return (see Figure \@ref(fig:background-venous-return-simple)) can be presented as a mathematical model. We can present equations defining how the compartments behave and how they are connected. The pressure in the compartments (right atrial and venous, but exemplified here with the right atrial compartment) is  
 $$ 
 P_{RA} = \frac{V_{RA}}{C_{RA}},
 $$
@@ -44,11 +44,11 @@ where $P$ is pressure, $V$ is volume and $C$ is compliance. Venous return ($Q_V$
 $$
 Q_V = \frac{P_V - P_{RA}}{R_V},
 $$
-where $R_V$ is resistance to venous return. The change in volume in each compartment is:
+where $R_V$ is resistance to venous return. The change in volume over time in each compartment is:
 $$
 \dot{V}_V = CO - Q_{V}, \quad \dot{V}_{RA} = Q_{V} - CO.
 $$
-To solve this set of differential equations, we define a constant CO, a fixed compliance for each vascular compartment, a fixed $R_V$ and set the starting volumes for each vascular compartment ($V_V$ and $V_{RA}$). We can now simulate how these volumes will evolve over time, and what their steady-state values will be. 
+To solve this set of differential equations, we define a constant CO (or a Frank-Starling-like cardiac function), a fixed compliance for each vascular compartment, a fixed $R_V$ and set the starting volumes for each vascular compartment ($V_V$ and $V_{RA}$). We can now simulate how these volumes will evolve over time, and what their steady-state values will be. 
 
 ### Statistical models
 
@@ -58,7 +58,7 @@ For example, we may believe that $V_T$ affects PPV through a number of intermedi
 $$
 PPV = \alpha + \beta V_T.
 $$
-If we measure PPV thrice, and only change $V_T$ between measurements, we expect that PPV will vary according to the linear model above. Additionally, we also anticipate some variation in PPV that is not explained by the change in $V_T$. This additional variation can be due to a physiological change over time, unrelated to the $V_T$ change, or due to imprecise measurements. Unexplained variation is traditionally represented by the greek letter $\epsilon$, creating the statistical linear model:
+If we measure PPV repeatedly, and only change $V_T$ between measurements, we expect that PPV will vary according to the linear model above. Additionally, we also anticipate some variation in PPV that is not explained by the change in $V_T$. This additional variation can be due to a physiological change over time, unrelated to the $V_T$ change, or due to imprecise measurements. Unexplained variation is traditionally represented by the greek letter $\epsilon$, creating the statistical linear model:
 $$
 PPV = \alpha + \beta V_T + \epsilon.
 $$
