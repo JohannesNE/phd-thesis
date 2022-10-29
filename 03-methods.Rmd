@@ -211,19 +211,19 @@ Here, $f(pos_{\text{cardiac cycle}})$ is similar to $f(pos_{\text{respiratory cy
 knitr::include_graphics("figures/method-gam-CVP.png")
 ```
 
-(ref:method-gam-CVP) Central venous pressure (CVP) (**a**) can be decomposed using a GAM. The CVP waveform is decomposed into: **b**, a repeating effect for each heartbeat; **c**, a cyclic effect of ventilation; **d**, an interaction effect between the respiratory- and cardiac cycles; and, **e**, a slow trend over time (added to the mean CVP). Panel **f** shows the models prediction and the prediction error (residual): The prediction is the sum of the effects visualised in **b** to **e**. 
+(ref:method-gam-CVP) A central venous pressure (CVP) waveform (**a**) can be decomposed using a GAM into: **b**, a repeating effect for each heartbeat; **c**, a cyclic effect of ventilation; **d**, an interaction effect between the respiratory- and cardiac cycles; and, **e**, a slow trend over time (added to the mean CVP). Panel **f** shows the models prediction and the prediction error (residual): The prediction is the sum of the effects visualised in **b** to **e**. 
 
 ## Paper 3 - Effects of Ventilator Settings on PPV
 
-Paper 3 investigates PPV’s ability to predict the CO response to a fluid bolus, and especially, how ventilator settings affect this ability. We expected that PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^ would predict fluid responsiveness with high accuracy, but that the accuracy would fall with lower $V_T$ and higher RR. The CO response was evaluated from pulse contour analysis; I will, therefore, present a section about the accuracy of pulse contour derived CO.
+Paper 3 investigates the effects of $V_T$ and RR on PPV, and how these ventilator setting affect PPV’s ability to predict the SV response to a fluid bolus. We expected that PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^ would predict fluid responsiveness with high accuracy, but that the accuracy would fall with lower $V_T$ and higher RR. 
 
 The study was approved by the regional ethics committee (January 2020, case 1-10-72-245-19) and registered on ClinicalTrials.gov (March 2020, NCT04298931). It was conducted at Aarhus University Hospital from May 2020 to June 2021. Patients gave written informed consent to participate.
 
-Paper 3 presents a number of statistical methods including Bland-Altman analysis for method comparison, bootstrapping, a mixed-effects model and Bayesian statistics. In this dissertation, I will only elaborate on Bayesian statistics and explain the Bayesian mixed-effects model presented in the paper.
+Paper 3 presents a number of statistical methods including Bland-Altman analysis for method comparison, bootstrapped confidence intervals, mixed-effects models and Bayesian statistics. In this dissertation, I will only elaborate on Bayesian statistics and explain the Bayesian mixed-effects model presented in the paper.
 
 ### Protocol
 
-The experiment protocol was initiated after anaesthesia induction, in relation to a planned 250 ml fluid administration, where the patient was considered hemodynamically stable by the treating anaesthesiologist. First, the patient was ventilated with ten different ventilator settings for 30 s each. Each setting was unique combination of $V_T$ between 4 and 10 ml kg^-1^ (predicted body weight [@theacuterespiratorydistresssyndromenetworkVentilationLowerTidal2000]) and RR between 10 and 31 min^-1^ (see Figure \@ref(fig:methods-vent-settings)). Then, a two-minute period was used to establish a baseline SV, after which a 250 fluid bolus was administered. If SV increased by more than 10% during the fluid administration, the patient classified as a fluid responder.
+The experiment protocol was initiated after anaesthesia induction, in relation to a planned 250 ml fluid administration, where the patient was considered hemodynamically stable by the treating anaesthetist. First, the patient was ventilated with ten different ventilator settings for 30 s each. Each setting was a unique combination of $V_T$ between 4 and 10 ml kg^-1^ (predicted body weight [@theacuterespiratorydistresssyndromenetworkVentilationLowerTidal2000]) and RR between 10 and 31 min^-1^ (see Figure \@ref(fig:methods-vent-settings)). Then, a two-minute period was used to establish a baseline SV, after which a 250 fluid bolus was administered. If SV after the fluid administration was more than 10% higher than the baseline SV, the patient classified as a fluid responder.
 
 ```{r methods-vent-settings}
 #| out.width="10cm",
@@ -236,9 +236,9 @@ knitr::include_graphics("figures/methods-vent-settings.png")
 
 ### PPV calculation
 
-PPV is calculated using two different methods: 
+PPV was calculated using two different methods: 
 
-$PPV_{Classic}$ is calculated as described in the study introducing low HR/RR as a limitation to the reliability of PPV [@Backer2009; @michardClinicalUseRespiratory1999]:
+$PPV_{Classic}$ was calculated as described in the study introducing low HR/RR as a limitation to the reliability of PPV [@Backer2009; @michardClinicalUseRespiratory1999]:
 $$
 PPV_{Classic} = \frac{PP_{max} - PP_{min}}{(PP_{max} + PP_{min})/)},
 $$
@@ -254,29 +254,29 @@ Since change in SV is used to determine a patient's response to a fluid bolus, i
 
 There are several methods for estimating SV or CO. The conversion between these is $CO = SV \cdot HR$, and in the following, I will simply refer to all methods as estimating CO. The gold standard for CO measurement is debated, but is generally considered to be the *direct Fick principle* or *thermodilution* (CO~TD~) via a pulmonary artery catheter [@kovacsOfficialEuropeanRespiratory2017; @mckenzieReliabilityThermodilutionDerived2018]. Thermodilution is more common in clinical practice, and is usually the reference, when new methods for measuring CO are evaluated [@joostenAccuracyPrecisionNoninvasive2017; @montenijMethodologyMethodComparison2016].  
 
-The first three generations of the FloTrac algorithm were evaluated in a systematic review of 65 studies [@slagtSystematicReviewUncalibrated2014]. The overall *percentage error* was approx. 50%; a slightly simplified interpretation of this statistic is, that if a patient has a *true* CO of 5 L min^-1^, the difference between CO~FloTrac~  and CO~TD~ can be up to 2.5 L min^-1^. The fourth-generation FloTrac (used in Paper 3) aimed to improve performance, but of 6 studies comparing the fourth-generation FloTrac against CO~TD~, one showed a percentage error of 35% [@geisenAccuracyPrecisionTrending2018] while the other had a percentage error of >50% [@heijneFourDifferentMethods2020; @murataAgreementContinuousCardiac2022; @eisenriedAccuracyTrendingAbility2019; @suehiroImprovedPerformanceFourthGeneration2015; @maedaAccuracyTrendingAbility2019].
+The first three generations of the FloTrac algorithm were evaluated in a systematic review of 65 studies [@slagtSystematicReviewUncalibrated2014]. The overall *percentage error* was approx. 50%; a slightly simplified interpretation of this statistic is, that if a patient has a *true* CO of 5 L min^-1^, the difference between CO~FloTrac~  and CO~TD~ can be up to 2.5 L min^-1^. The fourth-generation FloTrac (used in Paper 3) aimed to improve performance, but of 6 studies comparing the fourth-generation FloTrac against CO~TD~, one showed a percentage error of 35% [@geisenAccuracyPrecisionTrending2018] while the others had a percentage error of >50% [@heijneFourDifferentMethods2020; @murataAgreementContinuousCardiac2022; @eisenriedAccuracyTrendingAbility2019; @suehiroImprovedPerformanceFourthGeneration2015; @maedaAccuracyTrendingAbility2019].
 
-Even if CO~FloTrac~ does not always agree with CO~TD~, they could agree on the changes in CO, if the bias between the devices is constant within each patient. This agreement on CO changes (often denoted *trending ability*) is evaluated in most recent studies. These results are, unfortunately, not encouraging either; they show that a 20% increase in CO~TD~ may be accompanied by a fall in CO~FloTrac~ or *vice versa* [@geisenAccuracyPrecisionTrending2018; @eisenriedAccuracyTrendingAbility2019; @heijneFourDifferentMethods2020; @murataAgreementContinuousCardiac2022; @maedaAccuracyTrendingAbility2019].
+Even if CO~FloTrac~ does not always agree with CO~TD~, they could agree on the changes in CO, if the difference between the devices is relatively constant within each patient. This agreement on CO changes (often denoted *trending ability*) is evaluated in most recent studies. These results are, unfortunately, not encouraging either; a 20% increase in CO~TD~ may be accompanied by a fall in CO~FloTrac~ or *vice versa* [@geisenAccuracyPrecisionTrending2018; @eisenriedAccuracyTrendingAbility2019; @heijneFourDifferentMethods2020; @murataAgreementContinuousCardiac2022; @maedaAccuracyTrendingAbility2019].
 
-This performance of FloTrac may, however, be underestimated, since it is evaluated on its agreement with thermodilution derived CO, which itself is error-prone. 
+The performance of FloTrac may, however, be underestimated, since it is evaluated on its agreement with CO~TD~, which is likely imprecise itself [@narangThermodilutionCardiacIndex2021; @narangComparisonAccuracyEstimation2022]. 
 
 ### Bayesian statistics
 
-The use of Bayesian statistics in Paper 3 is mainly due to the flexibility of Bayesian models, rather than a choice based on the Bayesian *vs* frequentist philosophy of statistics, or a wish to incorporate *prior* knowledge into our models. Still, it is relevant to give a short introduction to Bayesian statistics, as many scientists have sparse familiarity with the Bayesian approach to statistics (part of the introduction below is not specifically Bayesian, but applies to statistical modelling in general).
+The use of Bayesian statistics in Paper 3 is mainly due to the flexibility of Bayesian models, rather than a choice based on the Bayesian *vs* frequentist philosophy of statistics, or a wish to incorporate *prior* knowledge. Still, it is relevant to give a short, general introduction to Bayesian statistics, as many scientists have sparse familiarity with the topic.
 
-Bayesian statistical models can be understood from a generative perspective: we define a model that we believe could generate data similar to what we have observed ... if only we set the model parameters correctly. When we *fit* a Bayesian model, we define a model based on our *domain knowledge* about the relation between the predictor- and outcome variables, we specify our *prior* knowledge about the model parameters, and we provide some data we have observed. From these three components, the *model*, the *data* and the *priors*---we can answer the question: *If the data was generated by our proposed model, which sets of parameter values are compatible with the data we have observed?* [@mcelreathStatisticalRethinkingBayesian2020].
+Bayesian statistical models can be understood from a generative perspective: we define a model that we believe could generate data similar to what we have observed, if the model parameters are set appropriately. Finding the values for the model parameters, that makes the generated data most similar to the observed data, is  called *fitting* the model. We define a model based on our *domain knowledge* about the relation between the predictor- and outcome variables, we specify our *prior* knowledge about the model parameters, and we provide some data we have observed. From these three components, the *model*, the *data* and the *priors*, we can answer the question: *If the data was generated by our proposed model, which sets of parameter values are compatible with the data we have observed?* [@mcelreathStatisticalRethinkingBayesian2020].
 
-Bayesian updating is the act of turning *data* and *prior* knowledge about model parameters into *posterior* knowledge about model parameters (*prior* is before seeing the data, *posterior* is after seeing the data). This is formalised in Bayes theorem:
+Bayesian updating provides the recipe for *fitting* the model, i.e. the act of turning *data* and *prior* knowledge about model parameters into *posterior* knowledge about model parameters (*prior* is before seeing the data, *posterior* is after seeing the data). This is formalised in Bayes theorem:
 $$
-P(parameters|data) = \frac{P(data|parameters) P(parameters)}{P(data)}
+P(parameters|data) = \frac{P(data|parameters) P(parameters)}{P(data)},
 $$
 where, 
 
-- $parameters$ is a specific set of values for the parameters,
-- $P(parameters)$ is the *prior*: our belief about how plausible the set of parameter values is without seeing the data,
-- $P(data|parameters)$ is the *likelihood* distribution: how plausible the data we have observed is given the specific set of parameters, 
-- $P(data) is the average probability of the data: essentially how likely the data is on average for the entire prior parameter distribution (this is a bit abstract, but it essentially ensures that the posterior distribution will sum to 1).
-- $P(parameters|data)$ is the *posterior* distribution of the model parameters: the plausible parameter values after seeing the data. 
+- $parameters$ is a specific set of parameter values,
+- $P(parameters)$ is the *prior*: our belief about how plausible the set of parameter values is without seeing the *data*,
+- $P(data|parameters)$ is the *likelihood* distribution: how plausible the data we have observed is given the specific set of parameter values, 
+- $P(data)$ is the average probability of the data: essentially how likely the data is on average for the entire prior parameter distribution (this is a bit abstract, but it essentially ensures that the posterior distribution will sum to 1).
+- $P(parameters|data)$ is the *posterior* distribution of the model parameters: the plausibility of the parameter values after seeing the data. 
 
 #### Bayesian updating of a simple model
 
