@@ -31,21 +31,19 @@ Fluid therapy is a ubiquitous medical intervention; both in the perioperative se
 
 Intraoperative fluid management is mainly relevant in acute or long-duration surgery. 
 In acute surgery, the preoperative fluid status is generally unknown, and it is often reasonable to assume that the patient arrives at the operating room dehydrated. 
-In long-duration surgery, continuous loss of fluid through bleeding, perspiration and urination necessitates fluid replacement through the operation. Since these patients are anaesthetised, intravenous (IV) is the administration route of choice.
+In long-duration surgery, continuous loss of fluid through bleeding, perspiration and urination necessitates fluid replacement throughout the operation. 
 
-Like every treatment, IV fluid should only be given to patients who will benefit from the fluid. 
-This is the setup for a prediction problem: can we, ahead of time, predict whether a patient will benefit from an intravenous fluid administration? 
+Like every treatment, intravenous (IV) fluid should only be given to patients who will benefit from the fluid. 
+This is the setup for a prediction problem: can we, before we give the fluid, predict whether a patient will benefit from an intravenous fluid administration? 
 The first task is to define what we mean with *benefit*, and how we can measure it. This is not trivial, and it will be discussed further in Section \@ref(why-fluid). 
 Luckily, a necessary (but not sufficient) condition for benefitting from a fluid administration is that the fluid causes an increase in cardiac output (CO). 
-This can be measured, and allows us to formulate a simpler prediction problem: 
-
-Can we predict whether a patient’s CO will increase from a fluid administration? 
+This can be measured, and allows us to formulate a simpler prediction problem: can we predict whether a patient’s CO will increase from a fluid administration? 
 
 There is an entire subfield of anaesthesia and intensive care research dealing with this problem.
 This PhD dissertation describes a small, but hopefully meaningful addition to the field.
 
-In this dissertation, I present the available tools for fluid responsiveness prediction, with focus on the intraoperative setting. The dissertation covers 3 papers that tackle specific limitations to the most common tools.  
+In this dissertation, I present the methods available tools for fluid responsiveness prediction, with focus on the intraoperative setting. The dissertation covers 3 papers that tackle specific limitations to two of the most common methods.  
 
-The terms *fluid challenge* and *bolus* are used interchangeably. *Stroke volume* (SV) and *cardiac output* (CO) are often interchangeable and the term that best fits the context is used. Ventilation and respiration is also used interchangeably and refer to the act of breathing (either mechanically or spontaneously). 
+The terms *fluid challenge* and *bolus* are used interchangeably. *Stroke volume* (SV) and *cardiac output* (CO) are often interchangeable and the term that best fits the context is used. Ventilation and respiration is also used interchangeably and refer to the act of breathing (either mechanically or spontaneously).
  
 

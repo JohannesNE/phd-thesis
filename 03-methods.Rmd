@@ -140,7 +140,7 @@ In hemodynamic time series and waveforms, we often have patterns that repeat wit
 ```{r method-gam-cyclic}
 #| out.width="12cm",
 #| fig.cap="(ref:method-gam-cyclic)",
-#| fig.scap="Cyclic spline"
+#| fig.scap="A cyclic spline"
 knitr::include_graphics("figures/method-gam-cyclic.png")
 ```
 
