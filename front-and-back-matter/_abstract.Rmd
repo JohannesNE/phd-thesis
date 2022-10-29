@@ -1,14 +1,14 @@
 **Background**
 
-Administration of intravenous fluids is a frequent medical intervention during surgery. However, fluids have side effects, and increasing concern is being raised about the widespread use of intravenous fluids. To reduce side effects, fluids should only be administered to patients who can mobilise the added fluid via an increase in the heart’s stroke volume (SV)---this is called a fluid response. If a patient’s SV does not respond to fluid, they do not benefit from the fluid and can only experience side effects. Several methods for predicting a patient's response to fluid have been proposed. 
+Administration of intravenous fluids is a frequent medical intervention during surgery. However, fluids have side effects, and increasing concern is being raised about the widespread use of intravenous fluids. To reduce side effects, fluids should only be administered to patients who can mobilise the added fluid via an increase in the heart’s stroke volume (SV)---this is called a fluid response. If a patient’s SV does not respond to fluid, they do not benefit from the fluid and can only experience side effects. 
 
-One of the best indicators that a patient’s SV will increase with fluid administration, is high ventilator-induced pulse pressure variation (PPV): the cyclic change in pulse pressure caused by mechanical ventilation. However, since this method was developed patients are generally being ventilated with lower tidal volumes ($V_T$) and higher respiratory rates (RR), and it has been shown that this lung-protective ventilation lowers the predictive accuracy of PPV.  
+Several methods for predicting a patient's response to fluid have been proposed. One of the best indicators that a patient’s SV will increase with fluid administration, is high ventilator-induced pulse pressure variation (PPV): the cyclic change in pulse pressure caused by mechanical ventilation. However, after this method was developed patients are generally being ventilated with lower tidal volumes ($V_T$) and higher respiratory rates (RR), and it has been shown that this *lung-protective* ventilation lowers the predictive accuracy of PPV.  
 
-Another approach to fluid responsiveness prediction is the mini-fluid challenge (MFC), where a patient’s fluid-responsiveness status is tested with a small amount of fluid. Only if the patient responds to the MFC, should a larger bolus of fluid be given. 
+Another approach to fluid responsiveness prediction is the mini-fluid challenge (MFC), where a patient’s fluid-responsiveness status is tested with a small amount of fluid. Only if the patient responds to the MFC, should a larger bolus of fluid be given. The hypothesis that the  MFC-response predicts the response to a larger fluid bolus has been investigated in several studies.
 
 **Aims**
 
-The aim with this PhD project was to tackle challenges in fluid responsiveness prediction during surgery. Specifically, I wanted to understand and describe a methodological problem present in most MFC studies, and to develop methods for overcoming current clinical limitations to the use of PPV.
+The aim with this PhD project was to tackle challenges in fluid responsiveness prediction during surgery. Specifically, I wanted to develop methods for overcoming current clinical limitations to the use of PPV, and to understand and describe a methodological problem present in most MFC studies.
 
 **Papers**
 

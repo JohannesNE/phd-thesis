@@ -1,20 +1,20 @@
 **Baggrund**
 
-Intravenøs indgift af væske er en hyppig medicinsk behandling under operationer. Væskebehandling har dog bivirkninger, og der er stigende bekymring omkring den udbredte brug af intravenøs væske. For at begrænse bivirkninger, bør væskebehandling kun bruges hos patienter, der er i stand til at mobilisere den ekstra væske ved en øgning af hjertets slagvolumen (SV)---dette kaldes et væskerespons. Hvis en patients SV ikke responderer på væske, har patienten ingen gavn af væsken og kan kun få bivirkninger. Der er foreslået flere forskellige metoder til at forudsige en patients respons på en væskeingift. 
+Intravenøs indgift af væske er en hyppig medicinsk behandling under operationer. Væskebehandling har dog bivirkninger, og der er stigende bekymring omkring den udbredte brug af intravenøs væske. For at begrænse bivirkninger, bør væskebehandling kun bruges hos patienter, der er i stand til at mobilisere den ekstra væske ved en øgning af hjertets slagvolumen (SV)---dette kaldes et væskerespons. Hvis en patients SV ikke responderer på væske, har patienten ingen gavn af væsken, men kan stadig få bivirkninger. 
 
-En af de bedste indikatorer for at en patients SV vil øges af en væskeindgift, er en høj respiratorinduceret pulstryksvariation. Det vil sige, den cykliske variation i pulstryk forårsaget af respiratorbehandling. Siden denne metode blev udviklet, er man begyndt at bruge lavere tidalvolumen ($V_T$) og højere respirationsrate (RR) under respiratorbehandling, og det er blevet vist at pulstryksvariationen har lavere prædiktiv værdi ved disse indstillinger.
+Der er foreslået flere forskellige metoder til at forudsige en patients respons på en væskeingift. En af de bedste indikatorer for at en patients SV vil øges af en væskeindgift, er en høj respiratorinduceret pulstryksvariation -- den cykliske variation i pulstryk forårsaget af respiratorbehandling. Siden denne metode blev udviklet, er man begyndt at bruge lavere tidalvolumen ($V_T$) og højere respirationsrate (RR) under respiratorbehandling, og det er blevet vist at pulstryksvariationen har lavere prædiktiv værdi ved disse indstillinger.
 
-En anden metode til at forudsige et væskerespons er med en *mini-fluid challenge* (MFC). Her testes en patients evne til at respondere på væske først med lille mængde væske. Kun hvis patienten responderer på dette, giver man efterfølgende en større mængde væske.
+En anden metode til at forudsige et væskerespons er med en *mini-fluid challenge* (MFC). Her testes en patients evne til at respondere på væske først med lille mængde væske. Kun hvis patienten responderer på dette, giver man efterfølgende en større mængde væske. Hypotesen om at et MFC-respons kan prædiktere responset på en efterfølgende større mængde væske er afprøvet i flere studier.
 
 **Formål**
 
-Formålet med dette ph.d-projekt var at arbejde med de udfordringer, der aktuelt er i at forudsige patienters væskerespons under operationer. Specifikt ville jeg forstå og beskrive et metodemæssigt problem, som går igen i de fleste MFC-studier, og jeg ville udvikle metoder til at afhjælpe nogle af de kliniske begrænsninger der eksisterer for brugen af pulstryksvariation.
+Formålet med dette ph.d-projekt var at arbejde med de udfordringer, der aktuelt er i at forudsige patienters væskerespons under operationer. Specifikt ville jeg udvikle metoder til at afhjælpe nogle af de kliniske begrænsninger der eksisterer for brugen af pulstryksvariation, og jeg ville forstå og beskrive et metodemæssigt problem, som går igen i de fleste MFC-studier.
 
 **Artikler**
 
 Denne afhandling består af tre artikler:
 
-Artikel 1 beskriver at der opstår en matematisk kobling mellem prediktoren (responset til en MFC) og det endepunkt der skal forudsiges (det totale væskerespons). Dette giver en overestimering af den prædiktive værdi af en MFC. Vi foreslår også et bedre design. 
+Artikel 1 beskriver at der opstår en matematisk kobling mellem prediktoren (responset til en MFC) og det endepunkt der skal forudsiges (det totale væskerespons). Dette giver en overestimering af den prædiktive værdi af en MFC. Derfor foreslås et bedre design. 
 
 Artikel 2 introducerer generaliserede additive modeller (GAM) som et værktøj til at analysere medicinske tidsserier og kurvedata. Vi demonsterer at en GAM kan bruges til at beregne pulstryksvariaton, i situationer hvor den klassiske metode ikke virker, og at man kan bruge en GAM til at opdele en centralvenetrykskurve i fysiologisk forståelige komponenter.
 
