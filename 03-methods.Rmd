@@ -280,20 +280,20 @@ where,
 
 #### Bayesian updating of a simple model
 
-\noindent To gain some intuition about how Bayesian updating works, we will go through fitting a very simple model. We sample subjects from a population and measure their height. The aim is to estimate the mean and standard deviation (SD) of heights in the population from the heights in the sample. 
+\noindent To gain some intuition about how Bayesian updating works, we will go through fitting a very simple model. We sample subjects from a population and measure their heights. The aim is to estimate the mean and standard deviation (SD) of heights in the population from the heights in the sample. 
 
-First, we define a generative model, i.e., a model that---with the right parameter values---will generate data that looks like the data we have collected. In this example, the model is simple: we assume that each subjects is drawn from a normal (Gaussian) distribution with a mean, $\mu$, and standard deviation (SD), $\sigma$:
+First, we define a generative model, i.e., a model that---with the right parameter values---will generate data that looks like the data we have collected. In this example, the model is simple: we assume that each subjects is drawn from a normal (Gaussian) distribution with a mean, $\mu$, and SD, $\sigma$:
 $$
 Height_i \sim Normal(\mu, \sigma),
 $$
-where $Height_i$ is the height of subject $i$. To complete the model, we add prior distributions for the two parameters: $\mu$ and $\sigma$.
-$$
-\mu \sim Normal(170, 20) \\
-\sigma \sim Uniform(1, 30).
-$$
-The interpretation of this prior distribution is, that before we see any data, we are quite certain that the mean height in the population ($\mu$) is somewhere between 130 and 210 cm, and that the SD ($\sigma$) is between 1 and 30 cm with all values equally probable and values outside this range entirely impossible. These priors are only weakly informative and could be improved without much controversy, but here, their purpose is to illustrate how prior beliefs can be updated through observation of data (see Figure \@ref(fig:method-bayes-update)).
+where $Height_i$ is the height of subject $i$. To complete the model, we add prior distributions for the two parameters, $\mu$ and $\sigma$:
+\begin{align*}
+\mu &\sim Normal(170, 20) \\
+\sigma &\sim Uniform(1, 30).
+\end{align*}
+The interpretation of this prior distribution is, that before we see any data, we are quite certain that the mean height in the population ($\mu$) is somewhere between 130 and 210 cm ($170 cm \pm 2 \cdot 20 cm$), and that the SD ($\sigma$) is between 1 and 30 cm, with all values equally probable and values outside this range entirely impossible. These priors are only weakly informative and could be improved without much controversy, but here, their purpose is to illustrate how prior beliefs can be updated through observation of data.
 
-In this example, data is simulated. We, therefore, know that the *true* mean height is 165 cm and the *true* SD is 10 cm. The top panel-pair in Figure \@ref(fig:method-bayes-update) displays our prior belief about the model parameters. Remaining panel-pairs show how we update our beliefs about the parameter values when we observe more and more data (heights).
+Figure \@ref(fig:method-bayes-update) illustrates how we systematically update our knowledge about the model parameters through observation of more and more data (heights). The top panel-pair in Figure \@ref(fig:method-bayes-update) displays our prior belief about the model parameters. When we start sampling heights from the population, we update our beliefs about the parameter values, and the range of compatible parameter values become narrower. In this example, data is simulated, and we know that the *true* mean height ($\mu$) is 165 cm and the *true* SD ($\sigma$) is 10 cm. 
 
 ```{r method-bayes-update}
 #| out.width="100%",
@@ -313,7 +313,7 @@ In Figure \@ref(fig:method-bayes-update), the distributions of $\mu$ and $\sigma
 knitr::include_graphics("figures/method-bayes-update-2d.png")
 ```
 
-(ref:method-bayes-update-2d) The prior and posterior distributions are multidimensional distributions with a dimension for each parameter in the model.
+(ref:method-bayes-update-2d) The prior and posterior distributions are multidimensional distributions with a dimension for each parameter in the model. Color density represent probability density.
 
 The shaded areas in Figure \@ref(fig:method-bayes-update) contain 95% of the probability mass for the parameter values. These are traditionally called 95% credible intervals, but I will use the alternative term *compatibility interval* (CI), as they can be interpreted as containing the parameter values that are compatible with the data we observe---this is also a reasonable interpretation of frequentist *confidence intervals* [@gelmanAreConfidenceIntervals2019]. 
 
