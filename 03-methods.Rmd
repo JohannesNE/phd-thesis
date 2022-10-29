@@ -66,9 +66,9 @@ The statistical analysis of such a model quantifies how the independent variable
 
 ## Paper 1 - The mini-fluid challenge
 
-Paper 1 is a critique of the method used in most existing studies of the mini-fluid challenge (MFC) as a predictor of fluid responsiveness. In this section, I will describe this common design and explain why it is problematic. 
+Paper 1 is a critique of the method used in most existing studies of the MFC as a predictor of fluid responsiveness. In this section, I will describe this common design and explain why it is problematic. 
 
-Most MFC studies [@Muller2011; @smorenbergMinifluidChallenge1502018; @biaisMinifluidChallenge1002017; @wu10secondFluidChallenge2014; @aliAbilityMinifluidChallenge2019; @mukhtarValidityMinifluidChallenge2019; @leeMinifluidChallengeTest2020; @fotDynamicTestsPredict2020; @messinaMiniFluidChAllenge2021] use a design where SV, or a related variable, is measured thrice. First, a baseline measurement before any fluid is given; then, after the MFC is given; and, lastly, after the remaining fluid is given. The response to the MFC, here referred to as $\Delta SV_{100}$, is then calculated as the relative change in SV from baseline to after the MFC. The outcome predicted is the change from baseline to after the entire volume is given (MFC and the remaining fluid), here referred to as $\Delta SV_{500}$ (see Figure \@ref(fig:methods-mfc-common-design)).
+Most MFC studies [@Muller2011; @smorenbergMinifluidChallenge1502018; @biaisMinifluidChallenge1002017; @wu10secondFluidChallenge2014; @aliAbilityMinifluidChallenge2019; @mukhtarValidityMinifluidChallenge2019; @leeMinifluidChallengeTest2020; @fotDynamicTestsPredict2020; @messinaMiniFluidChAllenge2021] use a design where SV, or a related variable, is measured thrice. First, a baseline measurement before any fluid is given; then, after the MFC (e.g. 100 ml) is given; and, lastly, after the remaining fluid (e.g. 400 ml) is given. The response to the MFC, here referred to as $\Delta SV_{100}$, is then calculated as the relative change in SV from baseline to after the MFC. The outcome to predict, is the change from baseline to after the entire volume is given, here referred to as $\Delta SV_{500}$ (see Figure \@ref(fig:methods-mfc-common-design)).
 
 ```{r methods-mfc-common-design}
 #| out.width="14cm",
@@ -79,9 +79,9 @@ knitr::include_graphics("figures/methods-mfc-common-design.png")
 
 (ref:methods-mfc-common-design) The design used in most studies of the MFC.
 
-This design has two major problems. The first problem is that the response elicited by the MFC is also included in the response the MFC is supposed to predict, creating a self-fulfilling prophecy: if the MFC response is high enough, the patient can have no response to the remaining fluid, and the conclusion will still be that the MFC correctly predicted the response. 
+This design has two major problems. First, the response to the MFC is included in the outcome, that the MFC is supposed to predict. This creates a self-fulfilling prophecy: if the MFC response is high enough, the patient can have no response to the remaining fluid, and the conclusion will still be, that the MFC correctly predicted the full fluid response. 
 
-The second problem is more subtle. Measurements of SV are influenced by some random variation. This variation is caused by both measurement error and short-term physiological variation in SV. Both are essentially "noise" to the clinician who wants to evaluate the response to a fluid challenge. The clinician is interested in the underlying, but unknowable average SV, not the short-term variation around this value. I will call this the "true" SV. If a measurement is, by chance, higher than the "true" SV, the next measurement will most likely decrease. Likewise, if a measurement is randomly low, the next will likely be higher. This phenomenon is called *regression towards the mean* (see Figure \@ref(fig:method-reg-to-the-mean)).
+The second problem is more subtle. Measurements of SV are influenced by some random variation. This variation is caused by both measurement error and short-term physiological variation in SV. Both are essentially *noise* to the clinician, who wants to evaluate the response to a fluid challenge. The clinician is interested in the underlying, but unknowable average SV, not the short-term variation around this value. I will call this the "true" SV. If a measurement is, by chance, higher than the "true" SV, the next measurement will most likely show a decrease. Likewise, if a measurement is randomly low, the next will likely show be higher than the current. This phenomenon is called *regression towards the mean* (see Figure \@ref(fig:method-reg-to-the-mean)).
 
 ```{r method-reg-to-the-mean}
 #| out.width="12cm",
@@ -90,9 +90,9 @@ The second problem is more subtle. Measurements of SV are influenced by some ran
 knitr::include_graphics("figures/method-reg-to-the-mean.png")
 ```
 
-(ref:method-reg-to-the-mean) An illustration of *regression towards the mean*. An outlying SV measurement is likely followed by a measurement closer to the "true" SV.
+(ref:method-reg-to-the-mean) An illustration of *regression towards the mean*. An outlying SV measurement is likely followed by a measurement closer to the "true" (mean) SV.
 
-In the common MFC study design, $SV_{baseline}$ is included in the calculation of both the predictor ($\Delta SV_{100}$) and the outcome ($\Delta SV_{500}$). Therefore, the random measurement error in $SV_{baseline}$ is included in both the predictor and the outcome, making them spuriously correlated [@archieMathematicCouplingData1981; @strattonRegressionCalculatedVariables1987]. In Paper 1, we illustrate this spurious correlation with a simple computer simulation: We simulated an MFC study where all subjects had no response to fluid; only random variation in measured SV. A correct analysis should show that the MFC has no predictive ability—since there is nothing to predict—but it is clear that the change over the MFC ($\Delta SV_{100}$) is correlated to the change over the full fluid administration ($\Delta SV_{500}$) (see Figure \@ref(fig:method-mfc-null-sim)).
+In the common MFC study design, $SV_{baseline}$ is included in the calculation of both the predictor ($\Delta SV_{100}$) and the outcome ($\Delta SV_{500}$). Therefore, the random measurement error in $SV_{baseline}$ is included in both the predictor and the outcome, making them spuriously correlated [@archieMathematicCouplingData1981; @strattonRegressionCalculatedVariables1987]. In Figure \@ref(fig:method-mfc-null-sim), this spurious correlation is illustrated with a simple computer simulation. It shows a simulated a MFC study, where all subjects have no response to fluid; only random variation in measured SV. A correct analysis should show that the MFC has no predictive ability---since there is nothing to predict---but it is clear that the change over the MFC ($\Delta SV_{100}$) is correlated to the change over the full fluid administration ($\Delta SV_{500}$) (see Figure \@ref(fig:method-mfc-null-sim)b).
 
 ```{r method-mfc-null-sim}
 #| out.width="16cm",
@@ -107,15 +107,13 @@ The first problem, that the predictor is included in the outcome, can be fixed b
 
 To illustrate the magnitude of the bias, we reanalysed data from the MFC study by Muller et al. [@Muller2011]. Instead of showing the MFC’s ability to predict the full fluid response, we analysed the MFC’s ability to predict the response to the remaining 400 ml fluid. We did this by extracting data from Fig. 3A in Muller et al., 2011 [@Muller2011] and used the plotted $\Delta SV_{100}$ and $\Delta SV_{500}$ to calculate $\Delta SV_{400}$. As noted in the paragraph above, this approach is also biased, but now in the opposite direction.
 
-A solution to both problems is the design used in the study by Guinot et al. [@guinotMinifluidChallengePredicts2015]. This study introduced a second SV measurement after the MFC, acting as a baseline for the response to the remaining fluid. With this design, the predictor is appropriately separated from the outcome, avoiding the spurious correlation. Unfortunately, this design is not entirely unproblematic as discussed in the next chapter (ref:discussion-mfc). 
-
 ## Paper 2 - Generalized additive models
 
-Paper 2 introduces generalized additive models (GAMs) as a tool for analysing medical time series and waveforms. The paper describes how GAMs can be used for robust estimation of PPV (a method used in Paper 3) and it presents a novel method for decomposing medical waveforms into simpler, repeating, components.
+Paper 2 introduces generalized additive models (GAMs) as a tool for analysing medical time series and waveforms. The paper describes how GAMs can be used for robust estimation of PPV (a method used in Paper 3), and it presents a novel method for decomposing medical waveforms into simpler, repeating components.
 
 ### An introduction to generalized additive models
 
-A GAM is an extension of the generalized linear model [@hastieGeneralizedAdditiveModels1986]. For the purposes described here and in Paper 3, we can, however, mostly forget about the *generalized* part, and simply consider GAMs as multiple regression models that can fit smooth functions instead of only straight lines. These smooth functions are called regression splines (see Figure \@ref(fig:method-wood-spline)). Figure \@ref(fig:method-lm-vs-gam) illustrates how a linear model and a GAM fit the same simulated data.
+A GAM is an extension of the generalized linear model [@hastieGeneralizedAdditiveModels1986]. For the purposes described here, we can, however, disregard the *generalized* part, and simply consider GAMs as multiple regression models that can fit smooth functions instead of only straight lines. These smooth functions are called regression splines (see Figure \@ref(fig:method-wood-spline)). Figure \@ref(fig:method-lm-vs-gam) illustrates how a linear model and a GAM fit the same simulated data.
 
 ```{r method-wood-spline}
 #| out.width="7cm",
@@ -135,7 +133,7 @@ knitr::include_graphics("figures/method-lm-vs-gam.png")
 
 (ref:method-lm-vs-gam) A linear model and a generalized additive model (GAM) fitting the same simulated data.
 
-In hemodynamic time series and waveforms, we often have patterns that repeat with each respiratory cycle or heart beat. If we fit such a repeating pattern with GAM, we can constrain the smooth function to start and end at the same value, slope and curvature (0th, 1st and 2nd derivative), to create a smoothly repeating curve (a cyclic spline). The function that generates the data in Figure \@ref(fig:method-lm-vs-gam) is $Y = sin(X)$, so we know that it repeats itself at $X = 2\pi = 6.28$. Figure \@ref(fig:method-gam-cyclic) illustrates the fit of the GAM with this additional constraint.
+In hemodynamic time series and waveforms, we often have patterns that repeat with each respiratory cycle or heart beat. When we fit such a repeating pattern with GAM, we can constrain the spline to start and end at the same value, slope and curvature (0th, 1st and 2nd derivative), to create a smoothly repeating curve (a cyclic spline). The function that generates the data in Figure \@ref(fig:method-lm-vs-gam) is $Y = sin(X)$, so we know that it repeats itself at $X = 2\pi = 6.28$. Figure \@ref(fig:method-gam-cyclic) illustrates the fit of the GAM with this additional, cyclic constraint.
 
 ```{r method-gam-cyclic}
 #| out.width="12cm",
@@ -146,17 +144,17 @@ knitr::include_graphics("figures/method-gam-cyclic.png")
 
 (ref:method-gam-cyclic) Illustration comparing a cyclic spline fit to the data-generating function ($Y = sin(X)$ with added Gaussian noise).
 
-The high flexibility of GAMs could also make them prone to overfitting data. This is countered by penalising splines by their wiggliness (wiggliness is the inverse of smoothness). 
+The high flexibility of GAMs could also make them prone to overfitting data. This is countered by penalising the splines by their wiggliness (wiggliness is the inverse of smoothness). 
 
-A classic least squares fit is found by minimising
+A classic (unpenalised) least squares fit is found by minimising the loss function:
 $$
 \sum_{i=1}^n (Y_i-\hat{Y}_i)^2,
 $$
-where $Y_i$ are the observed values and $\hat{Y}_i$ are the values predicted by the model. For fitting penalised splines this is extended by adding a the wiggliness penalty:
+where $Y_i$ are the observed values and $\hat{Y}_i$ are the values predicted by the model. For fitting penalised splines, a wiggliness penalty is added to the loss function:
 $$
 \sum_{i=1}^n (Y_i-\hat{Y}_i)^2 + \lambda\int f''(X)^2 dX.
 $$
-$f’’(X)$ is the curvature of the spline (for a straight line, the curvature is 0). This is squared to keep it positive and then integrated over the range of the independent variable, $X$. The smoothing parameter, $\lambda$ is used to control the tradeoff between fitting data with minimal error and preferring a smooth spline less "prone" to overfitting [@woodGeneralizedAdditiveModels2017]. It is possible, and often recommended, to automatically choose the smoothing parameter to optimise out-of-sample prediction [@woodFastStableRestricted2011] (see Figure \@ref(fig:method-gam-wiggliness)).
+$f''(X)$ is the curvature of the spline (for a straight line, the curvature is 0). This is squared to keep it positive and then integrated over the range of the independent variable, $X$. The smoothing parameter, $\lambda$ is used to control the tradeoff between fitting data with minimal error and preferring a smooth spline less "prone" to overfitting [@woodGeneralizedAdditiveModels2017]. It is possible, and often recommended, to automatically choose the smoothing parameter that optimise out-of-sample prediction (e.g. through cross-validation) [@woodFastStableRestricted2011] (see Figure \@ref(fig:method-gam-wiggliness)).
 
 ```{r method-gam-wiggliness}
 #| out.width="12cm",
@@ -175,13 +173,13 @@ In sinus rhythm, the major source of PPV is respiratory variation in PP (as desc
 $$
 E(PP) = \alpha + f(pos_{\text{respiratory cycle}}),
 $$
-where $E(PP)$ is the expected PP, $\alpha$ is the mean PP and $f(pos_{\text{respiratory cycle}})$ is the variation in PP around the mean, represented as a smooth cyclic function that goes from 0 (start of respiratory cycle) to 1 (end of respiratory cycle) and continues smoothly from 1 to 0 (see Figure \@ref(fig:method-gam-PP)b).
+where $E(PP)$ is the expected PP, $\alpha$ is the mean PP and $f(pos_{\text{respiratory cycle}})$ is the variation in PP around the mean, represented as a cyclic spline that goes from 0 (start of respiratory cycle) to 1 (end of respiratory cycle) and connects smoothly back to 0 (see Figure \@ref(fig:method-gam-PP)b).
 
 In addition to the respiratory variation in PP, we also want the model to allow that PP can change slowly over time:
 $$
 E(PP) = \alpha + f(pos_{\text{respiratory cycle}}) + f(time).
 $$
-Now, the expected value of PP ($E(PP)$) is the sum of the effect of repeating effect respiration and a smooth trend in PP over time ($f(time)$) (see Figure \@ref(fig:method-gam-PP)). 
+Now, $E(PP)$ is the sum of the repeating effect respiration and a smooth trend in PP over time ($f(time)$) (see Figure \@ref(fig:method-gam-PP)). 
 
 ```{r method-gam-PP}
 #| out.width="100%",
@@ -199,12 +197,12 @@ $$
 
 ### Decomposing waveforms
 
-For the PP model above, we reduced the arterial blood pressure waveform to a series of PP measurements before fitting the GAM. It is also possible to decompose a raw waveform. In addition to the effect of ventilation, we now also have a smooth effect that repeats with each heartbeat. Furthermore, these two effects may interact. In Paper 2, we exemplify this by decomposing a CVP waveform. The GAM has the following form:
-$$
-E(CVP) = \alpha + f(pos_{\text{cardiac cycle}}) + f(pos_{\text{respiratory cycle}}) 
-+ f(pos_{\text{cardiac cycle}}, pos_{\text{respiratory cycle}}) + f(time).
-$$
-Here, $f(pos_{\text{cardiac cycle}})$ is similar to $f(pos_{\text{respiratory cycle}})$, but repeats with every cardiac cycle (starting at the P-wave in the ECG). $ f(pos_{\text{cardiac cycle}}, pos_{\text{respiratory cycle}})$ is a 2-dimensional smooth plane representing the effect of the interaction between the respiratory cycle and the cardiac cycle on CVP (see Figure \@ref(fig:method-gam-CVP)).
+In the PP model above, we reduced the arterial blood pressure waveform to a time series of PP measurements before fitting the GAM. It is also possible to decompose a raw waveform. In addition to the effect of ventilation, we now also have a smooth effect that repeats with each heartbeat. Furthermore, these two effects may interact. In Paper 2, we exemplify this by decomposing a CVP waveform. The GAM has the following form:
+\begin{align*}
+E(CVP) = &\alpha + f(pos_{\text{cardiac cycle}}) + f(pos_{\text{respiratory cycle}}) \\
+&+ f(pos_{\text{cardiac cycle}}, pos_{\text{respiratory cycle}}) + f(time).
+\end{align*}
+Here, $f(pos_{\text{cardiac cycle}})$ is similar to $f(pos_{\text{respiratory cycle}})$, but repeats with every cardiac cycle (starting at the P-wave in the ECG). $f(pos_{\text{cardiac cycle}}, pos_{\text{respiratory cycle}})$ is a 2-dimensional smooth plane representing the effect of the interaction between the respiratory cycle and the cardiac cycle on CVP (see Figure \@ref(fig:method-gam-CVP)).
 
 ```{r method-gam-CVP}
 #| out.width="100%",
