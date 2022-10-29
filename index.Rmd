@@ -79,7 +79,7 @@ params:
   referenceHeading: "References"
 
 # citation and reference options (pandoc) #
-csl: bibliography/ACM.csl # try csl: bibliography/transactions-on-computer-human-interaction.csl for numerical citations
+csl: bibliography/AMA.csl # try csl: bibliography/transactions-on-computer-human-interaction.csl for numerical citations
 refs-line-spacing: 6mm
 refs-space-between-entries: 1mm
 
