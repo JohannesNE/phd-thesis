@@ -375,6 +375,6 @@ Lastly, priors for all parameters are specified. These are all weakly informativ
 
 ### Sample size
 
-The sample size calculation was done regarding fluid responsiveness prediction. We expected a fluid response in half the subjects and an AUROC of 0.8. To attain a power of 0.9 with $\alpha$ = 0.05, 33 patients should be included. To account for uncertainty in the proportion of fluid responders, and to obtain more precise estimates for the effect of ventilator settings on PPV, we planned to include 50 subjects.
+The sample size calculation was done with respect to fluid responsiveness prediction. We expected a fluid response in half the subjects and an AUROC of 0.8. To attain a power of 0.9 with $\alpha$ = 0.05, 33 patients should be included. To account for uncertainty in the proportion of fluid responders, and to obtain more precise estimates for the effect of ventilator settings on PPV, we planned to include 50 subjects.
 
 
