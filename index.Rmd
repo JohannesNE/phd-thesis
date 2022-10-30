@@ -22,7 +22,7 @@ title: |
   \
   \LARGE -- Physiological and Methodological \
   Limitations and Considerations\
-author: Johannes Enevoldsen
+author: Johannes Aagaard Enevoldsen
 college: Health
 university: Aarhus University
 institute: Health
