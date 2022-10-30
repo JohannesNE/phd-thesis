@@ -225,7 +225,7 @@ Paper 3 presents a number of statistical methods including Bland-Altman analysis
 
 ### Protocol
 
-The experiment protocol was initiated after anaesthesia induction, in relation to a planned 250 ml fluid administration, where the patient was considered hemodynamically stable by the treating anaesthetist. First, the patient was ventilated with ten different ventilator settings for 30 s each. Each setting was a unique combination of $V_T$ between 4 and 10 ml kg^-1^ (predicted body weight [@theacuterespiratorydistresssyndromenetworkVentilationLowerTidal2000]) and RR between 10 and 31 min^-1^ (see Figure \@ref(fig:methods-vent-settings)). Then, a two-minute period was used to establish a baseline SV, after which a 250 fluid bolus was administered. If SV after the fluid administration was more than 10% higher than the baseline SV, the patient classified as a fluid responder.
+The experiment protocol was initiated after anaesthesia induction, in relation to a planned 250 ml fluid administration, where the patient was considered hemodynamically stable by the treating anesthesiologist. First, the patient was ventilated with ten different ventilator settings for 30 s each. Each setting was a unique combination of $V_T$ between 4 and 10 ml kg^-1^ (predicted body weight [@theacuterespiratorydistresssyndromenetworkVentilationLowerTidal2000]) and RR between 10 and 31 min^-1^ (see Figure \@ref(fig:methods-vent-settings)). Then, a two-minute period was used to establish a baseline SV, after which a 250 fluid bolus was administered. If SV after the fluid administration was more than 10% higher than the baseline SV, the patient classified as a fluid responder.
 
 ```{r methods-vent-settings}
 #| out.width="10cm",
