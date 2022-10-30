@@ -61,7 +61,7 @@ knitr::include_graphics("figures/background-ppv-example.png")
 Mechanical ventilation affects circulation in multiple ways [@vistisenWhatAnaesthesiologistNeeds2019]. The four principal factors contributing to PPV are illustrated in Figure \@ref(fig:background-heart-lung-interactions). 1) During inspiration, alveolar pressure squeezes out blood from lung capillaries and veins, increasing left-ventricular preload. 2) Lung inflation raises thoracic pressure and aids the flow of blood from the thorax, reducing left-ventricular afterload. Both effects (1 and 2) tend to increase left-ventricular SV during inspiration. Conversely, (3) right-ventricular preload is decreased, since the increased thoracic pressure reduces venous return, and (4) right-ventricular afterload is increased by the alveolar pressure during inspiration. These effects (3 and 4) decrease right-ventricular SV during inspiration. A decrease in right-ventricular SV will decrease left-ventricular preload, but this effect is delayed through the pulmonary circulation. The decreased SV from the right ventricle affects the left ventricle a few seconds later---at the beginning of the expiration---making all four effects contribute to respiratory variation in left-ventricular SV. In most patients, the effect on the right-ventricular preload (3) is the main mediator of ventilator-induced stroke volume variation (SVV) [@michardChangesArterialPressure2005]. 
 
 ```{r background-heart-lung-interactions}
-#| out.width="8cm",
+#| out.width="6cm",
 #| fig.cap="(ref:background-heart-lung-interactions)",
 #| fig.scap="Heart-lung interaction physiology"
 knitr::include_graphics("figures/background-heart-lung-interactions.png")

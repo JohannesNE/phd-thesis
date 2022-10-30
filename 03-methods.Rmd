@@ -90,7 +90,7 @@ The second problem is more subtle. Measurements of SV are influenced by some ran
 knitr::include_graphics("figures/method-reg-to-the-mean.png")
 ```
 
-(ref:method-reg-to-the-mean) An illustration of *regression towards the mean*. An outlying SV measurement is likely followed by a measurement closer to the "true" (mean) SV.
+(ref:method-reg-to-the-mean) An illustration of *regression towards the mean*. An extreme SV measurement is likely followed by a measurement closer to the "true" (mean) SV.
 
 In the common MFC study design, $SV_{baseline}$ is included in the calculation of both the predictor ($\Delta SV_{100}$) and the outcome ($\Delta SV_{500}$). Therefore, the random measurement error in $SV_{baseline}$ is included in both the predictor and the outcome, making them spuriously correlated [@archieMathematicCouplingData1981; @strattonRegressionCalculatedVariables1987]. In Figure \@ref(fig:method-mfc-null-sim), this spurious correlation is illustrated with a simple computer simulation. It shows a simulated a MFC study, where all subjects have no response to fluid; only random variation in measured SV. A correct analysis should show that the MFC has no predictive ability---since there is nothing to predict---but it is clear that the change over the MFC ($\Delta SV_{100}$) is correlated to the change over the full fluid administration ($\Delta SV_{500}$) (see Figure \@ref(fig:method-mfc-null-sim)b).
 
@@ -118,7 +118,7 @@ Paper 2 introduces generalized additive models (GAMs) as a tool for analysing me
 A GAM is an extension of the generalized linear model [@hastieGeneralizedAdditiveModels1986]. For the purposes described here, we can, however, disregard the *generalized* part, and simply consider GAMs as multiple regression models that can fit smooth functions instead of only straight lines. These smooth functions are called regression splines (see Figure \@ref(fig:method-wood-spline)). Figure \@ref(fig:method-lm-vs-gam) illustrates how a linear model and a GAM fit the same simulated data.
 
 ```{r method-wood-spline}
-#| out.width="7cm",
+#| out.width="6cm",
 #| fig.cap="(ref:method-wood-spline)",
 #| fig.scap="A wooden spline"
 knitr::include_graphics("figures/method-wood-spline.png")
@@ -156,7 +156,7 @@ where $Y_i$ are the observed values and $\hat{Y}_i$ are the values predicted by 
 $$
 \sum_{i=1}^n (Y_i-\hat{Y}_i)^2 + \lambda\int f''(X)^2 dX.
 $$
-$f''(X)$ is the curvature of the spline (for a straight line, the curvature is 0). This is squared to keep it positive and then integrated over the range of the independent variable, $X$. The smoothing parameter, $\lambda$ is used to control the tradeoff between fitting data with minimal error and preferring a smooth spline less "prone" to overfitting [@woodGeneralizedAdditiveModels2017]. It is possible, and often recommended, to automatically choose the smoothing parameter that optimise out-of-sample prediction (e.g. through cross-validation) [@woodFastStableRestricted2011] (see Figure \@ref(fig:method-gam-wiggliness)).
+$f''(X)$ is the curvature of the spline (for a straight line, the curvature is 0). This is squared to keep it positive and then integrated over the range of the independent variable, $X$. The smoothing parameter, $\lambda$, is used to control the tradeoff between fitting data with minimal error and preferring a smooth spline less "prone" to overfitting [@woodGeneralizedAdditiveModels2017]. It is possible, and often recommended, to automatically choose the smoothing parameter that optimise out-of-sample prediction (e.g. through cross-validation) [@woodFastStableRestricted2011] (see Figure \@ref(fig:method-gam-wiggliness)).
 
 ```{r method-gam-wiggliness}
 #| out.width="12cm",
@@ -327,7 +327,7 @@ First, we specified a *likelihood function*. This specifies how likely different
 $$
 PPV_{strm} \sim StudentT(\mu_{strm},\sigma_{trm}, \text{df} = 4),
 $$
-where $PPV_{s,t,r,m}$ is PPV for subject $s$, $V_T$ $t$, RR $r$, PPV-method $m$. We used a Student’s T distribution with 4 degrees of freedom rather than a normal distribution, because it puts higher likelihood on extreme observations, and, therefore, is more robust to outliers.
+where $PPV_{strm}$ is PPV for subject $s$, $V_T$ $t$, RR $r$, PPV-method $m$. We used a Student’s T distribution with 4 degrees of freedom rather than a normal distribution, because it puts higher likelihood on extreme observations, and, therefore, is more robust to outliers.
 
 We specified a linear model for $\mu$, which, in this model, represents the expected PPV:
 $$

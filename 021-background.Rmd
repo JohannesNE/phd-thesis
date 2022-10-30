@@ -112,7 +112,7 @@ Thus, increasing $P_V$ or lowering $R_V$ *allows* a higher CO. If venous complia
 As described in the section above, the Frank-Starling curve describes the relationship between ventricular filling and CO (via SV). Ventricular filling is positively related to the $P_{RA}$, while the $P_{RA}$ is inversely related to CO, since a high CO will tend to empty the right atrial compartment. The $P_{RA}$ and CO where $Q_V$ and CO are in equilibrium can be found as the intersection between the venous return curve (the relationship between venous return and $P_{RA}$) and the Frank-Starling curve (a variant with CO rather than SV on the y-axis). This graphical solution, illustrated in Figure \@ref(fig:background-guyton), was first proposed by Arthur Guyton [@guytonVenousReturnVarious1957].
 
 ```{r background-guyton}
-#| out.width="16cm",
+#| out.width="100%",
 #| fig.cap="(ref:background-guyton)",
 #| fig.scap="Guyton's venous return graph"
 knitr::include_graphics("figures/background-guyton.png")
