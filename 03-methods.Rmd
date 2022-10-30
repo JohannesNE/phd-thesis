@@ -293,7 +293,7 @@ where $Height_i$ is the height of subject $i$. To complete the model, we add pri
 \end{align*}
 The interpretation of this prior distribution is, that before we see any data, we are quite certain that the mean height in the population ($\mu$) is somewhere between 130 and 210 cm ($170 cm \pm 2 \cdot 20 cm$), and that the SD ($\sigma$) is between 1 and 30 cm, with all values equally probable and values outside this range entirely impossible. These priors are only weakly informative and could be improved without much controversy, but here, their purpose is to illustrate how prior beliefs can be updated through observation of data.
 
-Figure \@ref(fig:method-bayes-update) illustrates how we systematically update our knowledge about the model parameters through observation of more and more data (heights). The top panel-pair in Figure \@ref(fig:method-bayes-update) displays our prior belief about the model parameters. When we start sampling heights from the population, we update our beliefs about the parameter values, and the range of compatible parameter values become narrower. In this example, data is simulated, and we know that the *true* mean height ($\mu$) is 165 cm and the *true* SD ($\sigma$) is 10 cm. 
+Now, we systematically update our knowledge about the model parameters through observation of more and more data (heights). The top panel-pair in Figure \@ref(fig:method-bayes-update) displays our prior belief about the model parameters. When we start sampling heights from the population (black ticks in Figure \@ref(fig:method-bayes-update)), we update our beliefs about the parameter values, and the range of compatible parameter values become narrower. In this example, data is simulated, and we know that the *true* mean height ($\mu$) is 165 cm and the *true* SD ($\sigma$) is 10 cm. 
 
 ```{r method-bayes-update}
 #| out.width="100%",
@@ -307,7 +307,7 @@ knitr::include_graphics("figures/method-bayes-update.png")
 In Figure \@ref(fig:method-bayes-update), the distributions of $\mu$ and $\sigma$ are visualised separately. They do, however, constitute a single, multidimensional, distribution, and in some models, parameter values can be highly correlated. Figure \@ref(fig:method-bayes-update-2d) visualise the two-dimensional distribution of the model parameters.
 
 ```{r method-bayes-update-2d}
-#| out.width="18cm",
+#| out.width="100%",
 #| fig.cap="(ref:method-bayes-update-2d)",
 #| fig.scap="Bayesian updating with two-dimentional visualisation of distributions"
 knitr::include_graphics("figures/method-bayes-update-2d.png")
@@ -319,25 +319,25 @@ The shaded areas in Figure \@ref(fig:method-bayes-update) contain 95% of the pro
 
 ### The mixed-effects model in Paper 3
 
-A main aim in Paper 3 was to understand how $V_T$ and RR impact PPV. The experiment had a hierarchical structure, where PPV was measured repeatedly in each subject, but with different RR and $V_T$ settings; we also calculated PPV with two different methods (PPV~Classic~ and PPV~GAM~) and wanted to know if $V_T$ and RR impact PPV differently depending on the method. In Paper 3, we used a Bayesian generalized mixed-effects model to find the effects of $V_T$, RR and PPV-method on PPV. Below, I will walk through this model.
+A main aim in Paper 3 was to understand how $V_T$ and RR affect PPV. The experiment had a hierarchical structure, where PPV was measured repeatedly in each subject, with ten different RR and $V_T$ settings; we also calculated PPV with two different methods (PPV~Classic~ and PPV~GAM~) and wanted to know if $V_T$ and RR impact PPV differently depending on the method. We used a Bayesian generalized mixed-effects model to find the effects of $V_T$, RR and PPV-method on PPV. Below, I will walk through this model.
 
-First, we specified a *likelihood function*. This specifies how likely different PPV values are given a mean, $\mu$, and a variance parameter, $\sigma$.
+First, we specified a *likelihood function*. This specifies how likely different PPV values are given a mean, $\mu$, and a variance parameter, $\sigma$:
 $$
-PPV_i \sim StudentT(\mu_i,\sigma_i, \text{df} = 4).
+PPV_{strm} \sim StudentT(\mu_{strm},\sigma_{trm}, \text{df} = 4),
 $$
-We use a Student’s T distribution with 4 degrees of freedom rather than a normal distribution, because it puts higher likelihood on extreme observations, and, therefore, is more robust to outliers.
+where $PPV_{s,t,r,m}$ is PPV for subject $s$, $V_T$ $t$, RR $r$, PPV-method $m$. We used a Student’s T distribution with 4 degrees of freedom rather than a normal distribution, because it puts higher likelihood on extreme observations, and, therefore, is more robust to outliers.
 
-We specified a linear model for the expected PPV value, $\mu$:
+We specified a linear model for $\mu$, which, in this model, represents the expected PPV:
 $$
-log(\mu_i) = 
-\beta0_{\operatorname{PPVmethod}[i]} + 
-\beta1_{\operatorname{ventVT}[i]\times\operatorname{PPVmethod}[i]} +
-\beta2_{\operatorname{ventRR}[i]\times\operatorname{PPVmethod}[i]} +
-\alpha_{subject[i]}.
+log(\mu_{strm}) = 
+\beta0_m + 
+\beta1_{tm} +
+\beta2_{rm} +
+\alpha_s.
 $$
-Specifically, the linear model is for $log(\mu)$. Therefore, the exponential of the parameters correspond to relative effects on PPV. $exp(\beta1)$ and $exp(\beta2)$ are the effects of each $V_T$- and RR setting for each PPV method relative to the expected PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^. $exp(\beta0)$ is the median PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^ for each method. $\alpha$ is a random effect of each subject. This random effect captures that subjects have individual levels of PPV across ventilator settings---it captures the between-individual variation in PPV.
+Specifically, the linear model is for $log(\mu)$. Therefore, the exponential of the parameters correspond to relative effects on PPV. $exp(\beta1_{tm})$ and $exp(\beta2_{rm})$ are the effects of each $V_T$- and RR setting for each PPV method relative to the expected PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^. $exp(\beta0_m)$ is the expected PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^ for each method. $\alpha_s$ is a random effect of each subject. It captures the between-individual variation in PPV.
 
-The random effect, $\alpha$, was estimated for each subject. We assumed that all $\alpha$ for all subjects is draw from a shared normal distribution:
+The random effect, $\alpha$, was estimated for each subject. We assumed that $\alpha$ for each subject is draw from a shared normal distribution with SD $\sigma_{\alpha}$:
 $$
 \alpha_s \sim Normal(0, \sigma_{\alpha})
 $$
@@ -345,10 +345,10 @@ This greatly reduces the degrees of freedom associated with estimating a paramet
 
 The linear model for $\sigma$ is similar to the model for $\mu$, but without the random effect:
 $$
-log(\sigma_i) = 
-\gamma0_{\operatorname{PPVmethod}[i]} + 
-\gamma1_{\operatorname{ventVT}[i]\times\operatorname{PPVmethod}[i]} +
-\gamma2_{\operatorname{ventRR}[i]\times\operatorname{PPVmethod}[i]}.
+log(\sigma_{trm}) = 
+\gamma0_{m} + 
+\gamma1_{tm} +
+\gamma2_{rm}.
 $$
 It allows the variance of the likelihood function to vary with ventilator setting and PPV-method. 
 
@@ -360,14 +360,14 @@ Lastly, priors for all parameters are specified. These are all weakly informativ
 &\text{\bfseries [Prior for PPVmethod-specific intercept]} \\
 \beta0_{m} \sim &Normal(2.3, 1)\text{, for PPVmethod m = (gam, classic)} \\
 %
-&\text{\bfseries [Prior for } \beta s]\\
-(\beta1_{t,m},\beta2_{r,m}) \sim &Normal(0, 2), \\
+&\text{\bfseries [Prior for } \beta]\\
+(\beta1_{tm},\beta2_{rm}) \sim &Normal(0, 2), \\
 &\quad\text{for ventVT t = (8,6,4),} \\
 &\quad\text{ventRR r = (17,24,31),} \\
 &\quad\text{PPVmethod m = (gam, classic)} \\
 % Sigma prior
 &\text{\bfseries [Prior for } \gamma s \text{]} \\
-(\gamma0_{m},\gamma1_{t,m},\gamma2_{r,m}) \sim &Normal(0, 1.5), \\
+(\gamma0_{m},\gamma1_{tm},\gamma2_{rm}) \sim &Normal(0, 1.5), \\
 &\quad\text{for ventVT t = (8,6,4),} \\
 &\quad\text{ventRR r = (17,24,31),} \\
 &\quad\text{PPVmethod m = (gam, classic)}
