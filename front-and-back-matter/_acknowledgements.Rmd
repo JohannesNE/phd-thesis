@@ -1,8 +1,8 @@
-First, thanks to my supervisor, Simon Tilma Vistisen. I have interrupted Simon's endlessly for close to four years, and he has kept his door open regardless. Many half-baked ideas, questions and frustrations have been resolved over a quick (rarely), unsolicited redecoration of Simon's whiteboard. I suspect that few students are lucky to have a supervisor who tolerates, and even engages in, biweekly musings on the wonders of *mixed models*.
+First, thanks to my supervisor, Simon Tilma Vistisen. I have interrupted Simon's work endlessly for close to four years, and he has kept his door open regardless. Many half-baked ideas, questions and frustrations have been resolved over a quick (rarely), unsolicited redecoration of Simon's whiteboard. I suspect that few PhD students are lucky to have a supervisor who tolerates, and even engages in, biweekly musings on the wonders of *mixed models*.
 
 Also, a big thanks to my co-supervisors, Thomas Scheeren, Stephen Edward Rees and Peter Juhl-Olsen. They helped design a clinical study, that was both safe, clinically relevant and practical to conduct, and were always available to answer questions.
 
-Thanks to Thomas Scheeren for inviting me to Groningen---a stay that was canceled due to COVID19. Also, thanks to Stephen Rees and Dan Karbing for supervising my overly ambitious project on cardiovascular models at Aalborg University. I have never learned so much in one month.
+Thanks to Thomas Scheeren for inviting me to Groningen---a stay that was canceled due to COVID19. And thanks to Stephen Rees and Dan Karbing for supervising my overly ambitious project on cardiovascular models at Aalborg University. Despite not even getting close to finishing the project, I have never learned so much in one month.
 
 Thanks to the members of the assessment committee, Professor Hanne Berg Ravn and Professor Anders Åneman, for agreeing to assess this dissertation and the public defence, and to Professor Ebbe Bødtkjer, chairman at the public defence.
 
@@ -12,14 +12,14 @@ Thanks to Aarhus University and *Holger & Ruth Hesse's mindefond* for supporting
 
 I wish to thank all my colleagues and collaborators. Thank you for interesting scientific discussions and entertaining lunch conversation. Thanks to the clinical staff who welcomed me and my data cables in the operating room, and helped me conduct the clinical study. 
 
-Also, thanks to all the kind strangers on the internet who selflessly helped me with various statistical and technical questions issues. Special thanks to John George Karippacheril, developer of [VSCapture](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3788264/), who helped me customize his software to work with department ventilators; essential for acquiring the data used in Papers 2 and 3. Also, special thanks to Gavin L. Simpson, who after helping out with several of the questions I posted on Stackoverflow.com and Twitter, agreed to co-write Paper 2.
+Also, thanks to all the kind strangers on the internet who selflessly helped me with various statistical and technical questions issues. Special thanks to John George Karippacheril, developer of [VSCapture](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3788264/), who helped me customize his software to work with department ventilators; essential for acquiring the data used in Papers 2 and 3. Also, special thanks to Gavin L. Simpson, who after helping out with several of the questions I posted on Stackoverflow.com and Twitter, agreed to co-write Paper 2. The template used for this dissertation is [oxforddown](https://ulyngs.github.io/oxforddown/) by Ulrik Lyngs, John McManigle, Sam Evans and Keith Gillow. Thank you for sharing.
 
 Thanks to friends and family for laying ear to both frustrations and excitement over nerdy details, and for your support in general. 
 
 Anna-Elisabeth, thank you for being a loving wife and mother, and for your admirable patience during periods with frequent absent-minded gazes from your husband. And thanks Senja and Gry for making every day meaningful, interesting and joyful.
 
 \begin{flushright}
-Johannes Enevoldsen \\
+Johannes Aagaard Enevoldsen \\
 Aarhus University \\
 Fall, 2022
 \end{flushright}
