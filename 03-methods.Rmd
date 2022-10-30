@@ -64,7 +64,7 @@ PPV = \alpha + \beta V_T + \epsilon.
 $$
 The statistical analysis of such a model quantifies how the independent variables (here $V_T$) and random variation ($\epsilon$) together explain the observed variation in the dependent variable (here PPV), and, importantly, how certain we are of each component's contribution.
 
-## Paper 1 - The mini-fluid challenge
+## Paper 1 -- The mini-fluid challenge
 
 Paper 1 is a critique of the method used in most existing studies of the MFC as a predictor of fluid responsiveness. In this section, I will describe this common design and explain why it is problematic. 
 
@@ -109,7 +109,7 @@ To illustrate the magnitude of the bias, we reanalysed data from the MFC study b
 
 [^vti]: In Muller’s study, the fluid response was evaluated with left-ventricular outflow tract velocity time integral (LVOT VTI, a Doppler ultrasonic measure correlated with SV). For simplicity, we simply refer to this as SV.
 
-## Paper 2 - Generalized additive models
+## Paper 2 -- Generalized additive models
 
 Paper 2 introduces generalized additive models (GAMs) as a tool for analysing medical time series and waveforms. The paper describes how GAMs can be used for robust estimation of PPV (a method used in Paper 3), and it presents a novel method for decomposing medical waveforms into simpler, repeating components.
 
@@ -215,7 +215,7 @@ knitr::include_graphics("figures/method-gam-CVP.png")
 
 (ref:method-gam-CVP) A central venous pressure (CVP) waveform (**a**) can be decomposed using a GAM into: **b**, a repeating effect for each heartbeat; **c**, a cyclic effect of ventilation; **d**, an interaction effect between the respiratory- and cardiac cycles; and, **e**, a slow trend over time (added to the mean CVP). Panel **f** shows the models prediction and the prediction error (residual): The prediction is the sum of the effects visualised in **b** to **e**. 
 
-## Paper 3 - Effects of Ventilator Settings on PPV
+## Paper 3 -- Effects of Ventilator Settings on PPV
 
 Paper 3 investigates the effects of $V_T$ and RR on PPV, and how these ventilator setting affect PPV’s ability to predict the SV response to a fluid bolus. We expected that PPV at $V_T$=10 ml kg^-1^ and RR=10 min^-1^ would predict fluid responsiveness with high accuracy, but that the accuracy would fall with lower $V_T$ and higher RR. 
 
