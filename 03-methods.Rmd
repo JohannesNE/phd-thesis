@@ -105,7 +105,9 @@ knitr::include_graphics("figures/method-mfc-null-sim.png")
 
 The first problem, that the predictor is included in the outcome, can be fixed by predicting the response to only the remaining 400 ml ($\Delta SV_{400}$). This, however, simply reverses the second problem, as the predictor and outcome now share the measurement error at $SV_{100}$, creating an inverse spurious correlation (see Figure \@ref(fig:method-mfc-null-sim)c).
 
-To illustrate the magnitude of the bias, we reanalysed data from the MFC study by Muller et al. [@Muller2011]. Instead of showing the MFC’s ability to predict the full fluid response, we analysed the MFC’s ability to predict the response to the remaining 400 ml fluid. We did this by extracting data from Fig. 3A in Muller et al., 2011 [@Muller2011] and used the plotted $\Delta SV_{100}$ and $\Delta SV_{500}$ to calculate $\Delta SV_{400}$. As noted in the paragraph above, this approach is also biased, but now in the opposite direction.
+To illustrate the magnitude of the bias, we reanalysed data from the MFC study by Muller et al. [@Muller2011]. Instead of showing the MFC’s ability to predict the full fluid response, we analysed the MFC’s ability to predict the response to the remaining 400 ml fluid. We did this by extracting data from Fig. 3A in Muller et al., 2011 [@Muller2011], and used the plotted $\Delta SV_{100}$ and $\Delta SV_{500}$ to calculate $\Delta SV_{400}$.[^vti] As noted in the paragraph above, this approach is also biased, but now in the opposite direction.
+
+[^vti]: In Muller’s study, the fluid response was evaluated with left-ventricular outflow tract velocity time integral (LVOT VTI, a Doppler ultrasonic measure correlated with SV). For simplicity, we simply refer to this as SV.
 
 ## Paper 2 - Generalized additive models
 

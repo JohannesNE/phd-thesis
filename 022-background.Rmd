@@ -43,9 +43,7 @@ The accuracy of the MFC in predicting fluid responsiveness was summarised in a s
 
 ### Limitations to the mini-fluid challenge
 
-In most studies investigating the predictive ability of the MFC, SV[^vti] is measured trice: before the MFC, after the MFC and after the 400 ml bolus. The SV response to the MFC is used to predict the response to the entire 500 ml of fluid given, and the accuracy of this prediction is evaluated. Essentially one change (from 0 ml to 100 ml) is used to predict another change (from 0 ml to 500 ml). Change scores are notoriously difficult to analyse correctly, and most MFC studies do indeed encounter statistical problems. These problems are the topic of Paper 1. 
-
-[^vti]: In Muller’s study, the fluid response was evaluated with left-ventricular outflow tract velocity time integral (LVOT VTI, a Doppler ultrasonic measure correlated with CO). 
+In most studies investigating the predictive ability of the MFC, SV is measured trice: before the MFC, after the MFC and after the 400 ml bolus. The SV response to the MFC is used to predict the response to the entire 500 ml of fluid given, and the accuracy of this prediction is evaluated. Essentially one change (from 0 ml to 100 ml) is used to predict another change (from 0 ml to 500 ml). Change scores are notoriously difficult to analyse correctly, and most MFC studies do indeed encounter statistical problems. These problems are the topic of Paper 1. 
 
 ## Pulse pressure variation and heart-lung interaction {#heart-lung-interaction-physiology}
 
