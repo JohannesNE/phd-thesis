@@ -38,3 +38,6 @@ temp_docs/*
 *.mtc*
 *.maf
 *.tex
+
+# Large files
+sample_data/*
