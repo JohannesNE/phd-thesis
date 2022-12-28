@@ -4,13 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>1 Introduction | Fluid Responsiveness Prediction During Surgery – Physiological and Methodological Limitations and Considerations</title>
+<title>Papers | Fluid Responsiveness Prediction During Surgery – Physiological and Methodological Limitations and Considerations</title>
 <meta name="author" content="Johannes Aagaard Enevoldsen">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="1 Introduction | Fluid Responsiveness Prediction During Surgery – Physiological and Methodological Limitations and Considerations">
+<meta property="og:title" content="Papers | Fluid Responsiveness Prediction During Surgery – Physiological and Methodological Limitations and Considerations">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="1 Introduction | Fluid Responsiveness Prediction During Surgery – Physiological and Methodological Limitations and Considerations">
+<meta name="twitter:title" content="Papers | Fluid Responsiveness Prediction During Surgery – Physiological and Methodological Limitations and Considerations">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -42,9 +42,9 @@
   </style>
 <link rel="stylesheet" href="templates/bs4_style.css">
 <link rel="stylesheet" href="templates/corrections.css">
-<meta name="description" content="Fluid therapy is a ubiquitous medical intervention; both in the perioperative setting and for hospitalised patients in general. The aim of fluid therapy is to restore the patient’s circulating...">
-<meta property="og:description" content="Fluid therapy is a ubiquitous medical intervention; both in the perioperative setting and for hospitalised patients in general. The aim of fluid therapy is to restore the patient’s circulating...">
-<meta name="twitter:description" content="Fluid therapy is a ubiquitous medical intervention; both in the perioperative setting and for hospitalised patients in general. The aim of fluid therapy is to restore the patient’s circulating...">
+<meta name="description" content="This PhD dissertation is based upon the following three papers: Paper 1 Existing fluid responsiveness studies using the mini-fluid challenge may be misleading: Methodological considerations and...">
+<meta property="og:description" content="This PhD dissertation is based upon the following three papers: Paper 1 Existing fluid responsiveness studies using the mini-fluid challenge may be misleading: Methodological considerations and...">
+<meta name="twitter:description" content="This PhD dissertation is based upon the following three papers: Paper 1 Existing fluid responsiveness studies using the mini-fluid challenge may be misleading: Methodological considerations and...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -68,8 +68,8 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
-<li><a class="" href="papers.html">Papers</a></li>
-<li><a class="active" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="active" href="papers.html">Papers</a></li>
+<li><a class="" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
 <li><a class="" href="background.html"><span class="header-section-number">2</span> Background</a></li>
 <li><a class="" href="methods.html"><span class="header-section-number">3</span> Methods</a></li>
 <li><a class="" href="results-and-discussion.html"><span class="header-section-number">4</span> Results and discussion</a></li>
@@ -86,32 +86,39 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction" class="section level1" number="1">
-<h1>
-<span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="papers" class="section level1 unnumbered">
+<h1>Papers<a class="anchor" aria-label="anchor" href="#papers"><i class="fas fa-link"></i></a>
 </h1>
-<p>Fluid therapy is a ubiquitous medical intervention; both in the perioperative setting and for hospitalised patients in general. The aim of fluid therapy is to restore the patient’s circulating blood volume to the <em>optimum</em>, normal, level. Hence, the terms <em>fluid resuscitation</em> and <em>fluid replacement therapy</em> are commonly used.</p>
-<p>Intraoperative fluid management is mainly relevant in acute or long-duration surgery.
-In acute surgery, the preoperative fluid status is generally unknown, and it is often reasonable to assume that the patient arrives at the operating room dehydrated.
-In long-duration surgery, continuous loss of fluid through bleeding, perspiration and urination necessitates fluid replacement throughout the operation.</p>
-<p>Like every treatment, intravenous (IV) fluid should only be given to patients who will benefit from the fluid.
-This is the setup for a prediction problem: can we, before we give the fluid, predict whether a patient will benefit from an intravenous fluid administration?
-The first task is to define what we mean with <em>benefit</em>, and how we can measure it. This is not trivial, and it will be discussed further in Section <a href="background.html#why-fluid">2.2</a>.
-Luckily, a necessary (but not sufficient) condition for benefitting from a fluid administration is that the fluid causes an increase in cardiac output (CO).
-This can be measured, and allows us to formulate a simpler prediction problem: can we predict whether a patient’s CO will increase from a fluid administration?</p>
-<p>There is an entire subfield of anaesthesia and intensive care research dealing with this problem.
-This PhD dissertation describes a small, but hopefully meaningful addition to the field.</p>
-<p>In this dissertation, I present the methods available tools for fluid responsiveness prediction, with focus on the intraoperative setting. The dissertation covers 3 papers that tackle specific limitations to two of the most common methods.</p>
-<p>The terms <em>fluid challenge</em> and <em>bolus</em> are used interchangeably. <em>Stroke volume</em> (SV) and <em>cardiac output</em> (CO) are often interchangeable and the term that best fits the context is used. Ventilation and respiration is also used interchangeably and refer to the act of breathing (either mechanically or spontaneously).</p>
-
-
+<!-- For PDF output, include these two LaTeX commands after unnumbered chapter headings, otherwise the mini table of contents and the running header will show the previous chapter -->
+<p>This PhD dissertation is based upon the following three papers:</p>
+<ul>
+<li>
+<strong>Paper 1</strong> Existing fluid responsiveness studies using the mini-fluid challenge may be misleading: Methodological considerations and simulations.
+<em><a href="https://doi.org/10.1111/aas.13965">Published in Acta Anaesthesiologica Scandinavica, 2021. DOI: 10.1111/aas.13965</a>.</em>
+</li>
+<li>
+<strong>Paper 2</strong> Using generalized additive models to decompose time series and waveforms, and dissect heart–lung interaction physiology.
+<em><a href="http://https://doi.org/10.1007/s10877-022-00873-7">Published in Journal of Clinical Monitoring and Computing, 2022. DOI: 10.1007/s10877-022-00873-7</a>.</em>
+</li>
+<li>
+<strong>Paper 3</strong> The Effects of Respiratory Rate and Tidal Volume on Pulse Pressure Variation in
+Healthy Lungs—A Generalized Additive Model Approach May Help Overcome
+Limitations. <em>Submitted for publication.</em>
+</li>
+</ul>
+<!-- 
+Notes for adding an opening quote in PDF output:
+i) add the reference for the quote with the chunk option quote_author="my author name",
+ii) include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' means that these quotes are only included when output is latex (in HTML output, it would appear by the end of the previous page)
+iii) You can't use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the quote reference use a 'text reference': Create a named piece of text with '(ref:label-name) My text', then link to this in the chunk option with quote_author='(ref:label-name)'
+-->
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="papers.html">Papers</a></div>
-<div class="next"><a href="background.html"><span class="header-section-number">2</span> Background</a></div>
+<div class="prev"><a href="index.html">Welcome</a></div>
+<div class="next"><a href="introduction.html"><span class="header-section-number">1</span> Introduction</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#introduction"><span class="header-section-number">1</span> Introduction</a></li></ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#papers">Papers</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
