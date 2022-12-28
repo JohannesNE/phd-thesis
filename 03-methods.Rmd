@@ -71,7 +71,7 @@ Paper 1 is a critique of the method used in most existing studies of the MFC as 
 Most MFC studies [@Muller2011; @smorenbergMinifluidChallenge1502018; @biaisMinifluidChallenge1002017; @wu10secondFluidChallenge2014; @aliAbilityMinifluidChallenge2019; @mukhtarValidityMinifluidChallenge2019; @leeMinifluidChallengeTest2020; @fotDynamicTestsPredict2020; @messinaMiniFluidChAllenge2021] use a design where SV, or a related variable, is measured thrice. First, a baseline measurement before any fluid is given; then, after the MFC (e.g. 100 ml) is given; and, lastly, after the remaining fluid (e.g. 400 ml) is given. The response to the MFC, here referred to as $\Delta SV_{100}$, is then calculated as the relative change in SV from baseline to after the MFC. The outcome to predict, is the change from baseline to after the entire volume is given, here referred to as $\Delta SV_{500}$ (see Figure \@ref(fig:methods-mfc-common-design)).
 
 ```{r methods-mfc-common-design}
-#| out.width="14cm",
+#| out.width="100%",
 #| fig.cap="(ref:methods-mfc-common-design)",
 #| fig.scap="The common mini-fluid challenge study design"
 knitr::include_graphics("figures/methods-mfc-common-design.png")
@@ -84,7 +84,7 @@ This design has two major problems. First, the response to the MFC is included i
 The second problem is more subtle. Measurements of SV are influenced by some random variation. This variation is caused by both measurement error and short-term physiological variation in SV. Both are essentially *noise* to the clinician, who wants to evaluate the response to a fluid challenge. The clinician is interested in the underlying, but unknowable average SV, not the short-term variation around this value. I will call this the "true" SV. If a measurement is, by chance, higher than the "true" SV, the next measurement will most likely show a decrease. Likewise, if a measurement is randomly low, the next will likely show be higher than the current. This phenomenon is called *regression towards the mean* (see Figure \@ref(fig:method-reg-to-the-mean)).
 
 ```{r method-reg-to-the-mean}
-#| out.width="12cm",
+#| out.width="100%",
 #| fig.cap="(ref:method-reg-to-the-mean)",
 #| fig.scap="Regression towards the mean"
 knitr::include_graphics("figures/method-reg-to-the-mean.png")
@@ -95,7 +95,7 @@ knitr::include_graphics("figures/method-reg-to-the-mean.png")
 In the common MFC study design, $SV_{baseline}$ is included in the calculation of both the predictor ($\Delta SV_{100}$) and the outcome ($\Delta SV_{500}$). Therefore, the random measurement error in $SV_{baseline}$ is included in both the predictor and the outcome, making them spuriously correlated [@archieMathematicCouplingData1981; @strattonRegressionCalculatedVariables1987]. In Figure \@ref(fig:method-mfc-null-sim), this spurious correlation is illustrated with a simple computer simulation. It shows a simulated a MFC study, where all subjects have no response to fluid; only random variation in measured SV. A correct analysis should show that the MFC has no predictive ability---since there is nothing to predict---but it is clear that the change over the MFC ($\Delta SV_{100}$) is correlated to the change over the full fluid administration ($\Delta SV_{500}$) (see Figure \@ref(fig:method-mfc-null-sim)b).
 
 ```{r method-mfc-null-sim}
-#| out.width="16cm",
+#| out.width="100%",
 #| fig.cap="(ref:method-mfc-null-sim)",
 #| fig.scap="MFC simulation without response"
 knitr::include_graphics("figures/method-mfc-null-sim.png")
@@ -118,7 +118,7 @@ Paper 2 introduces generalized additive models (GAMs) as a tool for analysing me
 A GAM is an extension of the generalized linear model [@hastieGeneralizedAdditiveModels1986]. For the purposes described here, we can, however, disregard the *generalized* part, and simply consider GAMs as multiple regression models that can fit smooth functions instead of only straight lines. These smooth functions are called regression splines (see Figure \@ref(fig:method-wood-spline)). Figure \@ref(fig:method-lm-vs-gam) illustrates how a linear model and a GAM fit the same simulated data.
 
 ```{r method-wood-spline}
-#| out.width="6cm",
+#| out.width="50%",
 #| fig.cap="(ref:method-wood-spline)",
 #| fig.scap="A wooden spline"
 knitr::include_graphics("figures/method-wood-spline.png")
@@ -127,7 +127,7 @@ knitr::include_graphics("figures/method-wood-spline.png")
 (ref:method-wood-spline) A regression spline is named after the wooden splines traditionally used by technical drawers for tracing smooth curves. (by Pearson Scott Foresman, public domain).
 
 ```{r method-lm-vs-gam}
-#| out.width="15cm",
+#| out.width="100%",
 #| fig.cap="(ref:method-lm-vs-gam)",
 #| fig.scap="Linear model vs GAM"
 knitr::include_graphics("figures/method-lm-vs-gam.png")
@@ -138,7 +138,7 @@ knitr::include_graphics("figures/method-lm-vs-gam.png")
 In hemodynamic time series and waveforms, we often have patterns that repeat with each respiratory cycle or heart beat. When we fit such a repeating pattern with GAM, we can constrain the spline to start and end at the same value, slope and curvature (0th, 1st and 2nd derivative), to create a smoothly repeating curve (a cyclic spline). The function that generates the data in Figure \@ref(fig:method-lm-vs-gam) is $Y = sin(X)$, so we know that it repeats itself at $X = 2\pi = 6.28$. Figure \@ref(fig:method-gam-cyclic) illustrates the fit of the GAM with this additional, cyclic constraint.
 
 ```{r method-gam-cyclic}
-#| out.width="12cm",
+#| out.width="100%",
 #| fig.cap="(ref:method-gam-cyclic)",
 #| fig.scap="A cyclic spline"
 knitr::include_graphics("figures/method-gam-cyclic.png")
@@ -159,7 +159,7 @@ $$
 $f''(X)$ is the curvature of the spline (for a straight line, the curvature is 0). This is squared to keep it positive and then integrated over the range of the independent variable, $X$. The smoothing parameter, $\lambda$, is used to control the tradeoff between fitting data with minimal error and preferring a smooth spline less "prone" to overfitting [@woodGeneralizedAdditiveModels2017]. It is possible, and often recommended, to automatically choose the smoothing parameter that optimise out-of-sample prediction (e.g. through cross-validation) [@woodFastStableRestricted2011] (see Figure \@ref(fig:method-gam-wiggliness)).
 
 ```{r method-gam-wiggliness}
-#| out.width="12cm",
+#| out.width="100%",
 #| fig.cap="(ref:method-gam-wiggliness)",
 #| fig.scap="Penalised regression spline"
 knitr::include_graphics("figures/method-gam-wiggliness.png")
@@ -228,7 +228,7 @@ Paper 3 presents a number of statistical methods including Bland-Altman analysis
 The experiment protocol was initiated after anaesthesia induction, in relation to a planned 250 ml fluid administration, where the patient was considered hemodynamically stable by the treating anesthesiologist. First, the patient was ventilated with ten different ventilator settings for 30 s each. Each setting was a unique combination of $V_T$ between 4 and 10 ml kg^-1^ (predicted body weight [@theacuterespiratorydistresssyndromenetworkVentilationLowerTidal2000]) and RR between 10 and 31 min^-1^ (see Figure \@ref(fig:methods-vent-settings)). Then, a two-minute period was used to establish a baseline SV, after which a 250 fluid bolus was administered. If SV after the fluid administration was more than 10% higher than the baseline SV, the patient classified as a fluid responder.
 
 ```{r methods-vent-settings}
-#| out.width="10cm",
+#| out.width="80%",
 #| fig.cap="(ref:methods-vent-settings)",
 #| fig.scap="Ventilator settings in Paper 3"
 knitr::include_graphics("figures/methods-vent-settings.png")
@@ -356,19 +356,19 @@ It allows the variance of the likelihood function to vary with ventilator settin
 
 Lastly, priors for all parameters are specified. These are all weakly informative (they allow all parameter values that are even remotely reasonable), and mainly serve to make the parameter estimation more efficient. Arguments for why these values are considered weakly informative are presented in Paper 3’s supplementary 1.
 \begin{align*}
-&\text{\bfseries [Prior for SD of subjects]}\\
+&\textbf{[Prior for SD of subjects]}\\
 \sigma_\alpha \sim &truncNormal(0, 1.5, trunc_{low} = 0) \\
 %
-&\text{\bfseries [Prior for PPVmethod-specific intercept]} \\
+&\textbf{[Prior for PPVmethod-specific intercept]} \\
 \beta0_{m} \sim &Normal(2.3, 1)\text{, for PPVmethod m = (gam, classic)} \\
 %
-&\text{\bfseries [Prior for } \beta]\\
+&\textbf{[Prior for } \beta]\\
 (\beta1_{tm},\beta2_{rm}) \sim &Normal(0, 2), \\
 &\quad\text{for ventVT t = (8,6,4),} \\
 &\quad\text{ventRR r = (17,24,31),} \\
 &\quad\text{PPVmethod m = (gam, classic)} \\
 % Sigma prior
-&\text{\bfseries [Prior for } \gamma s \text{]} \\
+&\textbf{[Prior for } \gamma s \text{]} \\
 (\gamma0_{m},\gamma1_{tm},\gamma2_{rm}) \sim &Normal(0, 1.5), \\
 &\quad\text{for ventVT t = (8,6,4),} \\
 &\quad\text{ventRR r = (17,24,31),} \\

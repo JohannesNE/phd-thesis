@@ -25,7 +25,7 @@ Instead, several *dynamic* methods for predicting fluid responsiveness have been
 The passive leg raise manoeuvre attempts to evaluate the effect of a fluid bolus, without giving any fluid. By raising the patient's legs, unstressed volume is mobilised, increasing $P_{MSF}$ analogous to a fluid challenge (see Figure \@ref(fig:background-plr-test)). If the patient responds to this *autotransfusion*, they are also expected to respond to a subsequent fluid challenge [@monnetPassiveLegRaising2015]. Unfortunately, the passive leg raise is rather impractical during surgery.
 
 ```{r background-plr-test}
-#| out.width="10cm",
+#| out.width="80%",
 #| fig.cap="(ref:background-plr-test)",
 #| fig.scap="Passive leg raise manoeuvre"
 knitr::include_graphics("figures/background-plr-test.png")
@@ -50,7 +50,7 @@ In most studies investigating the predictive ability of the MFC, SV is measured 
 Ventilator induced pulse pressure variation (PPV) is the cyclic variation in pulse pressure (PP) caused by mechanical ventilation (see Figure \@ref(fig:background-ppv-example)). 
 
 ```{r background-ppv-example}
-#| out.width="12cm",
+#| out.width="100%",
 #| fig.cap="(ref:background-ppv-example)",
 #| fig.scap="Example of ventilator induced PPV"
 knitr::include_graphics("figures/background-ppv-example.png")
@@ -61,7 +61,7 @@ knitr::include_graphics("figures/background-ppv-example.png")
 Mechanical ventilation affects circulation in multiple ways [@vistisenWhatAnaesthesiologistNeeds2019]. The four principal factors contributing to PPV are illustrated in Figure \@ref(fig:background-heart-lung-interactions). 1) During inspiration, alveolar pressure squeezes out blood from lung capillaries and veins, increasing left-ventricular preload. 2) Lung inflation raises thoracic pressure and aids the flow of blood from the thorax, reducing left-ventricular afterload. Both effects (1 and 2) tend to increase left-ventricular SV during inspiration. Conversely, (3) right-ventricular preload is decreased, since the increased thoracic pressure reduces venous return, and (4) right-ventricular afterload is increased by the alveolar pressure during inspiration. These effects (3 and 4) decrease right-ventricular SV during inspiration. A decrease in right-ventricular SV will decrease left-ventricular preload, but this effect is delayed through the pulmonary circulation. The decreased SV from the right ventricle affects the left ventricle a few seconds later---at the beginning of the expiration---making all four effects contribute to respiratory variation in left-ventricular SV. In most patients, the effect on the right-ventricular preload (3) is the main mediator of ventilator-induced stroke volume variation (SVV) [@michardChangesArterialPressure2005]. 
 
 ```{r background-heart-lung-interactions}
-#| out.width="6cm",
+#| out.width="50%",
 #| fig.cap="(ref:background-heart-lung-interactions)",
 #| fig.scap="Heart-lung interaction physiology"
 knitr::include_graphics("figures/background-heart-lung-interactions.png")
@@ -72,7 +72,7 @@ knitr::include_graphics("figures/background-heart-lung-interactions.png")
 Pulse pressure is directly proportional to SV for a given arterial compliance [@chemlaTotalArterialCompliance1998]. The cardiac response to the small preload changes caused by the ventilator is therefore reflected in the arterial blood pressure waveform as PPV. Essentially, for a given variation in left-ventricular preload, PPV is proportional to the slope of the Frank-Starling curve at the current preload (see Figure \@ref(fig:background-starling-ppv)). Therefore, patients with a high PPV should get an increase in SV if they receive a fluid bolus.
 
 ```{r background-starling-ppv}
-#| out.width="10cm",
+#| out.width="80%",
 #| fig.cap="(ref:background-starling-ppv)",
 #| fig.scap="PPV reflects the current slope on the Frank-Starling curve"
 knitr::include_graphics("figures/background-starling-ppv.png")

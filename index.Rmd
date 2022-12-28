@@ -7,7 +7,7 @@
 # The format options are: 'pdf', 'bs4', 'gitbook', 'word'
 # E.g. you can build both pdf and html with 'thesis_formats <- c("pdf", "bs4")'
 knit: (function(input, ...) {
-    thesis_formats <- "pdf";
+    thesis_formats <- "bs4";
     
     source("scripts_and_filters/knit-functions.R");
     knit_thesis(input, thesis_formats, ...)
@@ -17,11 +17,8 @@ knit: (function(input, ...) {
 ## thesis metadata ##
 #####################
 title: |
-  Fluid Responsiveness Prediction \
-  During Surgery \
-  \
-  \LARGE -- Physiological and Methodological \
-  Limitations and Considerations\
+  Fluid Responsiveness Prediction During Surgery \
+  -- Physiological and Methodological Limitations and Considerations
 author: Johannes Aagaard Enevoldsen
 college: Health
 university: Aarhus University
@@ -176,7 +173,7 @@ output:
       - templates/bs4_style.css
       - templates/corrections.css # remove to stop highlighting corrections
     theme:
-      primary: "#43658B"
+      primary: "#003363"
     #repo: https://github.com/ulyngs/oxforddown
     pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
   bookdown::gitbook:

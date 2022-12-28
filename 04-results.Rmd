@@ -28,7 +28,7 @@ We identify two problems in most MFC studies: First, the predictor (MFC) is incl
 In the reanalysis of data from the study by Muller et al., 2011 [@Muller2011], we found that the MFC predicted a response to the full fluid challenge ($\Delta SV_{500} > 15 \%$) with an AUROC of 0.92, 95%CI [0.83; 1.00] (as reported in the original study), while prediction of the response to the remaining fluid ($\Delta SV_{400} > 15 \%$) had an AUROC of 0.33 95% CI [0.11; 0.55]---i.e., worse than flipping a coin. While neither of these reflect the true predictive ability of the MFC, this analysis illustrates the importance of this design choice (see Figure \@ref(fig:results-muller-plot)).
 
 ```{r results-muller-plot}
-#| out.width="13cm",
+#| out.width="100%",
 #| fig.cap="(ref:results-muller-plot)",
 #| fig.scap="Alternative analysis of the results from Muller et al., 2011"
 knitr::include_graphics("figures/results-muller-plot.png")
@@ -74,7 +74,7 @@ knitr::include_graphics("figures/results-GAM-PP-high-rr.png")
 The second example in Paper 2 demonstrates how a GAM with just four relatively simple components can represent most of the variation in a steady-state CVP waveform. We recorded a CVP waveform before and after administration of a 250 ml fluid bolus (two short samples of the observed data are presented in Figure \@ref(fig:results-raw-CVP-fluid)). It is clear that the CVP waveform changes with the fluid administration, but it is not easy to precisely describe this change. 
 
 ```{r results-raw-CVP-fluid}
-#| out.width="14cm",
+#| out.width="100%",
 #| fig.cap="(ref:results-raw-CVP-fluid)",
 #| fig.scap="CVP waveform"
 knitr::include_graphics("figures/results-raw-CVP-fluid.png")
@@ -110,7 +110,7 @@ The fluid responses observed in this study were unfortunately very small. Only t
 We used Bland-Altman plots to compare $PPV_{Classic}$ and $PPV_{GAM}$ for each ventilator setting. The comparison for RR=10 min^-1^, $V_T$=10 ml kg^-1^ showed good agreement between the methods, though three subjects had a $PPV_{Classic}$ that was three to five %-points higher than their $PPV_{GAM}$ (see Figure \@ref(fig:results-PPV-gam-vs-classic-1010)). These few discrepancies may reflect that $PPV_{Classic}$ is sensitive to outlying beats, compared to $PPV_{GAM}$, which is fitted to all beats and constrained to fit a smooth, cyclic variation.  
 
 ```{r results-PPV-gam-vs-classic-1010}
-#| out.width="14cm",
+#| out.width="100%",
 #| fig.cap="(ref:results-PPV-gam-vs-classic-1010)",
 #| fig.scap="Bland-Altman plot of $PPV_{Classic}$ vs $PPV_{GAM}$"
 knitr::include_graphics("figures/results-PPV-gam-vs-classic-1010.png")
@@ -123,7 +123,7 @@ For $V_T$'s 8 and 6 ml kg^-1^, comparable results were observed for the agreemen
 The agreement between $PPV_{Classic}$ and $PPV_{GAM}$ was lower with higher RR. Indicating that HR/RR have different effects on $PPV_{Classic}$ and $PPV_{GAM}$. In Figure \@ref(fig:results-heart-rate-resp-rate), we present the relationship between HR/RR and the difference between $PPV_{Classic}$ and $PPV_{GAM}$. At high HR/RR, there was close agreement between the methods, but with lower HR/RR, precision decreased and $PPV_{GAM}$ was generally higher than $PPV_{Classic}$.
 
 ```{r results-heart-rate-resp-rate}
-#| out.width="12cm",
+#| out.width="100%",
 #| fig.cap="(ref:results-heart-rate-resp-rate)",
 # fig.scap="short caption"
 knitr::include_graphics("figures/results-heart-rate-resp-rate.png")

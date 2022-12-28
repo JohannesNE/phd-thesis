@@ -33,7 +33,7 @@ Since the end of the nineteenth century, IV fluid administration has been a stap
 Fluid should only be administered, when the patient is likely to benefit from it [@millerPerioperativeFluidTherapy2019]. As a treatment for hypovolemia, the goal is that the infused fluid will increase the circulating volume and thereby the mean systemic filling pressure (see section \@ref(systemic-filling)). This gives an increase in cardiac preload and may, through the Frank-Starling mechanism (see Section \@ref(frank-starling)), increase CO. This should increase microcirculation and, in turn, the oxygen available to organs, thereby increasing (or retaining) organ function (see Figure \@ref(fig:background-monnet2018-aic-fluid2organ)) [@monnetMyPatientHas2018]. As discussed in Section \@ref(fluid-bolus-physiology), this goal is not always achieved.
 
 ```{r background-monnet2018-aic-fluid2organ}
-#| out.width="14cm",
+#| out.width="100%",
 #| fig.cap="(ref:background-monnet2018-aic-fluid2organ)",
 #| fig.scap="Steps from fluid administration to patient benefit"
 knitr::include_graphics("figures/background-monnet2018-aic-fluid2organ.png")
@@ -60,7 +60,7 @@ A fluid bolus should increase stroke volume (SV) and, hence, CO. This requires t
 The relation between cardiac preload and SV is often termed the *Frank-Starling mechanism* or the *Frank-Starling law of the heart*, after Otto Frank and Ernest Starling, who are commonly attributed its discovery [@frankDynamicsCardiacMuscle1895; @pattersonRegulationHeartBeat1914]. It has been noted, though, that the phenomenon had been observed several decades earlier [@zimmerWhoDiscoveredFrankStarling2002]. The Frank-Starling mechanism describes that increasing the length of a cardiomyocyte will increase the force generated when the muscle is activated; or, as a consequence, that increased filling of a ventricle will increase stroke volume. The relation occurs only until a certain length or volume, where the curve flattens and the effect eventually reverses. This was clearly demonstrated in experiments by Otto Frank, where he measured the pressure generated through isovolumetric contractions of frog hearts (see Figure \@ref(fig:background-frank1895)). A number of cellular mechanisms for this length-force relationship has been proposed, but the most important contributors seems to be the following: When cardiac sarcomeres are stretched, the lateral distance between actin and myosin decreases, which increases cross-linking between the filaments and increases Ca^++^ sensitivity. Also, stretching cardiac myocytes increase their Ca^++^ permeability. The drop in force with further stretching has been attributed to a decreasing overlap between filaments, though this mechanism is controversial [@boronHeartPump2016]. 
 
 ```{r background-frank1895}
-#| out.width="12cm",
+#| out.width="100%",
 #| fig.cap="(ref:background-frank1895)",
 #| fig.scap="Otto Frank's tracings"
 knitr::include_graphics("figures/background-frank1895.png")
@@ -71,7 +71,7 @@ knitr::include_graphics("figures/background-frank1895.png")
 A clinical consequence of the Frank-Starling mechanism is that a patient’s SV can only increase from a fluid bolus, if the heart is currently functioning on the rising section of the Frank-Starling curve (see Figure \@ref(fig:background-starling-curve)). A heart’s Frank-Starling curve is, however, not constant, but can be raised with higher sympathetic tone or sympathomimetic drugs (positive inotropes).
 
 ```{r background-starling-curve}
-#| out.width="10cm",
+#| out.width="80%",
 #| fig.cap="(ref:background-starling-curve)",
 #| fig.scap="Illustration of the Frank-Starling mechanism"
 knitr::include_graphics("figures/background-starling-curve.png")
@@ -86,7 +86,7 @@ A few concepts are used interchangeably for both the cause (end-diastolic muscle
 Blood circulates from the heart to the arteries, through tissues, to the veins and back to the heart. In steady state, the circulating volume is constant and CO is equal to the venous return to the heart. We can consider a simple model of this system, where blood is pumped from a small elastic compartment into a larger elastic compartment and returned again to the smaller elastic compartment through a tube (see Figure \@ref(fig:background-venous-return-simple)). The pump is the heart, the large compartment represents the capacitance of venules and veins, and the smaller compartment represents the right atrium and large veins immediately upstream from the heart. Arteries are neglected in this model because of their low compliance relative to the venous system (for an illustration of how the arterial system would fit in this model, see Figure \@ref(fig:background-venous-return-art)) [@magderVolumeItsRelationship2016]. The pressure in the large compartment is the venous pressure ($P_V$), the pressure in the smaller compartment is the right atrial pressure ($P_{RA}$) and the resistance in the tube is the resistance to venous return ($R_V$). If the pump is stopped, both compartments will reach an equilibrium pressure: the mean systemic filling pressure ($P_{MSF}$). Often, $P_V$ is considered equal to $P_{MSF}$ in this model, since the right atrium and arteries have relatively small volumes, and therefore have little impact on $P_{MSF}$.
 
 ```{r background-venous-return-simple}
-#| out.width="8cm",
+#| out.width="70%",
 #| fig.cap="(ref:background-venous-return-simple)",
 #| fig.scap="Simple model of venous return"
 knitr::include_graphics("figures/background-venous-return-simple.png")
@@ -95,7 +95,7 @@ knitr::include_graphics("figures/background-venous-return-simple.png")
 (ref:background-venous-return-simple) A simple model illustrating the concepts of venous return ($Q_V$) and mean systemic filling pressure ($P_{MSF}$). The pressure is defined by the height of the fluid surface and the compliance is proportional to the width of the compartment. **A**) The system with a constant cardiac output (CO). **B**) The system with cardiac arrest (CO = 0). $P_V$, pressure of the compartment representing venules and veins. $R_V$, resistance to venous return. $P_{RA}$, pressure of the compartment representing the right atrium.
 
 ```{r background-venous-return-art}
-#| out.width="8cm",
+#| out.width="70%",
 #| fig.cap="(ref:background-venous-return-art)",
 #| fig.scap="The arterial system in the simple model of venous return"
 knitr::include_graphics("figures/background-venous-return-art.png")
