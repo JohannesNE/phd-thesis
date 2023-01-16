@@ -42,7 +42,7 @@ This can be measured, and allows us to formulate a simpler prediction problem: c
 There is an entire subfield of anaesthesia and intensive care research dealing with this problem.
 This PhD dissertation describes a small, but hopefully meaningful addition to the field.
 
-In this dissertation, I present the methods available tools for fluid responsiveness prediction, with focus on the intraoperative setting. The dissertation covers 3 papers that tackle specific limitations to two of the most common methods.  
+In this dissertation, I present the methods available for fluid responsiveness prediction, with focus on the intraoperative setting. The dissertation covers 3 papers that tackle specific limitations to two of the most common methods.  
 
 The terms *fluid challenge* and *bolus* are used interchangeably. *Stroke volume* (SV) and *cardiac output* (CO) are often interchangeable and the term that best fits the context is used. Ventilation and respiration is also used interchangeably and refer to the act of breathing (either mechanically or spontaneously).
  
