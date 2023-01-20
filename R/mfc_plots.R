@@ -24,6 +24,33 @@ SV_variation <- ggplot(sim1, aes(Time, SV)) +
 
 save_plot("method-reg-to-the-mean", SV_variation)
 
+# Autocorrelation
+set.seed(1)
+sim2 <- tibble(
+  Time = 1:60,
+  mean_SV = 70 + cos(Time/5)*2 + cos(2 + Time/6)*2 + cos(1 + Time/3)*2,
+  SV=rnorm(60, mean = mean_SV, sd = 2)
+)
+
+SV_variation_autocor <- ggplot(sim2, aes(Time, SV)) +
+  geom_hline(aes(yintercept = 70, linetype = 'Mean SV')) +
+  #geom_linerange(aes(ymin = 70, ymax = SV, color = 'Random error'), key_glyph = draw_key_vline, linetype = 3) +
+  geom_line(aes(color = "Measured SV"), show.legend = FALSE) +
+  geom_line(aes(y = mean_SV, color = "Actual SV"), linetype = 2) +
+  #geom_point(aes(color = "Measured SV")) +
+  scale_color_manual(values = c(darkred, lightblue)) +
+  scale_linetype_manual(values = c(2)) +
+  guides(color = guide_legend(override.aes = list(linetype = c('dashed', 'solid')))) +
+  ylim(60, 80) +
+  labs(linetype = NULL, y = 'SV [ml]', color = NULL) +
+  theme(panel.grid.major = element_blank(),
+        legend.margin = margin(t = -13, b = 0))
+
+ggsave("/home/johannes/MEGAsync/Docs/PhD/8_Assets/figures/defense/SV_autocor.png", 
+       width = 8, height = 3,
+       SV_variation_autocor)
+
+
 # Null sim plot
 
 # Set seed to make random numbers reproducible
